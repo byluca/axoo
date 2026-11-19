@@ -1,19 +1,19 @@
 # Axoo
 
-Community universitaria anonima con client nativi e backend Go.
+<img src="axoo-ios/app/resources/Assets.xcassets/AppIcon.appiconset/AppIcon.png" width="88" alt="Axoo app icon">
 
-| Componente | Sviluppo |
-| --- | --- |
-| Android | [Configurazione, build e test](axoo-kotlin/README.md) |
-| iOS | [Configurazione, XcodeGen e test](axoo-ios/README.md) |
-| Backend | [Schema, configurazione e test](axoo-server/README.md) |
+Axoo is an anonymous social app for university students. Share posts and talk with people on your campus.
 
-Per avviare un’istanza di sviluppo, configura prima il backend e un progetto
-Supabase dedicato, poi imposta gli URL e la chiave pubblicabile nei client.
-Il Content Desk legge il catalogo Axooji del client Android affiancato.
+[Google Play](https://play.google.com/store/apps/details?id=com.axoo) · [App Store](https://apps.apple.com/it/app/axoo/id6816748869)
 
-Il codice originale è distribuito sotto [AGPL-3.0-only](LICENSE).
-Dipendenze e risorse mantengono i rispettivi avvisi di licenza.
-[Android](axoo-kotlin/THIRD_PARTY_NOTICES.md) ·
-[iOS](axoo-ios/THIRD_PARTY_NOTICES.md) ·
-[Backend](axoo-server/THIRD_PARTY_NOTICES.md)
+## Code
+
+- [Android · Kotlin](axoo-kotlin/README.md)
+- [iOS · Swift](axoo-ios/README.md)
+- [Backend · Go](axoo-server/README.md)
+
+## License
+
+Axoo’s original code is licensed under [AGPL-3.0-only](LICENSE).
+See the third-party notices for [Android](axoo-kotlin/THIRD_PARTY_NOTICES.md),
+[iOS](axoo-ios/THIRD_PARTY_NOTICES.md), and [the backend](axoo-server/THIRD_PARTY_NOTICES.md).
