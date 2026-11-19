@@ -1,0 +1,12 @@
+// Copiare in Local.xcconfig e compilare con le proprie chiavi client.
+// Usare una chiave Supabase publishable/anon, mai service_role.
+AXOO_SUPABASE_PUBLISHABLE_KEY =
+AXOO_KLIPY_API_KEY =
+
+// Facoltativi. Impostare entrambi per usare un ambiente di sviluppo HTTPS.
+// AXOO_API_URL = https:$(AXOO_URL_SLASH)/api.example.org/api/v1/
+// AXOO_SUPABASE_URL = https:$(AXOO_URL_SLASH)/example.supabase.co/
+// AXOO_BUNDLE_ID = org.example.axoo
+// AXOO_DEVELOPMENT_TEAM = TEAM_APPLE
+// AXOO_FIREBASE_PROJECT_ID = progetto-firebase
+// AXOO_REQUIRE_FIREBASE_CONFIG = NO

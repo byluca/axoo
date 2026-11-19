@@ -1,0 +1,39 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Full Material theme scoped to this dialog; the Activity keeps its platform theme. -->
+    <style name="Theme.Axoo.OverlayCard" parent="Theme.Material3.DayNight.Dialog.Alert">
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.Axoo.OverlayCard</item>
+        <item name="colorPrimary">@color/axoo_accent</item>
+        <item name="colorSurface">@color/axoo_panel</item>
+        <item name="colorSurfaceContainerHigh">@color/axoo_panel</item>
+        <item name="colorOnSurface">@color/axoo_text_primary</item>
+        <item name="colorOnSurfaceVariant">@color/axoo_text_secondary</item>
+        <item name="android:backgroundDimAmount">0.32</item>
+        <item name="android:dialogCornerRadius" tools:targetApi="p">16dp</item>
+    </style>
+
+    <style name="ThemeOverlay.Axoo.OverlayCard" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="elevationOverlayEnabled">false</item>
+        <item name="android:windowElevation">0dp</item>
+        <item name="alertDialogStyle">@style/Widget.Axoo.OverlayCard</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.Axoo.OverlayCard.Button</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.Axoo.OverlayCard.Button</item>
+    </style>
+
+    <style name="Widget.Axoo.OverlayCard" parent="MaterialAlertDialog.Material3">
+        <item name="backgroundTint">@color/axoo_panel</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Axoo.OverlayCard</item>
+    </style>
+
+    <style name="ShapeAppearance.Axoo.OverlayCard" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="Widget.Axoo.OverlayCard.Button" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:fontFamily">@font/baloo2_semi_bold</item>
+        <item name="fontFamily">@font/baloo2_semi_bold</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+</resources>

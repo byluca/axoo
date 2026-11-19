@@ -1,0 +1,73 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.AxooPlatform" parent="@android:style/Theme.Material.Light.NoActionBar" />
+    <style
+        name="Theme.Axoo"
+        parent="@style/Theme.AxooPlatform"
+        tools:targetApi="q">
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="android:ambientShadowAlpha">0.10</item>
+        <item name="android:spotShadowAlpha">0</item>
+        <item name="android:colorAccent">@color/axoo_accent</item>
+        <item name="android:windowLightStatusBar">@bool/axoo_light_system_bars</item>
+        <item name="android:windowLightNavigationBar">@bool/axoo_light_system_bars</item>
+        <item name="android:statusBarColor">@color/axoo_background</item>
+        <item name="android:navigationBarColor">@color/axoo_background</item>
+        <item name="android:windowBackground">@color/axoo_background</item>
+        <item name="android:colorBackground">@color/axoo_background</item>
+        <item name="android:textColorPrimary">@color/axoo_text_primary</item>
+        <item name="android:textColorSecondary">@color/axoo_text_secondary</item>
+        <item name="android:textCursorDrawable">@drawable/brand_text_cursor</item>
+    </style>
+
+    <style
+        name="Theme.Axoo.Starting"
+        parent="@style/Theme.Axoo"
+        tools:targetApi="o_mr1">
+        <item name="android:windowBackground">@drawable/splash_screen_legacy</item>
+        <item name="android:statusBarColor">@color/launcher_background</item>
+        <item name="android:navigationBarColor">@color/launcher_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
+    <!-- Scoped to dialogs: the Activity and its ordinary Views keep Theme.Axoo. -->
+    <style name="Theme.Axoo.BottomSheet" parent="Theme.Material3.DayNight.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.Axoo.BottomSheet</item>
+        <item name="bottomSheetDragHandleStyle">@style/Widget.Axoo.BottomSheet.DragHandle</item>
+        <item name="enableEdgeToEdge">true</item>
+        <item name="colorPrimary">@color/axoo_accent</item>
+        <item name="colorOnSurface">@color/axoo_text_primary</item>
+        <item name="colorSurface">@color/axoo_panel</item>
+        <item name="colorSurfaceContainerLow">@color/axoo_panel</item>
+        <item name="elevationOverlayEnabled">false</item>
+        <item name="android:backgroundDimAmount">0.4</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+    <style name="Widget.Axoo.BottomSheet" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="backgroundTint">@color/axoo_panel</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Axoo.BottomSheet</item>
+        <item name="android:elevation">0dp</item>
+        <item name="paddingBottomSystemWindowInsets">true</item>
+        <item name="paddingLeftSystemWindowInsets">true</item>
+        <item name="paddingRightSystemWindowInsets">true</item>
+    </style>
+    <style name="Theme.Axoo.MediaBottomSheet" parent="Theme.Axoo.BottomSheet" tools:targetApi="o_mr1">
+        <item name="bottomSheetStyle">@style/Widget.Axoo.MediaBottomSheet</item>
+        <item name="android:windowLightNavigationBar">@bool/axoo_light_system_bars</item>
+        <item name="android:navigationBarDividerColor" tools:targetApi="p">@android:color/transparent</item>
+    </style>
+    <style name="Widget.Axoo.MediaBottomSheet" parent="Widget.Axoo.BottomSheet">
+        <item name="paddingBottomSystemWindowInsets">false</item>
+    </style>
+    <style name="Widget.Axoo.BottomSheet.DragHandle" parent="Widget.Material3.BottomSheet.DragHandle">
+        <item name="tint">@color/axoo_text_secondary</item>
+        <item name="android:minHeight">32dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+    <style name="ShapeAppearance.Axoo.BottomSheet" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">28dp</item>
+        <item name="cornerSizeTopRight">28dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+</resources>

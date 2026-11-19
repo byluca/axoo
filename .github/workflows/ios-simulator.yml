@@ -1,0 +1,49 @@
+name: iOS Simulator
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ios-simulator-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    runs-on: macos-15
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_26.2.app/Contents/Developer
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: axoo-ios
+    steps:
+      - uses: actions/checkout@v4
+      - run: brew install xcodegen
+      - name: Build and test
+        run: |
+          xcodegen generate
+          mkdir -p build
+          sdk_major="$(xcrun --sdk iphonesimulator --show-sdk-version | cut -d. -f1)"
+          simulator_id="$(xcrun simctl list devices available --json | jq -r --arg runtime "iOS-${sdk_major}-" '[.devices | to_entries[] | select(.key | contains($runtime)) | .value[] | select(.isAvailable == true and (.name | startswith("iPhone")))] | first | .udid')"
+          test -n "$simulator_id" && test "$simulator_id" != "null"
+          xcodebuild test \
+            -project Axoo.xcodeproj -scheme Axoo -configuration Debug \
+            -destination "platform=iOS Simulator,id=$simulator_id" \
+            -parallel-testing-enabled NO \
+            -derivedDataPath build/DerivedData \
+            -resultBundlePath build/Tests.xcresult \
+            CODE_SIGNING_ALLOWED=NO
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Axoo-test-results
+          path: axoo-ios/build/*.xcresult
+          if-no-files-found: warn
+          retention-days: 7

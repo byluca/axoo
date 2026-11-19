@@ -1,0 +1,10 @@
+<resources>
+    <style name="Theme.Axoo.ChoiceDialog" parent="@android:style/ThemeOverlay.Material.Dialog.Alert">
+        <item name="android:fontFamily">@font/baloo2_semi_bold</item>
+        <item name="android:windowBackground">@drawable/choice_dialog_background</item>
+        <item name="android:colorAccent">@color/axoo_accent</item>
+        <item name="android:colorBackground">@color/axoo_panel</item>
+        <item name="android:textColorPrimary">@color/axoo_text_primary</item>
+        <item name="android:textColorSecondary">@color/axoo_text_secondary</item>
+    </style>
+</resources>

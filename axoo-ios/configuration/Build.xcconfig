@@ -1,0 +1,12 @@
+// Only the Supabase client publishable/anon key belongs in an app binary.
+AXOO_SUPABASE_PUBLISHABLE_KEY =
+AXOO_KLIPY_API_KEY =
+AXOO_API_URL =
+AXOO_SUPABASE_URL =
+AXOO_URL_SLASH = /
+AXOO_FIREBASE_PROJECT_ID = axoo-bca86
+AXOO_REQUIRE_FIREBASE_CONFIG = YES
+AXOO_BUNDLE_ID = com.axoo.ios.preview
+AXOO_DEVELOPMENT_TEAM = 8VL5PF775C
+#include? "Local.xcconfig"
+#include? "Klipy.local.xcconfig"

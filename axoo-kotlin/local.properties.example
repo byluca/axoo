@@ -1,0 +1,14 @@
+# Copiare in local.properties e adattare il percorso al proprio Android SDK.
+# Android Studio puo generare sdk.dir automaticamente.
+sdk.dir=/percorso/al/proprio/Android/Sdk
+
+# Facoltativi. Impostare entrambi per usare un ambiente di sviluppo HTTPS.
+# axoo.api.url=https://api.example.org/api/v1/
+# supabase.url=https://example.supabase.co/
+
+# Chiave client pubblica Supabase (publishable/anon), mai service_role.
+supabase.publishable.key=
+
+# Facoltativa per Debug; necessaria per GIF e meme.
+# In alternativa usare KLIPY_API_KEY oppure -PklipyApiKey=...
+klipy.api.key=

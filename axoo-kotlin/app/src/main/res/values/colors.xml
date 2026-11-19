@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="launcher_background">#FF00BF</color>
+    <bool name="axoo_light_system_bars">true</bool>
+    <color name="axoo_background">#FFFFFF</color>
+    <color name="axoo_surface">#F0F2F5</color>
+    <color name="axoo_card">#FFFFFF</color>
+    <color name="axoo_panel">#FFFFFF</color>
+    <color name="axoo_editorial_paper">#FFFBF7</color>
+    <color name="axoo_picker_background">#FAF9FC</color>
+    <color name="axoo_picker_control">#F0F2F5</color>
+    <color name="axoo_category_selection">#14000000</color>
+    <color name="axoo_navigation_selection">#EAEBED</color>
+    <color name="axoo_text_primary">#111014</color>
+    <color name="axoo_text_secondary">#6F6875</color>
+    <color name="axoo_interaction_inactive">#536471</color>
+    <color name="axoo_border">#E1DCE5</color>
+    <color name="axoo_card_border">#14000000</color>
+    <color name="axoo_divider">#26111014</color>
+    <color name="axoo_pressed_overlay">#0A111014</color>
+    <color name="axoo_skeleton">#E2E6EA</color>
+    <color name="axoo_link">#007AFF</color>
+    <color name="axoo_accent">#FF00BF</color>
+    <color name="axoo_on_accent">#FFFFFF</color>
+    <color name="axoo_downvote_active">#00B4D8</color>
+    <color name="axoo_destructive">#FF3B30</color>
+    <color name="axoo_on_destructive">#FFFFFF</color>
+    <color name="axoo_moderation_positive_bg">#E1F5EA</color>
+    <color name="axoo_moderation_positive_text">#16734D</color>
+    <color name="axoo_moderation_warning_bg">#FFF0D6</color>
+    <color name="axoo_moderation_warning_text">#915500</color>
+    <color name="axoo_moderation_danger_bg">#FFE5E2</color>
+</resources>

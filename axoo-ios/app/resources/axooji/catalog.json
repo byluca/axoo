@@ -1,0 +1,3972 @@
+{
+  "name": "Axooji",
+  "schemaVersion": 1,
+  "categories": [
+    {
+      "id": "halloween",
+      "label": "Halloween",
+      "tabEmoji": "🎃",
+      "icon": "halloween/pumpkin",
+      "items": [
+        "halloween/pumpkin",
+        "halloween/ghost",
+        "halloween/bat",
+        "halloween/casper",
+        "halloween/vampire",
+        "halloween/frankenstein",
+        "halloween/frankie",
+        "halloween/frankensteins-monster",
+        "halloween/skull",
+        "halloween/cartoon-eyeball",
+        "halloween/spooky-hand",
+        "halloween/poison",
+        "halloween/potion",
+        "halloween/jason"
+      ]
+    },
+    {
+      "id": "via-re-david",
+      "label": "Via Re David",
+      "tabEmoji": "🔥",
+      "icon": "via-re-david/loading",
+      "items": [
+        "via-re-david/sunglasses",
+        "via-re-david/wink",
+        "via-re-david/hearts-face",
+        "via-re-david/kiss",
+        "via-re-david/face-with-spiral-eyes",
+        "via-re-david/rolling-eyes",
+        "via-re-david/unamused",
+        "via-re-david/scream",
+        "via-re-david/crazy",
+        "via-re-david/cry",
+        "via-re-david/holding-tears",
+        "via-re-david/sad",
+        "via-re-david/angry",
+        "via-re-david/blush",
+        "via-re-david/down-face",
+        "via-re-david/expressionless",
+        "via-re-david/flushed",
+        "via-re-david/loading",
+        "via-re-david/rotating",
+        "via-re-david/shushing",
+        "via-re-david/smoking"
+      ]
+    },
+    {
+      "id": "focaccia-peroni",
+      "label": "Focaccia e Peroni",
+      "tabEmoji": "🎉",
+      "icon": "focaccia-peroni/party",
+      "items": [
+        "focaccia-peroni/party",
+        "focaccia-peroni/rocket",
+        "focaccia-peroni/kissing",
+        "focaccia-peroni/kissing-heart",
+        "focaccia-peroni/clapping",
+        "focaccia-peroni/muscle",
+        "focaccia-peroni/thinking",
+        "focaccia-peroni/astonished",
+        "focaccia-peroni/dizzy-face",
+        "focaccia-peroni/crazy-face",
+        "focaccia-peroni/crying",
+        "focaccia-peroni/frowning-face",
+        "focaccia-peroni/angry-1",
+        "focaccia-peroni/angry-2",
+        "focaccia-peroni/devil",
+        "focaccia-peroni/middle-finger",
+        "focaccia-peroni/adult-only",
+        "focaccia-peroni/cold-face",
+        "focaccia-peroni/dancing",
+        "focaccia-peroni/fearful",
+        "focaccia-peroni/flower-in-mouth",
+        "focaccia-peroni/flushed",
+        "focaccia-peroni/grimacing",
+        "focaccia-peroni/hand-over-mouth",
+        "focaccia-peroni/big-grin",
+        "focaccia-peroni/hot-face",
+        "focaccia-peroni/index-pointing",
+        "focaccia-peroni/licking",
+        "focaccia-peroni/looking",
+        "focaccia-peroni/money-mouth",
+        "focaccia-peroni/no",
+        "focaccia-peroni/peek",
+        "focaccia-peroni/persevering",
+        "focaccia-peroni/smoking",
+        "focaccia-peroni/steam",
+        "focaccia-peroni/sweating"
+      ]
+    },
+    {
+      "id": "la-cicchetteria",
+      "label": "La Cicchetteria",
+      "tabEmoji": "⭐",
+      "icon": "la-cicchetteria/reading-book",
+      "items": [
+        "la-cicchetteria/joy",
+        "la-cicchetteria/sunglasses",
+        "la-cicchetteria/relieved",
+        "la-cicchetteria/smiling",
+        "la-cicchetteria/broken-heart",
+        "la-cicchetteria/kissing-heart",
+        "la-cicchetteria/ok",
+        "la-cicchetteria/thumb-up",
+        "la-cicchetteria/thinking",
+        "la-cicchetteria/exploding-head",
+        "la-cicchetteria/crying",
+        "la-cicchetteria/angry",
+        "la-cicchetteria/rage",
+        "la-cicchetteria/sign-of-horns",
+        "la-cicchetteria/bandage-mouth",
+        "la-cicchetteria/bathing",
+        "la-cicchetteria/blush",
+        "la-cicchetteria/calling",
+        "la-cicchetteria/cold-face",
+        "la-cicchetteria/confounded",
+        "la-cicchetteria/confused",
+        "la-cicchetteria/drinking",
+        "la-cicchetteria/eating",
+        "la-cicchetteria/using-laptop",
+        "la-cicchetteria/face-with-bandage",
+        "la-cicchetteria/face-with-symbols",
+        "la-cicchetteria/fearful",
+        "la-cicchetteria/flushed",
+        "la-cicchetteria/grimacing",
+        "la-cicchetteria/hand-over-mouth",
+        "la-cicchetteria/robot-hand",
+        "la-cicchetteria/innocent",
+        "la-cicchetteria/lifting",
+        "la-cicchetteria/looking",
+        "la-cicchetteria/meeting",
+        "la-cicchetteria/neutral-face",
+        "la-cicchetteria/no",
+        "la-cicchetteria/outline-face",
+        "la-cicchetteria/angel-harp",
+        "la-cicchetteria/reading-book",
+        "la-cicchetteria/shopping",
+        "la-cicchetteria/sick",
+        "la-cicchetteria/sleeping",
+        "la-cicchetteria/sleepy",
+        "la-cicchetteria/sos",
+        "la-cicchetteria/vomiting",
+        "la-cicchetteria/washroom"
+      ]
+    },
+    {
+      "id": "amtab",
+      "label": "AMTAB",
+      "tabEmoji": "💬",
+      "icon": "amtab/driving-face",
+      "items": [
+        "amtab/laughing-face",
+        "amtab/party-face",
+        "amtab/heart-eyes",
+        "amtab/face-with-hearts",
+        "amtab/kiss-face",
+        "amtab/dizzy-face",
+        "amtab/tongue-face",
+        "amtab/crying-face",
+        "amtab/face-holding-tears",
+        "amtab/angry-face",
+        "amtab/devil-face",
+        "amtab/broken-face",
+        "amtab/chill-face",
+        "amtab/cold-face",
+        "amtab/driving-face",
+        "amtab/eating-popcorn",
+        "amtab/face-using-laptop",
+        "amtab/fearful-face",
+        "amtab/hi-face",
+        "amtab/hot-face",
+        "amtab/house-face",
+        "amtab/liar-face",
+        "amtab/weightlifting",
+        "amtab/looking-face",
+        "amtab/nervous-face",
+        "amtab/no-face",
+        "amtab/phone-call",
+        "amtab/plane-face",
+        "amtab/question-face",
+        "amtab/read-book",
+        "amtab/rose-face",
+        "amtab/sleep-face",
+        "amtab/yoga-face"
+      ]
+    },
+    {
+      "id": "mensa-adisu",
+      "label": "Mensa ADISU",
+      "tabEmoji": "🔥",
+      "icon": "mensa-adisu/crazy-face",
+      "items": [
+        "mensa-adisu/joy",
+        "mensa-adisu/party",
+        "mensa-adisu/sunglasses",
+        "mensa-adisu/smiley",
+        "mensa-adisu/heart-face",
+        "mensa-adisu/face-with-raised-eyebrow",
+        "mensa-adisu/dizzy",
+        "mensa-adisu/scream",
+        "mensa-adisu/crazy-face",
+        "mensa-adisu/stuck-out-tongue",
+        "mensa-adisu/upside-down",
+        "mensa-adisu/woozy",
+        "mensa-adisu/crying",
+        "mensa-adisu/frowning-face",
+        "mensa-adisu/devil",
+        "mensa-adisu/rage",
+        "mensa-adisu/bandage-face",
+        "mensa-adisu/cold-face",
+        "mensa-adisu/confounded",
+        "mensa-adisu/drool",
+        "mensa-adisu/exhausted-face",
+        "mensa-adisu/flushed",
+        "mensa-adisu/hot-face",
+        "mensa-adisu/innocent",
+        "mensa-adisu/liar",
+        "mensa-adisu/line",
+        "mensa-adisu/pensive",
+        "mensa-adisu/sick",
+        "mensa-adisu/sleeping",
+        "mensa-adisu/thermometer"
+      ]
+    },
+    {
+      "id": "storie-vecchio-sud",
+      "label": "Storie del Vecchio Sud",
+      "tabEmoji": "⭐",
+      "icon": "storie-vecchio-sud/star-struck",
+      "items": [
+        "storie-vecchio-sud/joy",
+        "storie-vecchio-sud/laughing",
+        "storie-vecchio-sud/party",
+        "storie-vecchio-sud/heart-eyes",
+        "storie-vecchio-sud/star-struck",
+        "storie-vecchio-sud/sunglasses",
+        "storie-vecchio-sud/grin",
+        "storie-vecchio-sud/smile",
+        "storie-vecchio-sud/heart-face",
+        "storie-vecchio-sud/hugging-face",
+        "storie-vecchio-sud/kiss",
+        "storie-vecchio-sud/clap",
+        "storie-vecchio-sud/rolling-eyes",
+        "storie-vecchio-sud/salute",
+        "storie-vecchio-sud/thinking",
+        "storie-vecchio-sud/dizzy-1",
+        "storie-vecchio-sud/dizzy-2",
+        "storie-vecchio-sud/scream",
+        "storie-vecchio-sud/crazy",
+        "storie-vecchio-sud/cry-1",
+        "storie-vecchio-sud/cry-2",
+        "storie-vecchio-sud/crying-1",
+        "storie-vecchio-sud/crying-2",
+        "storie-vecchio-sud/holding-tears",
+        "storie-vecchio-sud/sad",
+        "storie-vecchio-sud/angry",
+        "storie-vecchio-sud/devil",
+        "storie-vecchio-sud/rage",
+        "storie-vecchio-sud/anguished",
+        "storie-vecchio-sud/confused",
+        "storie-vecchio-sud/cross-eye",
+        "storie-vecchio-sud/drool",
+        "storie-vecchio-sud/drunk",
+        "storie-vecchio-sud/fearful",
+        "storie-vecchio-sud/grimacing-1",
+        "storie-vecchio-sud/grimacing-2",
+        "storie-vecchio-sud/liar",
+        "storie-vecchio-sud/nerd-face",
+        "storie-vecchio-sud/neutral",
+        "storie-vecchio-sud/no",
+        "storie-vecchio-sud/please",
+        "storie-vecchio-sud/pray",
+        "storie-vecchio-sud/rich",
+        "storie-vecchio-sud/sleep",
+        "storie-vecchio-sud/sleeping",
+        "storie-vecchio-sud/stuck-out",
+        "storie-vecchio-sud/triumph-1",
+        "storie-vecchio-sud/triumph-2",
+        "storie-vecchio-sud/vomit",
+        "storie-vecchio-sud/zipper-mouth"
+      ]
+    },
+    {
+      "id": "torre-quetta",
+      "label": "Torre Quetta",
+      "tabEmoji": "✨",
+      "icon": "torre-quetta/star-struck",
+      "items": [
+        "torre-quetta/joy",
+        "torre-quetta/laughing",
+        "torre-quetta/heart-eyes",
+        "torre-quetta/star-struck",
+        "torre-quetta/star-struck-tongue",
+        "torre-quetta/grin",
+        "torre-quetta/grinning",
+        "torre-quetta/smile",
+        "torre-quetta/smiling-face-with-hearts",
+        "torre-quetta/sweat-smile",
+        "torre-quetta/wink",
+        "torre-quetta/hugging",
+        "torre-quetta/kissing-heart",
+        "torre-quetta/face-with-rolling-eyes",
+        "torre-quetta/raised-eyebrow",
+        "torre-quetta/smirk-face",
+        "torre-quetta/thinking",
+        "torre-quetta/shocked",
+        "torre-quetta/crazy-face",
+        "torre-quetta/upside-down-face",
+        "torre-quetta/dot-lines",
+        "torre-quetta/expressionless",
+        "torre-quetta/face-in-clouds",
+        "torre-quetta/grimacing",
+        "torre-quetta/innocent",
+        "torre-quetta/lying-face",
+        "torre-quetta/melting-face",
+        "torre-quetta/neutral-face",
+        "torre-quetta/respect",
+        "torre-quetta/rich",
+        "torre-quetta/shushing-face",
+        "torre-quetta/silence",
+        "torre-quetta/yum",
+        "torre-quetta/zipper-mouth-face"
+      ]
+    },
+    {
+      "id": "pane-pomodoro",
+      "label": "Pane e Pomodoro",
+      "tabEmoji": "🎉",
+      "icon": "pane-pomodoro/clown",
+      "items": [
+        "pane-pomodoro/party",
+        "pane-pomodoro/sunglasses",
+        "pane-pomodoro/smiling-face-with-imp",
+        "pane-pomodoro/ok",
+        "pane-pomodoro/yes",
+        "pane-pomodoro/face-with-monocle",
+        "pane-pomodoro/dizzy-face",
+        "pane-pomodoro/exploding-head",
+        "pane-pomodoro/scream",
+        "pane-pomodoro/wow",
+        "pane-pomodoro/clown",
+        "pane-pomodoro/woozy",
+        "pane-pomodoro/crying-1",
+        "pane-pomodoro/crying",
+        "pane-pomodoro/pleading-face-1",
+        "pane-pomodoro/pleading-face",
+        "pane-pomodoro/sad",
+        "pane-pomodoro/angry-imp",
+        "pane-pomodoro/angry",
+        "pane-pomodoro/rage",
+        "pane-pomodoro/cold",
+        "pane-pomodoro/confused",
+        "pane-pomodoro/confusion",
+        "pane-pomodoro/disappointed",
+        "pane-pomodoro/disguised-face",
+        "pane-pomodoro/drooling",
+        "pane-pomodoro/face-with-head-bandage",
+        "pane-pomodoro/face-with-symbols",
+        "pane-pomodoro/face-with-thermometer",
+        "pane-pomodoro/flushed",
+        "pane-pomodoro/waving-hand",
+        "pane-pomodoro/hot-face",
+        "pane-pomodoro/no",
+        "pane-pomodoro/shaking",
+        "pane-pomodoro/sleeping",
+        "pane-pomodoro/sneezing",
+        "pane-pomodoro/triumph",
+        "pane-pomodoro/vomiting",
+        "pane-pomodoro/yawning"
+      ]
+    },
+    {
+      "id": "spiral",
+      "label": "Panzerotto",
+      "tabEmoji": "🌀",
+      "icon": "spiral/star-struck",
+      "items": [
+        "spiral/crying",
+        "spiral/dancing",
+        "spiral/dizzy-face",
+        "spiral/expressionless",
+        "spiral/fearful-face",
+        "spiral/grinning-face",
+        "spiral/happy-face",
+        "spiral/kissing-heart",
+        "spiral/laughing",
+        "spiral/looking",
+        "spiral/neutral-face",
+        "spiral/party-face",
+        "spiral/point-up",
+        "spiral/rage",
+        "spiral/relax",
+        "spiral/sad",
+        "spiral/scream-face",
+        "spiral/sleeping",
+        "spiral/slightly-smiling-face",
+        "spiral/smiley",
+        "spiral/smiling-face-with-tear",
+        "spiral/star-struck",
+        "spiral/stuck-out-tongue",
+        "spiral/sunglasses",
+        "spiral/thumb-up",
+        "spiral/vomiting",
+        "spiral/waving",
+        "spiral/wink"
+      ]
+    },
+    {
+      "id": "class",
+      "label": "Mastro Ciccio",
+      "tabEmoji": "😄",
+      "icon": "class/star-struck",
+      "items": [
+        "class/astonished-face",
+        "class/cowboy-hat-face",
+        "class/face-blowing-a-kiss",
+        "class/face-holding-back-tears",
+        "class/face-in-clouds",
+        "class/face-with-medical-mask",
+        "class/face-with-rolling-eyes",
+        "class/face-with-tears-of-joy",
+        "class/face-with-tongue",
+        "class/face-without-mouth",
+        "class/frowning",
+        "class/grin",
+        "class/lying-face",
+        "class/money-mouth-face",
+        "class/neutral-face",
+        "class/peeking-eye",
+        "class/saluting-face",
+        "class/shocked",
+        "class/shushing-face",
+        "class/sleepy",
+        "class/slightly-smiling-face",
+        "class/smiling-face-with-hearts",
+        "class/smirking-face",
+        "class/squinting-face-with-tongue",
+        "class/star-struck",
+        "class/sweat-smile",
+        "class/thinking",
+        "class/upside-down-face",
+        "class/winking",
+        "class/winking-face-with-tongue",
+        "class/zany-face",
+        "class/zipper-mouth-face"
+      ]
+    },
+    {
+      "id": "pack-37",
+      "label": "Panificio Magda",
+      "tabEmoji": "✨",
+      "icon": "pack-37/star-struck",
+      "items": [
+        "pack-37/call-me",
+        "pack-37/crying",
+        "pack-37/face-with-spiral-eyes",
+        "pack-37/face-with-symbols",
+        "pack-37/flushed",
+        "pack-37/grin",
+        "pack-37/heart-eyes",
+        "pack-37/hearts-face",
+        "pack-37/joy",
+        "pack-37/kiss",
+        "pack-37/party",
+        "pack-37/peeking-eye",
+        "pack-37/rage",
+        "pack-37/raised-eyebrow",
+        "pack-37/relaxed",
+        "pack-37/sad",
+        "pack-37/salute",
+        "pack-37/shaking-face",
+        "pack-37/shushing-face",
+        "pack-37/sleeping",
+        "pack-37/sleepy",
+        "pack-37/smiling-face-tear",
+        "pack-37/smirk",
+        "pack-37/star-struck",
+        "pack-37/stuck-out-tongue-winking",
+        "pack-37/stuck-out-tongue",
+        "pack-37/sunglasses",
+        "pack-37/sweet-smile",
+        "pack-37/thinking",
+        "pack-37/tired-face",
+        "pack-37/triumph",
+        "pack-37/unamused",
+        "pack-37/woozy-face",
+        "pack-37/zipper-mouth"
+      ]
+    },
+    {
+      "id": "piccolo-bar",
+      "label": "Piccolo Bar",
+      "tabEmoji": "💬",
+      "icon": "piccolo-bar/happiness",
+      "items": [
+        "piccolo-bar/heart-eyes-1",
+        "piccolo-bar/heart-eyes-2",
+        "piccolo-bar/smiling",
+        "piccolo-bar/unhappy",
+        "piccolo-bar/wink-1",
+        "piccolo-bar/wink-2",
+        "piccolo-bar/heart-hand",
+        "piccolo-bar/face-with-spiral-eyes",
+        "piccolo-bar/ok",
+        "piccolo-bar/face-with-peeking-eye",
+        "piccolo-bar/scream-1",
+        "piccolo-bar/scream-2",
+        "piccolo-bar/crazy",
+        "piccolo-bar/woozy-face",
+        "piccolo-bar/cry",
+        "piccolo-bar/pleading-face",
+        "piccolo-bar/sad",
+        "piccolo-bar/angry-1",
+        "piccolo-bar/angry-2",
+        "piccolo-bar/angry-3",
+        "piccolo-bar/anguished-1",
+        "piccolo-bar/anguished-2",
+        "piccolo-bar/drool-1",
+        "piccolo-bar/drool-2",
+        "piccolo-bar/drool-3",
+        "piccolo-bar/ear",
+        "piccolo-bar/eggplant",
+        "piccolo-bar/rude-face",
+        "piccolo-bar/excited-fists",
+        "piccolo-bar/finger-dance",
+        "piccolo-bar/expressionless",
+        "piccolo-bar/fearful",
+        "piccolo-bar/flame",
+        "piccolo-bar/grimacing-face",
+        "piccolo-bar/happiness",
+        "piccolo-bar/knife",
+        "piccolo-bar/neutral-face",
+        "piccolo-bar/point-right",
+        "piccolo-bar/seedling",
+        "piccolo-bar/shrugging",
+        "piccolo-bar/sleeping",
+        "piccolo-bar/sob",
+        "piccolo-bar/star",
+        "piccolo-bar/sweat-1",
+        "piccolo-bar/sweat-2",
+        "piccolo-bar/sweat-3",
+        "piccolo-bar/triumph",
+        "piccolo-bar/vomiting",
+        "piccolo-bar/giggling"
+      ]
+    },
+    {
+      "id": "via-orabona",
+      "label": "Via Orabona",
+      "tabEmoji": "💬",
+      "icon": "via-orabona/cat-rainbow-face",
+      "items": [
+        "via-orabona/cat-rainbow-face",
+        "via-orabona/cat-with-heart-eyes",
+        "via-orabona/star-struck-cat",
+        "via-orabona/beaming-cat-face",
+        "via-orabona/cat-ok-face",
+        "via-orabona/screaming-cat-face",
+        "via-orabona/cat-crying-loudly",
+        "via-orabona/pleading-cat-face",
+        "via-orabona/angry-cat-face",
+        "via-orabona/devil-cat-face",
+        "via-orabona/cat-sun-face",
+        "via-orabona/nerd-face-cat",
+        "via-orabona/neutral-face-cat",
+        "via-orabona/squinting-cat-face"
+      ]
+    },
+    {
+      "id": "amici-di-axoo",
+      "label": "Bari Vecchia",
+      "tabEmoji": "🥰",
+      "icon": "amici-di-axoo/pack19-smiling-with-hearts-emoji",
+      "items": [
+        "amici-di-axoo/pack19-smiling-with-hearts-emoji",
+        "amici-di-axoo/pack19-star-struck-emoji",
+        "amici-di-axoo/pack19-partying-emoji",
+        "amici-di-axoo/pack19-cool-emoji",
+        "amici-di-axoo/pack19-with-tears-of-joy-emoji",
+        "amici-di-axoo/pack19-heart-hands",
+        "amici-di-axoo/pack19-winking-emoji",
+        "amici-di-axoo/pack19-blowing-kiss-emoji",
+        "amici-di-axoo/pack19-red-heart",
+        "amici-di-axoo/pack19-thumb-up-emoji",
+        "amici-di-axoo/pack19-grinning-emoji",
+        "amici-di-axoo/pack19-thinking-emoji",
+        "amici-di-axoo/pack19-1-plus",
+        "amici-di-axoo/pack19-18-emoji",
+        "amici-di-axoo/pack19-angry-face",
+        "amici-di-axoo/pack19-anguished-emoji",
+        "amici-di-axoo/pack19-anxious-with-sweat",
+        "amici-di-axoo/pack19-call-me-emoji",
+        "amici-di-axoo/pack19-chill-emoji",
+        "amici-di-axoo/pack19-clapping-emoji",
+        "amici-di-axoo/pack19-clown-emoji",
+        "amici-di-axoo/pack19-cold-emoji",
+        "amici-di-axoo/pack19-confounded-emoji",
+        "amici-di-axoo/pack19-cowboy-emoji",
+        "amici-di-axoo/pack19-crazy-face",
+        "amici-di-axoo/pack19-crying-emoji",
+        "amici-di-axoo/pack19-devil-emoji",
+        "amici-di-axoo/pack19-disappointed-face",
+        "amici-di-axoo/pack19-disguised-emoji",
+        "amici-di-axoo/pack19-drooling-emoji",
+        "amici-di-axoo/pack19-enraged-emoji",
+        "amici-di-axoo/pack19-exhaling-emoji",
+        "amici-di-axoo/pack19-exploding-emoji",
+        "amici-di-axoo/pack19-expressionless-emoji",
+        "amici-di-axoo/pack19-face-with-mask-emoji",
+        "amici-di-axoo/pack19-fearful-emoji",
+        "amici-di-axoo/pack19-finger-crossed",
+        "amici-di-axoo/pack19-flexed-biceps",
+        "amici-di-axoo/pack19-flushed-emoji",
+        "amici-di-axoo/pack19-frowning-emoji",
+        "amici-di-axoo/pack19-frowning-with-open-mouth",
+        "amici-di-axoo/pack19-grimacing-emoji",
+        "amici-di-axoo/pack19-grinning-cat-emoji",
+        "amici-di-axoo/pack19-handshake",
+        "amici-di-axoo/pack19-head-with-crown-emoji",
+        "amici-di-axoo/pack19-holding-back-tears-emoji",
+        "amici-di-axoo/pack19-holding-back-tears",
+        "amici-di-axoo/pack19-hot-emoji",
+        "amici-di-axoo/pack19-in-clouds-emoji",
+        "amici-di-axoo/pack19-index-pointing-up",
+        "amici-di-axoo/pack19-kissing-with-closed-eyes-emoji",
+        "amici-di-axoo/pack19-kissing-with-smiling-eyes-emoji",
+        "amici-di-axoo/pack19-laughing",
+        "amici-di-axoo/pack19-loudly-crying-emoji",
+        "amici-di-axoo/pack19-low-battery-emoji",
+        "amici-di-axoo/pack19-lying-emoji",
+        "amici-di-axoo/pack19-melting-emoji",
+        "amici-di-axoo/pack19-middle-finger-emoji",
+        "amici-di-axoo/pack19-middle-finger",
+        "amici-di-axoo/pack19-money-mouth-emoji",
+        "amici-di-axoo/pack19-moon-emoji",
+        "amici-di-axoo/pack19-muscle-emoji",
+        "amici-di-axoo/pack19-nauseated-emoji",
+        "amici-di-axoo/pack19-nerd-emoji",
+        "amici-di-axoo/pack19-neutral-emoji",
+        "amici-di-axoo/pack19-no-emoji",
+        "amici-di-axoo/pack19-no-mouth-emoji",
+        "amici-di-axoo/pack19-notes-emoji",
+        "amici-di-axoo/pack19-ok-hand-emoji",
+        "amici-di-axoo/pack19-ok-hand",
+        "amici-di-axoo/pack19-pensive-emoji",
+        "amici-di-axoo/pack19-person-gesturing",
+        "amici-di-axoo/pack19-pile-of-poo",
+        "amici-di-axoo/pack19-point-emoji",
+        "amici-di-axoo/pack19-point-up-emoji",
+        "amici-di-axoo/pack19-question-mark-emoji",
+        "amici-di-axoo/pack19-raised-hand-emoji",
+        "amici-di-axoo/pack19-relax-emoji",
+        "amici-di-axoo/pack19-relieved-emoji",
+        "amici-di-axoo/pack19-sad-but-relieved-face",
+        "amici-di-axoo/pack19-savoring-food-emoji",
+        "amici-di-axoo/pack19-screaming-in-fear-emoji",
+        "amici-di-axoo/pack19-shaking-emoji",
+        "amici-di-axoo/pack19-shushing-emoji",
+        "amici-di-axoo/pack19-sign-of-the-horns",
+        "amici-di-axoo/pack19-sleeping-emoji",
+        "amici-di-axoo/pack19-sleepy-emoji",
+        "amici-di-axoo/pack19-slightly-frowning-emoji",
+        "amici-di-axoo/pack19-smiling-emoji-1",
+        "amici-di-axoo/pack19-smiling-emoji-2",
+        "amici-di-axoo/pack19-smiling-emoji-3",
+        "amici-di-axoo/pack19-smiling-emoji",
+        "amici-di-axoo/pack19-smiling-with-halo",
+        "amici-di-axoo/pack19-smiling-with-heart-emoji",
+        "amici-di-axoo/pack19-smiling-with-horns-emoji",
+        "amici-di-axoo/pack19-smirking-emoji",
+        "amici-di-axoo/pack19-sneezing-emoji",
+        "amici-di-axoo/pack19-squinting-with-tongue-emoji",
+        "amici-di-axoo/pack19-technologist",
+        "amici-di-axoo/pack19-thumb-down-emoji",
+        "amici-di-axoo/pack19-tired-emoji",
+        "amici-di-axoo/pack19-unamused-emoji",
+        "amici-di-axoo/pack19-victory-hand",
+        "amici-di-axoo/pack19-vomiting-emoji",
+        "amici-di-axoo/pack19-waving-hand-emoji",
+        "amici-di-axoo/pack19-waving-hand",
+        "amici-di-axoo/pack19-weary-face",
+        "amici-di-axoo/pack19-with-crossed-out-eyes-emoji",
+        "amici-di-axoo/pack19-with-head-bandage-emoji",
+        "amici-di-axoo/pack19-with-monocle-emoji",
+        "amici-di-axoo/pack19-with-open-eyes-and-hand-over-mouth-emoji",
+        "amici-di-axoo/pack19-with-peeking-eye-emoji",
+        "amici-di-axoo/pack19-with-raised-eyebrow-emoji",
+        "amici-di-axoo/pack19-with-spiral-eyes-emoji",
+        "amici-di-axoo/pack19-with-steam-from-nose-emoji",
+        "amici-di-axoo/pack19-with-thermometer-emoji",
+        "amici-di-axoo/pack19-woozy-emoji",
+        "amici-di-axoo/pack19-zipper-mouth-face",
+        "amici-di-axoo/abbraccio",
+        "amici-di-axoo/cuore",
+        "amici-di-axoo/cinque",
+        "amici-di-axoo/festa",
+        "amici-di-axoo/squadra",
+        "amici-di-axoo/grazie"
+      ]
+    },
+    {
+      "id": "pack-16",
+      "label": "Madonnella",
+      "tabEmoji": "🎁",
+      "icon": "pack-16/joy-emoji",
+      "items": [
+        "pack-16/angry-emoji",
+        "pack-16/awful-emoji",
+        "pack-16/cheers-emoji",
+        "pack-16/clapping-emoji",
+        "pack-16/coffee-emoji",
+        "pack-16/confounded-emoji",
+        "pack-16/crying-emoji",
+        "pack-16/dance-emoji",
+        "pack-16/disappointed-emoji",
+        "pack-16/emoji-with-raised-eyebrow",
+        "pack-16/emoji-with-tongue-emoji",
+        "pack-16/expressionless-emoji",
+        "pack-16/frowning-emoji",
+        "pack-16/frowning-face-emoji",
+        "pack-16/idea-emoji",
+        "pack-16/innocent-emoji",
+        "pack-16/joy-emoji",
+        "pack-16/kissing-eyes-emoji",
+        "pack-16/kissing-heart-emoji",
+        "pack-16/laughing-emoji",
+        "pack-16/looking-emoji",
+        "pack-16/meeting-emoji",
+        "pack-16/mirror-emoji",
+        "pack-16/nerd-face-emoji",
+        "pack-16/neutral-face-emoji",
+        "pack-16/open-mouth-emoji",
+        "pack-16/pensive-emoji",
+        "pack-16/pinched-fingers-emoji",
+        "pack-16/point-right-emoji",
+        "pack-16/point-up-emoji",
+        "pack-16/pray-emoji",
+        "pack-16/relaxed-emoji",
+        "pack-16/sad-emoji",
+        "pack-16/sad-hands-emoji",
+        "pack-16/salute-emoji",
+        "pack-16/slightly-smiling-face-emoji",
+        "pack-16/smile-emoji",
+        "pack-16/smiling-face-with-butterfly",
+        "pack-16/smirk-emoji",
+        "pack-16/smirk-face-emoji",
+        "pack-16/star-struck-emoji",
+        "pack-16/sunglasses-emoji",
+        "pack-16/sweat-emoji",
+        "pack-16/terminator-emoji",
+        "pack-16/thumb-up-emoji",
+        "pack-16/unamused-face-emoji",
+        "pack-16/wait-emoji",
+        "pack-16/whatever-emoji",
+        "pack-16/wink-emoji",
+        "pack-16/worried-emoji"
+      ]
+    }
+  ],
+  "emojis": [
+    {
+      "id": 1218,
+      "name": "via-re-david/sunglasses",
+      "fallback": "😎"
+    },
+    {
+      "id": 1220,
+      "name": "via-re-david/wink",
+      "fallback": "😉"
+    },
+    {
+      "id": 1208,
+      "name": "via-re-david/hearts-face",
+      "fallback": "😍"
+    },
+    {
+      "id": 1210,
+      "name": "via-re-david/kiss",
+      "fallback": "😘"
+    },
+    {
+      "id": 1206,
+      "name": "via-re-david/face-with-spiral-eyes",
+      "fallback": "😵‍💫"
+    },
+    {
+      "id": 1212,
+      "name": "via-re-david/rolling-eyes",
+      "fallback": "🙄"
+    },
+    {
+      "id": 1219,
+      "name": "via-re-david/unamused",
+      "fallback": "😒"
+    },
+    {
+      "id": 1215,
+      "name": "via-re-david/scream",
+      "fallback": "😱"
+    },
+    {
+      "id": 1202,
+      "name": "via-re-david/crazy",
+      "fallback": "🤪"
+    },
+    {
+      "id": 1203,
+      "name": "via-re-david/cry",
+      "fallback": "😢"
+    },
+    {
+      "id": 1209,
+      "name": "via-re-david/holding-tears",
+      "fallback": "🥹"
+    },
+    {
+      "id": 1214,
+      "name": "via-re-david/sad",
+      "fallback": "😔"
+    },
+    {
+      "id": 1200,
+      "name": "via-re-david/angry",
+      "fallback": "😡"
+    },
+    {
+      "id": 1201,
+      "name": "via-re-david/blush",
+      "fallback": "😊"
+    },
+    {
+      "id": 1204,
+      "name": "via-re-david/down-face",
+      "fallback": "😞"
+    },
+    {
+      "id": 1205,
+      "name": "via-re-david/expressionless",
+      "fallback": "😑"
+    },
+    {
+      "id": 1207,
+      "name": "via-re-david/flushed",
+      "fallback": "😳"
+    },
+    {
+      "id": 1211,
+      "name": "via-re-david/loading",
+      "fallback": "😐"
+    },
+    {
+      "id": 1213,
+      "name": "via-re-david/rotating",
+      "fallback": "😵‍💫"
+    },
+    {
+      "id": 1216,
+      "name": "via-re-david/shushing",
+      "fallback": "🤫"
+    },
+    {
+      "id": 1217,
+      "name": "via-re-david/smoking",
+      "fallback": "😮"
+    },
+    {
+      "id": 970,
+      "name": "mensa-adisu/joy",
+      "fallback": "😂"
+    },
+    {
+      "id": 973,
+      "name": "mensa-adisu/party",
+      "fallback": "🥳"
+    },
+    {
+      "id": 981,
+      "name": "mensa-adisu/sunglasses",
+      "fallback": "😎"
+    },
+    {
+      "id": 979,
+      "name": "mensa-adisu/smiley",
+      "fallback": "😊"
+    },
+    {
+      "id": 967,
+      "name": "mensa-adisu/heart-face",
+      "fallback": "😍"
+    },
+    {
+      "id": 964,
+      "name": "mensa-adisu/face-with-raised-eyebrow",
+      "fallback": "😀"
+    },
+    {
+      "id": 961,
+      "name": "mensa-adisu/dizzy",
+      "fallback": "😵"
+    },
+    {
+      "id": 976,
+      "name": "mensa-adisu/scream",
+      "fallback": "😱"
+    },
+    {
+      "id": 958,
+      "name": "mensa-adisu/crazy-face",
+      "fallback": "🤪"
+    },
+    {
+      "id": 980,
+      "name": "mensa-adisu/stuck-out-tongue",
+      "fallback": "😛"
+    },
+    {
+      "id": 983,
+      "name": "mensa-adisu/upside-down",
+      "fallback": "😞"
+    },
+    {
+      "id": 984,
+      "name": "mensa-adisu/woozy",
+      "fallback": "🥴"
+    },
+    {
+      "id": 959,
+      "name": "mensa-adisu/crying",
+      "fallback": "😢"
+    },
+    {
+      "id": 966,
+      "name": "mensa-adisu/frowning-face",
+      "fallback": "☹️"
+    },
+    {
+      "id": 960,
+      "name": "mensa-adisu/devil",
+      "fallback": "😈"
+    },
+    {
+      "id": 975,
+      "name": "mensa-adisu/rage",
+      "fallback": "🤬"
+    },
+    {
+      "id": 955,
+      "name": "mensa-adisu/bandage-face",
+      "fallback": "🤕"
+    },
+    {
+      "id": 956,
+      "name": "mensa-adisu/cold-face",
+      "fallback": "🥶"
+    },
+    {
+      "id": 957,
+      "name": "mensa-adisu/confounded",
+      "fallback": "😖"
+    },
+    {
+      "id": 962,
+      "name": "mensa-adisu/drool",
+      "fallback": "🤤"
+    },
+    {
+      "id": 963,
+      "name": "mensa-adisu/exhausted-face",
+      "fallback": "😀"
+    },
+    {
+      "id": 965,
+      "name": "mensa-adisu/flushed",
+      "fallback": "😳"
+    },
+    {
+      "id": 968,
+      "name": "mensa-adisu/hot-face",
+      "fallback": "🥵"
+    },
+    {
+      "id": 969,
+      "name": "mensa-adisu/innocent",
+      "fallback": "😇"
+    },
+    {
+      "id": 971,
+      "name": "mensa-adisu/liar",
+      "fallback": "🤥"
+    },
+    {
+      "id": 972,
+      "name": "mensa-adisu/line",
+      "fallback": "😀"
+    },
+    {
+      "id": 974,
+      "name": "mensa-adisu/pensive",
+      "fallback": "😀"
+    },
+    {
+      "id": 977,
+      "name": "mensa-adisu/sick",
+      "fallback": "🤢"
+    },
+    {
+      "id": 978,
+      "name": "mensa-adisu/sleeping",
+      "fallback": "😴"
+    },
+    {
+      "id": 982,
+      "name": "mensa-adisu/thermometer",
+      "fallback": "🤒"
+    },
+    {
+      "id": 413,
+      "name": "focaccia-peroni/party",
+      "fallback": "🥳"
+    },
+    {
+      "id": 416,
+      "name": "focaccia-peroni/rocket",
+      "fallback": "🤩"
+    },
+    {
+      "id": 405,
+      "name": "focaccia-peroni/kissing",
+      "fallback": "😘"
+    },
+    {
+      "id": 406,
+      "name": "focaccia-peroni/kissing-heart",
+      "fallback": "😘"
+    },
+    {
+      "id": 389,
+      "name": "focaccia-peroni/clapping",
+      "fallback": "👏"
+    },
+    {
+      "id": 411,
+      "name": "focaccia-peroni/muscle",
+      "fallback": "💪"
+    },
+    {
+      "id": 420,
+      "name": "focaccia-peroni/thinking",
+      "fallback": "🤔"
+    },
+    {
+      "id": 388,
+      "name": "focaccia-peroni/astonished",
+      "fallback": "😲"
+    },
+    {
+      "id": 395,
+      "name": "focaccia-peroni/dizzy-face",
+      "fallback": "😵"
+    },
+    {
+      "id": 391,
+      "name": "focaccia-peroni/crazy-face",
+      "fallback": "🤪"
+    },
+    {
+      "id": 392,
+      "name": "focaccia-peroni/crying",
+      "fallback": "😢"
+    },
+    {
+      "id": 399,
+      "name": "focaccia-peroni/frowning-face",
+      "fallback": "☹️"
+    },
+    {
+      "id": 386,
+      "name": "focaccia-peroni/angry-1",
+      "fallback": "😡"
+    },
+    {
+      "id": 387,
+      "name": "focaccia-peroni/angry-2",
+      "fallback": "😡"
+    },
+    {
+      "id": 394,
+      "name": "focaccia-peroni/devil",
+      "fallback": "😈"
+    },
+    {
+      "id": 409,
+      "name": "focaccia-peroni/middle-finger",
+      "fallback": "😀"
+    },
+    {
+      "id": 385,
+      "name": "focaccia-peroni/adult-only",
+      "fallback": "😀"
+    },
+    {
+      "id": 390,
+      "name": "focaccia-peroni/cold-face",
+      "fallback": "🥶"
+    },
+    {
+      "id": 393,
+      "name": "focaccia-peroni/dancing",
+      "fallback": "😀"
+    },
+    {
+      "id": 396,
+      "name": "focaccia-peroni/fearful",
+      "fallback": "😨"
+    },
+    {
+      "id": 397,
+      "name": "focaccia-peroni/flower-in-mouth",
+      "fallback": "😀"
+    },
+    {
+      "id": 398,
+      "name": "focaccia-peroni/flushed",
+      "fallback": "😳"
+    },
+    {
+      "id": 400,
+      "name": "focaccia-peroni/grimacing",
+      "fallback": "😬"
+    },
+    {
+      "id": 401,
+      "name": "focaccia-peroni/hand-over-mouth",
+      "fallback": "🤭"
+    },
+    {
+      "id": 402,
+      "name": "focaccia-peroni/big-grin",
+      "fallback": "😀"
+    },
+    {
+      "id": 403,
+      "name": "focaccia-peroni/hot-face",
+      "fallback": "🥵"
+    },
+    {
+      "id": 404,
+      "name": "focaccia-peroni/index-pointing",
+      "fallback": "👉"
+    },
+    {
+      "id": 407,
+      "name": "focaccia-peroni/licking",
+      "fallback": "😀"
+    },
+    {
+      "id": 408,
+      "name": "focaccia-peroni/looking",
+      "fallback": "👌"
+    },
+    {
+      "id": 410,
+      "name": "focaccia-peroni/money-mouth",
+      "fallback": "🤑"
+    },
+    {
+      "id": 412,
+      "name": "focaccia-peroni/no",
+      "fallback": "👎"
+    },
+    {
+      "id": 414,
+      "name": "focaccia-peroni/peek",
+      "fallback": "🫣"
+    },
+    {
+      "id": 415,
+      "name": "focaccia-peroni/persevering",
+      "fallback": "😀"
+    },
+    {
+      "id": 417,
+      "name": "focaccia-peroni/smoking",
+      "fallback": "😮"
+    },
+    {
+      "id": 418,
+      "name": "focaccia-peroni/steam",
+      "fallback": "😀"
+    },
+    {
+      "id": 419,
+      "name": "focaccia-peroni/sweating",
+      "fallback": "😋"
+    },
+    {
+      "id": 1056,
+      "name": "storie-vecchio-sud/joy",
+      "fallback": "😂"
+    },
+    {
+      "id": 1058,
+      "name": "storie-vecchio-sud/laughing",
+      "fallback": "😂"
+    },
+    {
+      "id": 1063,
+      "name": "storie-vecchio-sud/party",
+      "fallback": "🥳"
+    },
+    {
+      "id": 1052,
+      "name": "storie-vecchio-sud/heart-eyes",
+      "fallback": "😍"
+    },
+    {
+      "id": 1075,
+      "name": "storie-vecchio-sud/star-struck",
+      "fallback": "🤩"
+    },
+    {
+      "id": 1077,
+      "name": "storie-vecchio-sud/sunglasses",
+      "fallback": "😎"
+    },
+    {
+      "id": 1051,
+      "name": "storie-vecchio-sud/grin",
+      "fallback": "😀"
+    },
+    {
+      "id": 1074,
+      "name": "storie-vecchio-sud/smile",
+      "fallback": "😊"
+    },
+    {
+      "id": 1053,
+      "name": "storie-vecchio-sud/heart-face",
+      "fallback": "😍"
+    },
+    {
+      "id": 1055,
+      "name": "storie-vecchio-sud/hugging-face",
+      "fallback": "😀"
+    },
+    {
+      "id": 1057,
+      "name": "storie-vecchio-sud/kiss",
+      "fallback": "😘"
+    },
+    {
+      "id": 1035,
+      "name": "storie-vecchio-sud/clap",
+      "fallback": "👏"
+    },
+    {
+      "id": 1068,
+      "name": "storie-vecchio-sud/rolling-eyes",
+      "fallback": "🙄"
+    },
+    {
+      "id": 1070,
+      "name": "storie-vecchio-sud/salute",
+      "fallback": "🫡"
+    },
+    {
+      "id": 1078,
+      "name": "storie-vecchio-sud/thinking",
+      "fallback": "🤔"
+    },
+    {
+      "id": 1044,
+      "name": "storie-vecchio-sud/dizzy-1",
+      "fallback": "😵"
+    },
+    {
+      "id": 1045,
+      "name": "storie-vecchio-sud/dizzy-2",
+      "fallback": "😵"
+    },
+    {
+      "id": 1071,
+      "name": "storie-vecchio-sud/scream",
+      "fallback": "😱"
+    },
+    {
+      "id": 1037,
+      "name": "storie-vecchio-sud/crazy",
+      "fallback": "🤪"
+    },
+    {
+      "id": 1039,
+      "name": "storie-vecchio-sud/cry-1",
+      "fallback": "😢"
+    },
+    {
+      "id": 1040,
+      "name": "storie-vecchio-sud/cry-2",
+      "fallback": "😢"
+    },
+    {
+      "id": 1041,
+      "name": "storie-vecchio-sud/crying-1",
+      "fallback": "😢"
+    },
+    {
+      "id": 1042,
+      "name": "storie-vecchio-sud/crying-2",
+      "fallback": "😢"
+    },
+    {
+      "id": 1054,
+      "name": "storie-vecchio-sud/holding-tears",
+      "fallback": "🥹"
+    },
+    {
+      "id": 1069,
+      "name": "storie-vecchio-sud/sad",
+      "fallback": "😔"
+    },
+    {
+      "id": 1033,
+      "name": "storie-vecchio-sud/angry",
+      "fallback": "😡"
+    },
+    {
+      "id": 1043,
+      "name": "storie-vecchio-sud/devil",
+      "fallback": "😈"
+    },
+    {
+      "id": 1066,
+      "name": "storie-vecchio-sud/rage",
+      "fallback": "🤬"
+    },
+    {
+      "id": 1034,
+      "name": "storie-vecchio-sud/anguished",
+      "fallback": "😧"
+    },
+    {
+      "id": 1036,
+      "name": "storie-vecchio-sud/confused",
+      "fallback": "😕"
+    },
+    {
+      "id": 1038,
+      "name": "storie-vecchio-sud/cross-eye",
+      "fallback": "😀"
+    },
+    {
+      "id": 1046,
+      "name": "storie-vecchio-sud/drool",
+      "fallback": "🤤"
+    },
+    {
+      "id": 1047,
+      "name": "storie-vecchio-sud/drunk",
+      "fallback": "😀"
+    },
+    {
+      "id": 1048,
+      "name": "storie-vecchio-sud/fearful",
+      "fallback": "😨"
+    },
+    {
+      "id": 1049,
+      "name": "storie-vecchio-sud/grimacing-1",
+      "fallback": "😬"
+    },
+    {
+      "id": 1050,
+      "name": "storie-vecchio-sud/grimacing-2",
+      "fallback": "😬"
+    },
+    {
+      "id": 1059,
+      "name": "storie-vecchio-sud/liar",
+      "fallback": "🤥"
+    },
+    {
+      "id": 1060,
+      "name": "storie-vecchio-sud/nerd-face",
+      "fallback": "😀"
+    },
+    {
+      "id": 1061,
+      "name": "storie-vecchio-sud/neutral",
+      "fallback": "😐"
+    },
+    {
+      "id": 1062,
+      "name": "storie-vecchio-sud/no",
+      "fallback": "👎"
+    },
+    {
+      "id": 1064,
+      "name": "storie-vecchio-sud/please",
+      "fallback": "😀"
+    },
+    {
+      "id": 1065,
+      "name": "storie-vecchio-sud/pray",
+      "fallback": "😀"
+    },
+    {
+      "id": 1067,
+      "name": "storie-vecchio-sud/rich",
+      "fallback": "🤑"
+    },
+    {
+      "id": 1072,
+      "name": "storie-vecchio-sud/sleep",
+      "fallback": "😴"
+    },
+    {
+      "id": 1073,
+      "name": "storie-vecchio-sud/sleeping",
+      "fallback": "😴"
+    },
+    {
+      "id": 1076,
+      "name": "storie-vecchio-sud/stuck-out",
+      "fallback": "😀"
+    },
+    {
+      "id": 1079,
+      "name": "storie-vecchio-sud/triumph-1",
+      "fallback": "😤"
+    },
+    {
+      "id": 1080,
+      "name": "storie-vecchio-sud/triumph-2",
+      "fallback": "😤"
+    },
+    {
+      "id": 1081,
+      "name": "storie-vecchio-sud/vomit",
+      "fallback": "🤮"
+    },
+    {
+      "id": 1082,
+      "name": "storie-vecchio-sud/zipper-mouth",
+      "fallback": "🤐"
+    },
+    {
+      "id": 784,
+      "name": "torre-quetta/joy",
+      "fallback": "😂"
+    },
+    {
+      "id": 786,
+      "name": "torre-quetta/laughing",
+      "fallback": "😂"
+    },
+    {
+      "id": 781,
+      "name": "torre-quetta/heart-eyes",
+      "fallback": "😍"
+    },
+    {
+      "id": 799,
+      "name": "torre-quetta/star-struck",
+      "fallback": "🤩"
+    },
+    {
+      "id": 800,
+      "name": "torre-quetta/star-struck-tongue",
+      "fallback": "🤩"
+    },
+    {
+      "id": 779,
+      "name": "torre-quetta/grin",
+      "fallback": "😀"
+    },
+    {
+      "id": 780,
+      "name": "torre-quetta/grinning",
+      "fallback": "😀"
+    },
+    {
+      "id": 796,
+      "name": "torre-quetta/smile",
+      "fallback": "😊"
+    },
+    {
+      "id": 797,
+      "name": "torre-quetta/smiling-face-with-hearts",
+      "fallback": "😍"
+    },
+    {
+      "id": 801,
+      "name": "torre-quetta/sweat-smile",
+      "fallback": "😊"
+    },
+    {
+      "id": 804,
+      "name": "torre-quetta/wink",
+      "fallback": "😉"
+    },
+    {
+      "id": 782,
+      "name": "torre-quetta/hugging",
+      "fallback": "😀"
+    },
+    {
+      "id": 785,
+      "name": "torre-quetta/kissing-heart",
+      "fallback": "😘"
+    },
+    {
+      "id": 777,
+      "name": "torre-quetta/face-with-rolling-eyes",
+      "fallback": "🙄"
+    },
+    {
+      "id": 790,
+      "name": "torre-quetta/raised-eyebrow",
+      "fallback": "😀"
+    },
+    {
+      "id": 798,
+      "name": "torre-quetta/smirk-face",
+      "fallback": "😏"
+    },
+    {
+      "id": 802,
+      "name": "torre-quetta/thinking",
+      "fallback": "🤔"
+    },
+    {
+      "id": 793,
+      "name": "torre-quetta/shocked",
+      "fallback": "😲"
+    },
+    {
+      "id": 773,
+      "name": "torre-quetta/crazy-face",
+      "fallback": "🤪"
+    },
+    {
+      "id": 803,
+      "name": "torre-quetta/upside-down-face",
+      "fallback": "😞"
+    },
+    {
+      "id": 774,
+      "name": "torre-quetta/dot-lines",
+      "fallback": "🫥"
+    },
+    {
+      "id": 775,
+      "name": "torre-quetta/expressionless",
+      "fallback": "😑"
+    },
+    {
+      "id": 776,
+      "name": "torre-quetta/face-in-clouds",
+      "fallback": "😶‍🌫️"
+    },
+    {
+      "id": 778,
+      "name": "torre-quetta/grimacing",
+      "fallback": "😬"
+    },
+    {
+      "id": 783,
+      "name": "torre-quetta/innocent",
+      "fallback": "😇"
+    },
+    {
+      "id": 787,
+      "name": "torre-quetta/lying-face",
+      "fallback": "🤥"
+    },
+    {
+      "id": 788,
+      "name": "torre-quetta/melting-face",
+      "fallback": "🫠"
+    },
+    {
+      "id": 789,
+      "name": "torre-quetta/neutral-face",
+      "fallback": "😐"
+    },
+    {
+      "id": 791,
+      "name": "torre-quetta/respect",
+      "fallback": "🫡"
+    },
+    {
+      "id": 792,
+      "name": "torre-quetta/rich",
+      "fallback": "🤑"
+    },
+    {
+      "id": 794,
+      "name": "torre-quetta/shushing-face",
+      "fallback": "🤫"
+    },
+    {
+      "id": 795,
+      "name": "torre-quetta/silence",
+      "fallback": "🤫"
+    },
+    {
+      "id": 805,
+      "name": "torre-quetta/yum",
+      "fallback": "😀"
+    },
+    {
+      "id": 806,
+      "name": "torre-quetta/zipper-mouth-face",
+      "fallback": "🤐"
+    },
+    {
+      "id": 910,
+      "name": "pane-pomodoro/party",
+      "fallback": "🥳"
+    },
+    {
+      "id": 920,
+      "name": "pane-pomodoro/sunglasses",
+      "fallback": "😎"
+    },
+    {
+      "id": 918,
+      "name": "pane-pomodoro/smiling-face-with-imp",
+      "fallback": "😡"
+    },
+    {
+      "id": 909,
+      "name": "pane-pomodoro/ok",
+      "fallback": "👌"
+    },
+    {
+      "id": 926,
+      "name": "pane-pomodoro/yes",
+      "fallback": "👍"
+    },
+    {
+      "id": 902,
+      "name": "pane-pomodoro/face-with-monocle",
+      "fallback": "👎"
+    },
+    {
+      "id": 898,
+      "name": "pane-pomodoro/dizzy-face",
+      "fallback": "😵"
+    },
+    {
+      "id": 900,
+      "name": "pane-pomodoro/exploding-head",
+      "fallback": "🤯"
+    },
+    {
+      "id": 915,
+      "name": "pane-pomodoro/scream",
+      "fallback": "😱"
+    },
+    {
+      "id": 924,
+      "name": "pane-pomodoro/wow",
+      "fallback": "😀"
+    },
+    {
+      "id": 890,
+      "name": "pane-pomodoro/clown",
+      "fallback": "🤡"
+    },
+    {
+      "id": 923,
+      "name": "pane-pomodoro/woozy",
+      "fallback": "🥴"
+    },
+    {
+      "id": 894,
+      "name": "pane-pomodoro/crying-1",
+      "fallback": "😢"
+    },
+    {
+      "id": 895,
+      "name": "pane-pomodoro/crying",
+      "fallback": "😢"
+    },
+    {
+      "id": 911,
+      "name": "pane-pomodoro/pleading-face-1",
+      "fallback": "🥺"
+    },
+    {
+      "id": 912,
+      "name": "pane-pomodoro/pleading-face",
+      "fallback": "🥺"
+    },
+    {
+      "id": 914,
+      "name": "pane-pomodoro/sad",
+      "fallback": "😔"
+    },
+    {
+      "id": 888,
+      "name": "pane-pomodoro/angry-imp",
+      "fallback": "😡"
+    },
+    {
+      "id": 889,
+      "name": "pane-pomodoro/angry",
+      "fallback": "😡"
+    },
+    {
+      "id": 913,
+      "name": "pane-pomodoro/rage",
+      "fallback": "🤬"
+    },
+    {
+      "id": 891,
+      "name": "pane-pomodoro/cold",
+      "fallback": "🥶"
+    },
+    {
+      "id": 892,
+      "name": "pane-pomodoro/confused",
+      "fallback": "😕"
+    },
+    {
+      "id": 893,
+      "name": "pane-pomodoro/confusion",
+      "fallback": "😕"
+    },
+    {
+      "id": 896,
+      "name": "pane-pomodoro/disappointed",
+      "fallback": "😞"
+    },
+    {
+      "id": 897,
+      "name": "pane-pomodoro/disguised-face",
+      "fallback": "🥸"
+    },
+    {
+      "id": 899,
+      "name": "pane-pomodoro/drooling",
+      "fallback": "🤤"
+    },
+    {
+      "id": 901,
+      "name": "pane-pomodoro/face-with-head-bandage",
+      "fallback": "🤕"
+    },
+    {
+      "id": 903,
+      "name": "pane-pomodoro/face-with-symbols",
+      "fallback": "🤬"
+    },
+    {
+      "id": 904,
+      "name": "pane-pomodoro/face-with-thermometer",
+      "fallback": "🤒"
+    },
+    {
+      "id": 905,
+      "name": "pane-pomodoro/flushed",
+      "fallback": "😳"
+    },
+    {
+      "id": 906,
+      "name": "pane-pomodoro/waving-hand",
+      "fallback": "👋"
+    },
+    {
+      "id": 907,
+      "name": "pane-pomodoro/hot-face",
+      "fallback": "🥵"
+    },
+    {
+      "id": 908,
+      "name": "pane-pomodoro/no",
+      "fallback": "👎"
+    },
+    {
+      "id": 916,
+      "name": "pane-pomodoro/shaking",
+      "fallback": "😀"
+    },
+    {
+      "id": 917,
+      "name": "pane-pomodoro/sleeping",
+      "fallback": "😴"
+    },
+    {
+      "id": 919,
+      "name": "pane-pomodoro/sneezing",
+      "fallback": "🤧"
+    },
+    {
+      "id": 921,
+      "name": "pane-pomodoro/triumph",
+      "fallback": "😤"
+    },
+    {
+      "id": 922,
+      "name": "pane-pomodoro/vomiting",
+      "fallback": "🤮"
+    },
+    {
+      "id": 925,
+      "name": "pane-pomodoro/yawning",
+      "fallback": "🥱"
+    },
+    {
+      "id": 493,
+      "name": "la-cicchetteria/joy",
+      "fallback": "😂"
+    },
+    {
+      "id": 514,
+      "name": "la-cicchetteria/sunglasses",
+      "fallback": "😎"
+    },
+    {
+      "id": 506,
+      "name": "la-cicchetteria/relieved",
+      "fallback": "😌"
+    },
+    {
+      "id": 512,
+      "name": "la-cicchetteria/smiling",
+      "fallback": "😀"
+    },
+    {
+      "id": 475,
+      "name": "la-cicchetteria/broken-heart",
+      "fallback": "😍"
+    },
+    {
+      "id": 494,
+      "name": "la-cicchetteria/kissing-heart",
+      "fallback": "😘"
+    },
+    {
+      "id": 501,
+      "name": "la-cicchetteria/ok",
+      "fallback": "👌"
+    },
+    {
+      "id": 516,
+      "name": "la-cicchetteria/thumb-up",
+      "fallback": "👍"
+    },
+    {
+      "id": 515,
+      "name": "la-cicchetteria/thinking",
+      "fallback": "🤔"
+    },
+    {
+      "id": 484,
+      "name": "la-cicchetteria/exploding-head",
+      "fallback": "🤯"
+    },
+    {
+      "id": 480,
+      "name": "la-cicchetteria/crying",
+      "fallback": "😢"
+    },
+    {
+      "id": 471,
+      "name": "la-cicchetteria/angry",
+      "fallback": "😡"
+    },
+    {
+      "id": 504,
+      "name": "la-cicchetteria/rage",
+      "fallback": "🤬"
+    },
+    {
+      "id": 509,
+      "name": "la-cicchetteria/sign-of-horns",
+      "fallback": "🤘"
+    },
+    {
+      "id": 472,
+      "name": "la-cicchetteria/bandage-mouth",
+      "fallback": "🤕"
+    },
+    {
+      "id": 473,
+      "name": "la-cicchetteria/bathing",
+      "fallback": "👋"
+    },
+    {
+      "id": 474,
+      "name": "la-cicchetteria/blush",
+      "fallback": "😊"
+    },
+    {
+      "id": 476,
+      "name": "la-cicchetteria/calling",
+      "fallback": "😮"
+    },
+    {
+      "id": 477,
+      "name": "la-cicchetteria/cold-face",
+      "fallback": "🥶"
+    },
+    {
+      "id": 478,
+      "name": "la-cicchetteria/confounded",
+      "fallback": "😖"
+    },
+    {
+      "id": 479,
+      "name": "la-cicchetteria/confused",
+      "fallback": "😕"
+    },
+    {
+      "id": 481,
+      "name": "la-cicchetteria/drinking",
+      "fallback": "😋"
+    },
+    {
+      "id": 482,
+      "name": "la-cicchetteria/eating",
+      "fallback": "😋"
+    },
+    {
+      "id": 483,
+      "name": "la-cicchetteria/using-laptop",
+      "fallback": "🤓"
+    },
+    {
+      "id": 485,
+      "name": "la-cicchetteria/face-with-bandage",
+      "fallback": "🤕"
+    },
+    {
+      "id": 486,
+      "name": "la-cicchetteria/face-with-symbols",
+      "fallback": "🤬"
+    },
+    {
+      "id": 487,
+      "name": "la-cicchetteria/fearful",
+      "fallback": "😨"
+    },
+    {
+      "id": 488,
+      "name": "la-cicchetteria/flushed",
+      "fallback": "😳"
+    },
+    {
+      "id": 489,
+      "name": "la-cicchetteria/grimacing",
+      "fallback": "😬"
+    },
+    {
+      "id": 490,
+      "name": "la-cicchetteria/hand-over-mouth",
+      "fallback": "🤭"
+    },
+    {
+      "id": 491,
+      "name": "la-cicchetteria/robot-hand",
+      "fallback": "🤓"
+    },
+    {
+      "id": 492,
+      "name": "la-cicchetteria/innocent",
+      "fallback": "😇"
+    },
+    {
+      "id": 495,
+      "name": "la-cicchetteria/lifting",
+      "fallback": "😤"
+    },
+    {
+      "id": 496,
+      "name": "la-cicchetteria/looking",
+      "fallback": "👌"
+    },
+    {
+      "id": 497,
+      "name": "la-cicchetteria/meeting",
+      "fallback": "🤝"
+    },
+    {
+      "id": 499,
+      "name": "la-cicchetteria/neutral-face",
+      "fallback": "😐"
+    },
+    {
+      "id": 500,
+      "name": "la-cicchetteria/no",
+      "fallback": "👎"
+    },
+    {
+      "id": 502,
+      "name": "la-cicchetteria/outline-face",
+      "fallback": "😀"
+    },
+    {
+      "id": 503,
+      "name": "la-cicchetteria/angel-harp",
+      "fallback": "😇"
+    },
+    {
+      "id": 505,
+      "name": "la-cicchetteria/reading-book",
+      "fallback": "👌"
+    },
+    {
+      "id": 507,
+      "name": "la-cicchetteria/shopping",
+      "fallback": "🤑"
+    },
+    {
+      "id": 508,
+      "name": "la-cicchetteria/sick",
+      "fallback": "🤢"
+    },
+    {
+      "id": 510,
+      "name": "la-cicchetteria/sleeping",
+      "fallback": "😴"
+    },
+    {
+      "id": 511,
+      "name": "la-cicchetteria/sleepy",
+      "fallback": "😴"
+    },
+    {
+      "id": 513,
+      "name": "la-cicchetteria/sos",
+      "fallback": "😨"
+    },
+    {
+      "id": 517,
+      "name": "la-cicchetteria/vomiting",
+      "fallback": "🤮"
+    },
+    {
+      "id": 518,
+      "name": "la-cicchetteria/washroom",
+      "fallback": "🤢"
+    },
+    {
+      "id": 1004,
+      "name": "amtab/laughing-face",
+      "fallback": "😂"
+    },
+    {
+      "id": 1012,
+      "name": "amtab/party-face",
+      "fallback": "🥳"
+    },
+    {
+      "id": 998,
+      "name": "amtab/heart-eyes",
+      "fallback": "😍"
+    },
+    {
+      "id": 996,
+      "name": "amtab/face-with-hearts",
+      "fallback": "😍"
+    },
+    {
+      "id": 1003,
+      "name": "amtab/kiss-face",
+      "fallback": "😘"
+    },
+    {
+      "id": 991,
+      "name": "amtab/dizzy-face",
+      "fallback": "😵"
+    },
+    {
+      "id": 1021,
+      "name": "amtab/tongue-face",
+      "fallback": "😛"
+    },
+    {
+      "id": 989,
+      "name": "amtab/crying-face",
+      "fallback": "😢"
+    },
+    {
+      "id": 994,
+      "name": "amtab/face-holding-tears",
+      "fallback": "🥹"
+    },
+    {
+      "id": 985,
+      "name": "amtab/angry-face",
+      "fallback": "😡"
+    },
+    {
+      "id": 990,
+      "name": "amtab/devil-face",
+      "fallback": "😈"
+    },
+    {
+      "id": 986,
+      "name": "amtab/broken-face",
+      "fallback": "👌"
+    },
+    {
+      "id": 987,
+      "name": "amtab/chill-face",
+      "fallback": "😎"
+    },
+    {
+      "id": 988,
+      "name": "amtab/cold-face",
+      "fallback": "🥶"
+    },
+    {
+      "id": 992,
+      "name": "amtab/driving-face",
+      "fallback": "😎"
+    },
+    {
+      "id": 993,
+      "name": "amtab/eating-popcorn",
+      "fallback": "😋"
+    },
+    {
+      "id": 995,
+      "name": "amtab/face-using-laptop",
+      "fallback": "🤓"
+    },
+    {
+      "id": 997,
+      "name": "amtab/fearful-face",
+      "fallback": "😨"
+    },
+    {
+      "id": 1000,
+      "name": "amtab/hi-face",
+      "fallback": "👋"
+    },
+    {
+      "id": 1001,
+      "name": "amtab/hot-face",
+      "fallback": "🥵"
+    },
+    {
+      "id": 1002,
+      "name": "amtab/house-face",
+      "fallback": "😊"
+    },
+    {
+      "id": 1005,
+      "name": "amtab/liar-face",
+      "fallback": "🤥"
+    },
+    {
+      "id": 1006,
+      "name": "amtab/weightlifting",
+      "fallback": "😤"
+    },
+    {
+      "id": 1008,
+      "name": "amtab/looking-face",
+      "fallback": "👌"
+    },
+    {
+      "id": 1009,
+      "name": "amtab/nervous-face",
+      "fallback": "😬"
+    },
+    {
+      "id": 1010,
+      "name": "amtab/no-face",
+      "fallback": "👎"
+    },
+    {
+      "id": 1014,
+      "name": "amtab/phone-call",
+      "fallback": "😮"
+    },
+    {
+      "id": 1015,
+      "name": "amtab/plane-face",
+      "fallback": "😎"
+    },
+    {
+      "id": 1016,
+      "name": "amtab/question-face",
+      "fallback": "🤔"
+    },
+    {
+      "id": 1017,
+      "name": "amtab/read-book",
+      "fallback": "👌"
+    },
+    {
+      "id": 1018,
+      "name": "amtab/rose-face",
+      "fallback": "😍"
+    },
+    {
+      "id": 1019,
+      "name": "amtab/sleep-face",
+      "fallback": "😴"
+    },
+    {
+      "id": 1022,
+      "name": "amtab/yoga-face",
+      "fallback": "🧘"
+    },
+    {
+      "id": 358,
+      "name": "piccolo-bar/heart-eyes-1",
+      "fallback": "😍"
+    },
+    {
+      "id": 359,
+      "name": "piccolo-bar/heart-eyes-2",
+      "fallback": "😍"
+    },
+    {
+      "id": 372,
+      "name": "piccolo-bar/smiling",
+      "fallback": "😀"
+    },
+    {
+      "id": 379,
+      "name": "piccolo-bar/unhappy",
+      "fallback": "😔"
+    },
+    {
+      "id": 381,
+      "name": "piccolo-bar/wink-1",
+      "fallback": "😉"
+    },
+    {
+      "id": 382,
+      "name": "piccolo-bar/wink-2",
+      "fallback": "😉"
+    },
+    {
+      "id": 360,
+      "name": "piccolo-bar/heart-hand",
+      "fallback": "😍"
+    },
+    {
+      "id": 353,
+      "name": "piccolo-bar/face-with-spiral-eyes",
+      "fallback": "😵‍💫"
+    },
+    {
+      "id": 363,
+      "name": "piccolo-bar/ok",
+      "fallback": "👌"
+    },
+    {
+      "id": 352,
+      "name": "piccolo-bar/face-with-peeking-eye",
+      "fallback": "🫣"
+    },
+    {
+      "id": 367,
+      "name": "piccolo-bar/scream-1",
+      "fallback": "😱"
+    },
+    {
+      "id": 368,
+      "name": "piccolo-bar/scream-2",
+      "fallback": "😱"
+    },
+    {
+      "id": 341,
+      "name": "piccolo-bar/crazy",
+      "fallback": "🤪"
+    },
+    {
+      "id": 384,
+      "name": "piccolo-bar/woozy-face",
+      "fallback": "🥴"
+    },
+    {
+      "id": 342,
+      "name": "piccolo-bar/cry",
+      "fallback": "😢"
+    },
+    {
+      "id": 364,
+      "name": "piccolo-bar/pleading-face",
+      "fallback": "🥺"
+    },
+    {
+      "id": 366,
+      "name": "piccolo-bar/sad",
+      "fallback": "😔"
+    },
+    {
+      "id": 336,
+      "name": "piccolo-bar/angry-1",
+      "fallback": "😡"
+    },
+    {
+      "id": 337,
+      "name": "piccolo-bar/angry-2",
+      "fallback": "😡"
+    },
+    {
+      "id": 338,
+      "name": "piccolo-bar/angry-3",
+      "fallback": "😡"
+    },
+    {
+      "id": 339,
+      "name": "piccolo-bar/anguished-1",
+      "fallback": "😧"
+    },
+    {
+      "id": 340,
+      "name": "piccolo-bar/anguished-2",
+      "fallback": "😧"
+    },
+    {
+      "id": 343,
+      "name": "piccolo-bar/drool-1",
+      "fallback": "🤤"
+    },
+    {
+      "id": 344,
+      "name": "piccolo-bar/drool-2",
+      "fallback": "🤤"
+    },
+    {
+      "id": 345,
+      "name": "piccolo-bar/drool-3",
+      "fallback": "🤤"
+    },
+    {
+      "id": 346,
+      "name": "piccolo-bar/ear",
+      "fallback": "😳"
+    },
+    {
+      "id": 347,
+      "name": "piccolo-bar/eggplant",
+      "fallback": "😏"
+    },
+    {
+      "id": 348,
+      "name": "piccolo-bar/rude-face",
+      "fallback": "🖕"
+    },
+    {
+      "id": 349,
+      "name": "piccolo-bar/excited-fists",
+      "fallback": "🤜"
+    },
+    {
+      "id": 350,
+      "name": "piccolo-bar/finger-dance",
+      "fallback": "🥳"
+    },
+    {
+      "id": 351,
+      "name": "piccolo-bar/expressionless",
+      "fallback": "😑"
+    },
+    {
+      "id": 354,
+      "name": "piccolo-bar/fearful",
+      "fallback": "😨"
+    },
+    {
+      "id": 355,
+      "name": "piccolo-bar/flame",
+      "fallback": "😎"
+    },
+    {
+      "id": 356,
+      "name": "piccolo-bar/grimacing-face",
+      "fallback": "😬"
+    },
+    {
+      "id": 357,
+      "name": "piccolo-bar/happiness",
+      "fallback": "😀"
+    },
+    {
+      "id": 361,
+      "name": "piccolo-bar/knife",
+      "fallback": "😬"
+    },
+    {
+      "id": 362,
+      "name": "piccolo-bar/neutral-face",
+      "fallback": "😐"
+    },
+    {
+      "id": 365,
+      "name": "piccolo-bar/point-right",
+      "fallback": "👉"
+    },
+    {
+      "id": 369,
+      "name": "piccolo-bar/seedling",
+      "fallback": "😊"
+    },
+    {
+      "id": 370,
+      "name": "piccolo-bar/shrugging",
+      "fallback": "🤷"
+    },
+    {
+      "id": 371,
+      "name": "piccolo-bar/sleeping",
+      "fallback": "😴"
+    },
+    {
+      "id": 373,
+      "name": "piccolo-bar/sob",
+      "fallback": "😭"
+    },
+    {
+      "id": 374,
+      "name": "piccolo-bar/star",
+      "fallback": "🤩"
+    },
+    {
+      "id": 375,
+      "name": "piccolo-bar/sweat-1",
+      "fallback": "😋"
+    },
+    {
+      "id": 376,
+      "name": "piccolo-bar/sweat-2",
+      "fallback": "😋"
+    },
+    {
+      "id": 377,
+      "name": "piccolo-bar/sweat-3",
+      "fallback": "😋"
+    },
+    {
+      "id": 378,
+      "name": "piccolo-bar/triumph",
+      "fallback": "😤"
+    },
+    {
+      "id": 380,
+      "name": "piccolo-bar/vomiting",
+      "fallback": "🤮"
+    },
+    {
+      "id": 383,
+      "name": "piccolo-bar/giggling",
+      "fallback": "😀"
+    },
+    {
+      "id": 878,
+      "name": "via-orabona/cat-rainbow-face",
+      "fallback": "🐱"
+    },
+    {
+      "id": 880,
+      "name": "via-orabona/cat-with-heart-eyes",
+      "fallback": "🐱"
+    },
+    {
+      "id": 887,
+      "name": "via-orabona/star-struck-cat",
+      "fallback": "🐱"
+    },
+    {
+      "id": 875,
+      "name": "via-orabona/beaming-cat-face",
+      "fallback": "🐱"
+    },
+    {
+      "id": 877,
+      "name": "via-orabona/cat-ok-face",
+      "fallback": "🐱"
+    },
+    {
+      "id": 885,
+      "name": "via-orabona/screaming-cat-face",
+      "fallback": "🐱"
+    },
+    {
+      "id": 876,
+      "name": "via-orabona/cat-crying-loudly",
+      "fallback": "🐱"
+    },
+    {
+      "id": 884,
+      "name": "via-orabona/pleading-cat-face",
+      "fallback": "🐱"
+    },
+    {
+      "id": 874,
+      "name": "via-orabona/angry-cat-face",
+      "fallback": "🐱"
+    },
+    {
+      "id": 881,
+      "name": "via-orabona/devil-cat-face",
+      "fallback": "🐱"
+    },
+    {
+      "id": 879,
+      "name": "via-orabona/cat-sun-face",
+      "fallback": "🐱"
+    },
+    {
+      "id": 882,
+      "name": "via-orabona/nerd-face-cat",
+      "fallback": "🐱"
+    },
+    {
+      "id": 883,
+      "name": "via-orabona/neutral-face-cat",
+      "fallback": "🐱"
+    },
+    {
+      "id": 886,
+      "name": "via-orabona/squinting-cat-face",
+      "fallback": "🐱"
+    },
+    {
+      "id": 927,
+      "name": "spiral/crying",
+      "fallback": "😢"
+    },
+    {
+      "id": 928,
+      "name": "spiral/dancing",
+      "fallback": "😀"
+    },
+    {
+      "id": 929,
+      "name": "spiral/dizzy-face",
+      "fallback": "😵"
+    },
+    {
+      "id": 930,
+      "name": "spiral/expressionless",
+      "fallback": "😑"
+    },
+    {
+      "id": 931,
+      "name": "spiral/fearful-face",
+      "fallback": "😨"
+    },
+    {
+      "id": 932,
+      "name": "spiral/grinning-face",
+      "fallback": "😀"
+    },
+    {
+      "id": 933,
+      "name": "spiral/happy-face",
+      "fallback": "😃"
+    },
+    {
+      "id": 934,
+      "name": "spiral/kissing-heart",
+      "fallback": "😘"
+    },
+    {
+      "id": 935,
+      "name": "spiral/laughing",
+      "fallback": "😂"
+    },
+    {
+      "id": 936,
+      "name": "spiral/looking",
+      "fallback": "👌"
+    },
+    {
+      "id": 937,
+      "name": "spiral/neutral-face",
+      "fallback": "😐"
+    },
+    {
+      "id": 938,
+      "name": "spiral/party-face",
+      "fallback": "🥳"
+    },
+    {
+      "id": 939,
+      "name": "spiral/point-up",
+      "fallback": "👉"
+    },
+    {
+      "id": 940,
+      "name": "spiral/rage",
+      "fallback": "🤬"
+    },
+    {
+      "id": 941,
+      "name": "spiral/relax",
+      "fallback": "😌"
+    },
+    {
+      "id": 942,
+      "name": "spiral/sad",
+      "fallback": "😔"
+    },
+    {
+      "id": 943,
+      "name": "spiral/scream-face",
+      "fallback": "😱"
+    },
+    {
+      "id": 944,
+      "name": "spiral/sleeping",
+      "fallback": "😴"
+    },
+    {
+      "id": 945,
+      "name": "spiral/slightly-smiling-face",
+      "fallback": "😀"
+    },
+    {
+      "id": 946,
+      "name": "spiral/smiley",
+      "fallback": "😊"
+    },
+    {
+      "id": 947,
+      "name": "spiral/smiling-face-with-tear",
+      "fallback": "🥹"
+    },
+    {
+      "id": 948,
+      "name": "spiral/star-struck",
+      "fallback": "🤩"
+    },
+    {
+      "id": 949,
+      "name": "spiral/stuck-out-tongue",
+      "fallback": "😛"
+    },
+    {
+      "id": 950,
+      "name": "spiral/sunglasses",
+      "fallback": "😎"
+    },
+    {
+      "id": 951,
+      "name": "spiral/thumb-up",
+      "fallback": "👍"
+    },
+    {
+      "id": 952,
+      "name": "spiral/vomiting",
+      "fallback": "🤮"
+    },
+    {
+      "id": 953,
+      "name": "spiral/waving",
+      "fallback": "👋"
+    },
+    {
+      "id": 954,
+      "name": "spiral/wink",
+      "fallback": "😉"
+    },
+    {
+      "id": 691,
+      "name": "class/astonished-face",
+      "fallback": "😲"
+    },
+    {
+      "id": 693,
+      "name": "class/cowboy-hat-face",
+      "fallback": "🤠"
+    },
+    {
+      "id": 694,
+      "name": "class/face-blowing-a-kiss",
+      "fallback": "😘"
+    },
+    {
+      "id": 695,
+      "name": "class/face-holding-back-tears",
+      "fallback": "🥹"
+    },
+    {
+      "id": 696,
+      "name": "class/face-in-clouds",
+      "fallback": "😶‍🌫️"
+    },
+    {
+      "id": 697,
+      "name": "class/face-with-medical-mask",
+      "fallback": "😷"
+    },
+    {
+      "id": 698,
+      "name": "class/face-with-rolling-eyes",
+      "fallback": "🙄"
+    },
+    {
+      "id": 699,
+      "name": "class/face-with-tears-of-joy",
+      "fallback": "😂"
+    },
+    {
+      "id": 700,
+      "name": "class/face-with-tongue",
+      "fallback": "😛"
+    },
+    {
+      "id": 701,
+      "name": "class/face-without-mouth",
+      "fallback": "😶"
+    },
+    {
+      "id": 702,
+      "name": "class/frowning",
+      "fallback": "☹️"
+    },
+    {
+      "id": 703,
+      "name": "class/grin",
+      "fallback": "😀"
+    },
+    {
+      "id": 704,
+      "name": "class/lying-face",
+      "fallback": "🤥"
+    },
+    {
+      "id": 705,
+      "name": "class/money-mouth-face",
+      "fallback": "🤑"
+    },
+    {
+      "id": 707,
+      "name": "class/neutral-face",
+      "fallback": "😐"
+    },
+    {
+      "id": 708,
+      "name": "class/peeking-eye",
+      "fallback": "🫣"
+    },
+    {
+      "id": 709,
+      "name": "class/saluting-face",
+      "fallback": "🫡"
+    },
+    {
+      "id": 710,
+      "name": "class/shocked",
+      "fallback": "😲"
+    },
+    {
+      "id": 711,
+      "name": "class/shushing-face",
+      "fallback": "🤫"
+    },
+    {
+      "id": 712,
+      "name": "class/sleepy",
+      "fallback": "😴"
+    },
+    {
+      "id": 713,
+      "name": "class/slightly-smiling-face",
+      "fallback": "😀"
+    },
+    {
+      "id": 714,
+      "name": "class/smiling-face-with-hearts",
+      "fallback": "😍"
+    },
+    {
+      "id": 715,
+      "name": "class/smirking-face",
+      "fallback": "😏"
+    },
+    {
+      "id": 716,
+      "name": "class/squinting-face-with-tongue",
+      "fallback": "😛"
+    },
+    {
+      "id": 717,
+      "name": "class/star-struck",
+      "fallback": "🤩"
+    },
+    {
+      "id": 718,
+      "name": "class/sweat-smile",
+      "fallback": "😊"
+    },
+    {
+      "id": 719,
+      "name": "class/thinking",
+      "fallback": "🤔"
+    },
+    {
+      "id": 722,
+      "name": "class/upside-down-face",
+      "fallback": "😞"
+    },
+    {
+      "id": 723,
+      "name": "class/winking",
+      "fallback": "😉"
+    },
+    {
+      "id": 724,
+      "name": "class/winking-face-with-tongue",
+      "fallback": "😛"
+    },
+    {
+      "id": 725,
+      "name": "class/zany-face",
+      "fallback": "🤪"
+    },
+    {
+      "id": 726,
+      "name": "class/zipper-mouth-face",
+      "fallback": "🤐"
+    },
+    {
+      "id": 1221,
+      "name": "pack-37/call-me",
+      "fallback": "😮"
+    },
+    {
+      "id": 1222,
+      "name": "pack-37/crying",
+      "fallback": "😢"
+    },
+    {
+      "id": 1223,
+      "name": "pack-37/face-with-spiral-eyes",
+      "fallback": "😵‍💫"
+    },
+    {
+      "id": 1224,
+      "name": "pack-37/face-with-symbols",
+      "fallback": "🤬"
+    },
+    {
+      "id": 1225,
+      "name": "pack-37/flushed",
+      "fallback": "😳"
+    },
+    {
+      "id": 1226,
+      "name": "pack-37/grin",
+      "fallback": "😀"
+    },
+    {
+      "id": 1227,
+      "name": "pack-37/heart-eyes",
+      "fallback": "😍"
+    },
+    {
+      "id": 1228,
+      "name": "pack-37/hearts-face",
+      "fallback": "😍"
+    },
+    {
+      "id": 1229,
+      "name": "pack-37/joy",
+      "fallback": "😂"
+    },
+    {
+      "id": 1230,
+      "name": "pack-37/kiss",
+      "fallback": "😘"
+    },
+    {
+      "id": 1231,
+      "name": "pack-37/party",
+      "fallback": "🥳"
+    },
+    {
+      "id": 1232,
+      "name": "pack-37/peeking-eye",
+      "fallback": "🫣"
+    },
+    {
+      "id": 1233,
+      "name": "pack-37/rage",
+      "fallback": "🤬"
+    },
+    {
+      "id": 1234,
+      "name": "pack-37/raised-eyebrow",
+      "fallback": "😀"
+    },
+    {
+      "id": 1235,
+      "name": "pack-37/relaxed",
+      "fallback": "😌"
+    },
+    {
+      "id": 1236,
+      "name": "pack-37/sad",
+      "fallback": "😔"
+    },
+    {
+      "id": 1237,
+      "name": "pack-37/salute",
+      "fallback": "🫡"
+    },
+    {
+      "id": 1238,
+      "name": "pack-37/shaking-face",
+      "fallback": "😀"
+    },
+    {
+      "id": 1239,
+      "name": "pack-37/shushing-face",
+      "fallback": "🤫"
+    },
+    {
+      "id": 1240,
+      "name": "pack-37/sleeping",
+      "fallback": "😴"
+    },
+    {
+      "id": 1241,
+      "name": "pack-37/sleepy",
+      "fallback": "😴"
+    },
+    {
+      "id": 1242,
+      "name": "pack-37/smiling-face-tear",
+      "fallback": "🥹"
+    },
+    {
+      "id": 1243,
+      "name": "pack-37/smirk",
+      "fallback": "😏"
+    },
+    {
+      "id": 1244,
+      "name": "pack-37/star-struck",
+      "fallback": "🤩"
+    },
+    {
+      "id": 1245,
+      "name": "pack-37/stuck-out-tongue-winking",
+      "fallback": "😛"
+    },
+    {
+      "id": 1246,
+      "name": "pack-37/stuck-out-tongue",
+      "fallback": "😛"
+    },
+    {
+      "id": 1247,
+      "name": "pack-37/sunglasses",
+      "fallback": "😎"
+    },
+    {
+      "id": 1248,
+      "name": "pack-37/sweet-smile",
+      "fallback": "😊"
+    },
+    {
+      "id": 1249,
+      "name": "pack-37/thinking",
+      "fallback": "🤔"
+    },
+    {
+      "id": 1250,
+      "name": "pack-37/tired-face",
+      "fallback": "😫"
+    },
+    {
+      "id": 1251,
+      "name": "pack-37/triumph",
+      "fallback": "😤"
+    },
+    {
+      "id": 1252,
+      "name": "pack-37/unamused",
+      "fallback": "😒"
+    },
+    {
+      "id": 1253,
+      "name": "pack-37/woozy-face",
+      "fallback": "🥴"
+    },
+    {
+      "id": 1254,
+      "name": "pack-37/zipper-mouth",
+      "fallback": "🤐"
+    },
+    {
+      "id": 1255,
+      "name": "halloween/pumpkin",
+      "fallback": "🎃",
+      "pickerHidden": true
+    },
+    {
+      "id": 1256,
+      "name": "halloween/ghost",
+      "fallback": "👻",
+      "pickerHidden": true
+    },
+    {
+      "id": 1257,
+      "name": "halloween/bat",
+      "fallback": "🦇",
+      "pickerHidden": true
+    },
+    {
+      "id": 1258,
+      "name": "halloween/casper",
+      "fallback": "👻",
+      "pickerHidden": true
+    },
+    {
+      "id": 1260,
+      "name": "halloween/vampire",
+      "fallback": "🧛",
+      "pickerHidden": true
+    },
+    {
+      "id": 1261,
+      "name": "halloween/frankenstein",
+      "fallback": "🧟",
+      "pickerHidden": true
+    },
+    {
+      "id": 1262,
+      "name": "halloween/frankie",
+      "fallback": "🧟",
+      "pickerHidden": true
+    },
+    {
+      "id": 1263,
+      "name": "halloween/frankensteins-monster",
+      "fallback": "🧟",
+      "pickerHidden": true
+    },
+    {
+      "id": 1264,
+      "name": "halloween/skull",
+      "fallback": "💀",
+      "pickerHidden": true
+    },
+    {
+      "id": 1266,
+      "name": "halloween/cartoon-eyeball",
+      "fallback": "👁️",
+      "pickerHidden": true
+    },
+    {
+      "id": 1268,
+      "name": "halloween/spooky-hand",
+      "fallback": "🖐️",
+      "pickerHidden": true
+    },
+    {
+      "id": 1269,
+      "name": "halloween/poison",
+      "fallback": "🧪",
+      "pickerHidden": true
+    },
+    {
+      "id": 1270,
+      "name": "halloween/potion",
+      "fallback": "🧪",
+      "pickerHidden": true
+    },
+    {
+      "id": 1271,
+      "name": "halloween/jason",
+      "fallback": "🔪",
+      "pickerHidden": true
+    },
+    {
+      "id": 60000,
+      "name": "amici-di-axoo/abbraccio",
+      "fallback": "🫂",
+      "pickerHidden": true
+    },
+    {
+      "id": 60001,
+      "name": "amici-di-axoo/cuore",
+      "fallback": "💞",
+      "pickerHidden": true
+    },
+    {
+      "id": 60002,
+      "name": "amici-di-axoo/cinque",
+      "fallback": "🙌",
+      "pickerHidden": true
+    },
+    {
+      "id": 60003,
+      "name": "amici-di-axoo/festa",
+      "fallback": "🎉",
+      "pickerHidden": true
+    },
+    {
+      "id": 60004,
+      "name": "amici-di-axoo/squadra",
+      "fallback": "🤝",
+      "pickerHidden": true
+    },
+    {
+      "id": 60005,
+      "name": "amici-di-axoo/grazie",
+      "fallback": "🥰",
+      "pickerHidden": true
+    },
+    {
+      "id": 60006,
+      "name": "amici-di-axoo/pack19-smiling-with-hearts-emoji",
+      "fallback": "🥰"
+    },
+    {
+      "id": 60007,
+      "name": "amici-di-axoo/pack19-star-struck-emoji",
+      "fallback": "🤩"
+    },
+    {
+      "id": 60008,
+      "name": "amici-di-axoo/pack19-partying-emoji",
+      "fallback": "🥳"
+    },
+    {
+      "id": 60009,
+      "name": "amici-di-axoo/pack19-cool-emoji",
+      "fallback": "😎"
+    },
+    {
+      "id": 60010,
+      "name": "amici-di-axoo/pack19-with-tears-of-joy-emoji",
+      "fallback": "😂"
+    },
+    {
+      "id": 60011,
+      "name": "amici-di-axoo/pack19-heart-hands",
+      "fallback": "🫶"
+    },
+    {
+      "id": 60012,
+      "name": "amici-di-axoo/pack19-winking-emoji",
+      "fallback": "😉"
+    },
+    {
+      "id": 60013,
+      "name": "amici-di-axoo/pack19-blowing-kiss-emoji",
+      "fallback": "😘"
+    },
+    {
+      "id": 60014,
+      "name": "amici-di-axoo/pack19-red-heart",
+      "fallback": "❤️"
+    },
+    {
+      "id": 60015,
+      "name": "amici-di-axoo/pack19-thumb-up-emoji",
+      "fallback": "👍"
+    },
+    {
+      "id": 60016,
+      "name": "amici-di-axoo/pack19-grinning-emoji",
+      "fallback": "😀"
+    },
+    {
+      "id": 60017,
+      "name": "amici-di-axoo/pack19-thinking-emoji",
+      "fallback": "🤔"
+    },
+    {
+      "id": 60018,
+      "name": "amici-di-axoo/pack19-1-plus",
+      "fallback": "👍"
+    },
+    {
+      "id": 60019,
+      "name": "amici-di-axoo/pack19-18-emoji",
+      "fallback": "🔞"
+    },
+    {
+      "id": 60020,
+      "name": "amici-di-axoo/pack19-angry-face",
+      "fallback": "😠"
+    },
+    {
+      "id": 60021,
+      "name": "amici-di-axoo/pack19-anguished-emoji",
+      "fallback": "😧"
+    },
+    {
+      "id": 60022,
+      "name": "amici-di-axoo/pack19-anxious-with-sweat",
+      "fallback": "😰"
+    },
+    {
+      "id": 60023,
+      "name": "amici-di-axoo/pack19-call-me-emoji",
+      "fallback": "🤙"
+    },
+    {
+      "id": 60024,
+      "name": "amici-di-axoo/pack19-chill-emoji",
+      "fallback": "😌"
+    },
+    {
+      "id": 60025,
+      "name": "amici-di-axoo/pack19-clapping-emoji",
+      "fallback": "👏"
+    },
+    {
+      "id": 60026,
+      "name": "amici-di-axoo/pack19-clown-emoji",
+      "fallback": "🤡"
+    },
+    {
+      "id": 60027,
+      "name": "amici-di-axoo/pack19-cold-emoji",
+      "fallback": "🥶"
+    },
+    {
+      "id": 60028,
+      "name": "amici-di-axoo/pack19-confounded-emoji",
+      "fallback": "😖"
+    },
+    {
+      "id": 60029,
+      "name": "amici-di-axoo/pack19-cowboy-emoji",
+      "fallback": "🤠"
+    },
+    {
+      "id": 60030,
+      "name": "amici-di-axoo/pack19-crazy-face",
+      "fallback": "🤪"
+    },
+    {
+      "id": 60031,
+      "name": "amici-di-axoo/pack19-crying-emoji",
+      "fallback": "😢"
+    },
+    {
+      "id": 60032,
+      "name": "amici-di-axoo/pack19-devil-emoji",
+      "fallback": "👿"
+    },
+    {
+      "id": 60033,
+      "name": "amici-di-axoo/pack19-disappointed-face",
+      "fallback": "😞"
+    },
+    {
+      "id": 60034,
+      "name": "amici-di-axoo/pack19-disguised-emoji",
+      "fallback": "🥸"
+    },
+    {
+      "id": 60035,
+      "name": "amici-di-axoo/pack19-drooling-emoji",
+      "fallback": "🤤"
+    },
+    {
+      "id": 60036,
+      "name": "amici-di-axoo/pack19-enraged-emoji",
+      "fallback": "😡"
+    },
+    {
+      "id": 60037,
+      "name": "amici-di-axoo/pack19-exhaling-emoji",
+      "fallback": "😮‍💨"
+    },
+    {
+      "id": 60038,
+      "name": "amici-di-axoo/pack19-exploding-emoji",
+      "fallback": "🤯"
+    },
+    {
+      "id": 60039,
+      "name": "amici-di-axoo/pack19-expressionless-emoji",
+      "fallback": "😑"
+    },
+    {
+      "id": 60040,
+      "name": "amici-di-axoo/pack19-face-with-mask-emoji",
+      "fallback": "😷"
+    },
+    {
+      "id": 60041,
+      "name": "amici-di-axoo/pack19-fearful-emoji",
+      "fallback": "😨"
+    },
+    {
+      "id": 60042,
+      "name": "amici-di-axoo/pack19-finger-crossed",
+      "fallback": "🤞"
+    },
+    {
+      "id": 60043,
+      "name": "amici-di-axoo/pack19-flexed-biceps",
+      "fallback": "💪"
+    },
+    {
+      "id": 60044,
+      "name": "amici-di-axoo/pack19-flushed-emoji",
+      "fallback": "😳"
+    },
+    {
+      "id": 60045,
+      "name": "amici-di-axoo/pack19-frowning-emoji",
+      "fallback": "😦"
+    },
+    {
+      "id": 60046,
+      "name": "amici-di-axoo/pack19-frowning-with-open-mouth",
+      "fallback": "😦"
+    },
+    {
+      "id": 60047,
+      "name": "amici-di-axoo/pack19-grimacing-emoji",
+      "fallback": "😬"
+    },
+    {
+      "id": 60048,
+      "name": "amici-di-axoo/pack19-grinning-cat-emoji",
+      "fallback": "😺"
+    },
+    {
+      "id": 60049,
+      "name": "amici-di-axoo/pack19-handshake",
+      "fallback": "🤝"
+    },
+    {
+      "id": 60050,
+      "name": "amici-di-axoo/pack19-head-with-crown-emoji",
+      "fallback": "👑"
+    },
+    {
+      "id": 60051,
+      "name": "amici-di-axoo/pack19-holding-back-tears-emoji",
+      "fallback": "🥹"
+    },
+    {
+      "id": 60052,
+      "name": "amici-di-axoo/pack19-holding-back-tears",
+      "fallback": "🥹"
+    },
+    {
+      "id": 60053,
+      "name": "amici-di-axoo/pack19-hot-emoji",
+      "fallback": "🥵"
+    },
+    {
+      "id": 60054,
+      "name": "amici-di-axoo/pack19-in-clouds-emoji",
+      "fallback": "😶‍🌫️"
+    },
+    {
+      "id": 60055,
+      "name": "amici-di-axoo/pack19-index-pointing-up",
+      "fallback": "☝️"
+    },
+    {
+      "id": 60056,
+      "name": "amici-di-axoo/pack19-kissing-with-closed-eyes-emoji",
+      "fallback": "😚"
+    },
+    {
+      "id": 60057,
+      "name": "amici-di-axoo/pack19-kissing-with-smiling-eyes-emoji",
+      "fallback": "😙"
+    },
+    {
+      "id": 60058,
+      "name": "amici-di-axoo/pack19-laughing",
+      "fallback": "😆"
+    },
+    {
+      "id": 60059,
+      "name": "amici-di-axoo/pack19-loudly-crying-emoji",
+      "fallback": "😭"
+    },
+    {
+      "id": 60060,
+      "name": "amici-di-axoo/pack19-low-battery-emoji",
+      "fallback": "🪫"
+    },
+    {
+      "id": 60061,
+      "name": "amici-di-axoo/pack19-lying-emoji",
+      "fallback": "🤥"
+    },
+    {
+      "id": 60062,
+      "name": "amici-di-axoo/pack19-melting-emoji",
+      "fallback": "🫠"
+    },
+    {
+      "id": 60063,
+      "name": "amici-di-axoo/pack19-middle-finger-emoji",
+      "fallback": "🖕"
+    },
+    {
+      "id": 60064,
+      "name": "amici-di-axoo/pack19-middle-finger",
+      "fallback": "🖕",
+      "pickerHidden": true
+    },
+    {
+      "id": 60065,
+      "name": "amici-di-axoo/pack19-money-mouth-emoji",
+      "fallback": "🤑"
+    },
+    {
+      "id": 60066,
+      "name": "amici-di-axoo/pack19-moon-emoji",
+      "fallback": "🌚"
+    },
+    {
+      "id": 60067,
+      "name": "amici-di-axoo/pack19-muscle-emoji",
+      "fallback": "💪",
+      "pickerHidden": true
+    },
+    {
+      "id": 60068,
+      "name": "amici-di-axoo/pack19-nauseated-emoji",
+      "fallback": "🤢"
+    },
+    {
+      "id": 60069,
+      "name": "amici-di-axoo/pack19-nerd-emoji",
+      "fallback": "🤓"
+    },
+    {
+      "id": 60070,
+      "name": "amici-di-axoo/pack19-neutral-emoji",
+      "fallback": "😐"
+    },
+    {
+      "id": 60071,
+      "name": "amici-di-axoo/pack19-no-emoji",
+      "fallback": "🙅"
+    },
+    {
+      "id": 60072,
+      "name": "amici-di-axoo/pack19-no-mouth-emoji",
+      "fallback": "😶"
+    },
+    {
+      "id": 60073,
+      "name": "amici-di-axoo/pack19-notes-emoji",
+      "fallback": "🎶"
+    },
+    {
+      "id": 60074,
+      "name": "amici-di-axoo/pack19-ok-hand-emoji",
+      "fallback": "👌"
+    },
+    {
+      "id": 60075,
+      "name": "amici-di-axoo/pack19-ok-hand",
+      "fallback": "👌",
+      "pickerHidden": true
+    },
+    {
+      "id": 60076,
+      "name": "amici-di-axoo/pack19-pensive-emoji",
+      "fallback": "😔"
+    },
+    {
+      "id": 60077,
+      "name": "amici-di-axoo/pack19-person-gesturing",
+      "fallback": "🙅",
+      "pickerHidden": true
+    },
+    {
+      "id": 60078,
+      "name": "amici-di-axoo/pack19-pile-of-poo",
+      "fallback": "💩"
+    },
+    {
+      "id": 60079,
+      "name": "amici-di-axoo/pack19-point-emoji",
+      "fallback": "👉"
+    },
+    {
+      "id": 60080,
+      "name": "amici-di-axoo/pack19-point-up-emoji",
+      "fallback": "☝️",
+      "pickerHidden": true
+    },
+    {
+      "id": 60081,
+      "name": "amici-di-axoo/pack19-question-mark-emoji",
+      "fallback": "❓"
+    },
+    {
+      "id": 60082,
+      "name": "amici-di-axoo/pack19-raised-hand-emoji",
+      "fallback": "✋"
+    },
+    {
+      "id": 60083,
+      "name": "amici-di-axoo/pack19-relax-emoji",
+      "fallback": "😌"
+    },
+    {
+      "id": 60084,
+      "name": "amici-di-axoo/pack19-relieved-emoji",
+      "fallback": "😌"
+    },
+    {
+      "id": 60085,
+      "name": "amici-di-axoo/pack19-sad-but-relieved-face",
+      "fallback": "😥"
+    },
+    {
+      "id": 60086,
+      "name": "amici-di-axoo/pack19-savoring-food-emoji",
+      "fallback": "😋"
+    },
+    {
+      "id": 60087,
+      "name": "amici-di-axoo/pack19-screaming-in-fear-emoji",
+      "fallback": "😱"
+    },
+    {
+      "id": 60088,
+      "name": "amici-di-axoo/pack19-shaking-emoji",
+      "fallback": "🫨"
+    },
+    {
+      "id": 60089,
+      "name": "amici-di-axoo/pack19-shushing-emoji",
+      "fallback": "🤫"
+    },
+    {
+      "id": 60090,
+      "name": "amici-di-axoo/pack19-sign-of-the-horns",
+      "fallback": "🤘"
+    },
+    {
+      "id": 60091,
+      "name": "amici-di-axoo/pack19-sleeping-emoji",
+      "fallback": "😴"
+    },
+    {
+      "id": 60092,
+      "name": "amici-di-axoo/pack19-sleepy-emoji",
+      "fallback": "😪"
+    },
+    {
+      "id": 60093,
+      "name": "amici-di-axoo/pack19-slightly-frowning-emoji",
+      "fallback": "🙁"
+    },
+    {
+      "id": 60094,
+      "name": "amici-di-axoo/pack19-smiling-emoji-1",
+      "fallback": "😊"
+    },
+    {
+      "id": 60095,
+      "name": "amici-di-axoo/pack19-smiling-emoji-2",
+      "fallback": "😄"
+    },
+    {
+      "id": 60096,
+      "name": "amici-di-axoo/pack19-smiling-emoji-3",
+      "fallback": "😃"
+    },
+    {
+      "id": 60097,
+      "name": "amici-di-axoo/pack19-smiling-emoji",
+      "fallback": "🙂"
+    },
+    {
+      "id": 60098,
+      "name": "amici-di-axoo/pack19-smiling-with-halo",
+      "fallback": "😇"
+    },
+    {
+      "id": 60099,
+      "name": "amici-di-axoo/pack19-smiling-with-heart-emoji",
+      "fallback": "😍"
+    },
+    {
+      "id": 60100,
+      "name": "amici-di-axoo/pack19-smiling-with-horns-emoji",
+      "fallback": "😈"
+    },
+    {
+      "id": 60101,
+      "name": "amici-di-axoo/pack19-smirking-emoji",
+      "fallback": "😏"
+    },
+    {
+      "id": 60102,
+      "name": "amici-di-axoo/pack19-sneezing-emoji",
+      "fallback": "🤧"
+    },
+    {
+      "id": 60103,
+      "name": "amici-di-axoo/pack19-squinting-with-tongue-emoji",
+      "fallback": "😝"
+    },
+    {
+      "id": 60104,
+      "name": "amici-di-axoo/pack19-technologist",
+      "fallback": "🧑‍💻"
+    },
+    {
+      "id": 60105,
+      "name": "amici-di-axoo/pack19-thumb-down-emoji",
+      "fallback": "👎"
+    },
+    {
+      "id": 60106,
+      "name": "amici-di-axoo/pack19-tired-emoji",
+      "fallback": "😫"
+    },
+    {
+      "id": 60107,
+      "name": "amici-di-axoo/pack19-unamused-emoji",
+      "fallback": "😒"
+    },
+    {
+      "id": 60108,
+      "name": "amici-di-axoo/pack19-victory-hand",
+      "fallback": "✌️"
+    },
+    {
+      "id": 60109,
+      "name": "amici-di-axoo/pack19-vomiting-emoji",
+      "fallback": "🤮"
+    },
+    {
+      "id": 60110,
+      "name": "amici-di-axoo/pack19-waving-hand-emoji",
+      "fallback": "👋"
+    },
+    {
+      "id": 60111,
+      "name": "amici-di-axoo/pack19-waving-hand",
+      "fallback": "👋",
+      "pickerHidden": true
+    },
+    {
+      "id": 60112,
+      "name": "amici-di-axoo/pack19-weary-face",
+      "fallback": "😩"
+    },
+    {
+      "id": 60113,
+      "name": "amici-di-axoo/pack19-with-crossed-out-eyes-emoji",
+      "fallback": "😵"
+    },
+    {
+      "id": 60114,
+      "name": "amici-di-axoo/pack19-with-head-bandage-emoji",
+      "fallback": "🤕"
+    },
+    {
+      "id": 60115,
+      "name": "amici-di-axoo/pack19-with-monocle-emoji",
+      "fallback": "🧐"
+    },
+    {
+      "id": 60116,
+      "name": "amici-di-axoo/pack19-with-open-eyes-and-hand-over-mouth-emoji",
+      "fallback": "🫢"
+    },
+    {
+      "id": 60117,
+      "name": "amici-di-axoo/pack19-with-peeking-eye-emoji",
+      "fallback": "🫣"
+    },
+    {
+      "id": 60118,
+      "name": "amici-di-axoo/pack19-with-raised-eyebrow-emoji",
+      "fallback": "🤨"
+    },
+    {
+      "id": 60119,
+      "name": "amici-di-axoo/pack19-with-spiral-eyes-emoji",
+      "fallback": "😵‍💫"
+    },
+    {
+      "id": 60120,
+      "name": "amici-di-axoo/pack19-with-steam-from-nose-emoji",
+      "fallback": "😤"
+    },
+    {
+      "id": 60121,
+      "name": "amici-di-axoo/pack19-with-thermometer-emoji",
+      "fallback": "🤒"
+    },
+    {
+      "id": 60122,
+      "name": "amici-di-axoo/pack19-woozy-emoji",
+      "fallback": "🥴"
+    },
+    {
+      "id": 60123,
+      "name": "amici-di-axoo/pack19-zipper-mouth-face",
+      "fallback": "🤐"
+    },
+    {
+      "id": 61000,
+      "name": "pack-16/angry-emoji",
+      "fallback": "😠"
+    },
+    {
+      "id": 61001,
+      "name": "pack-16/awful-emoji",
+      "fallback": "😖"
+    },
+    {
+      "id": 61002,
+      "name": "pack-16/cheers-emoji",
+      "fallback": "🥂"
+    },
+    {
+      "id": 61003,
+      "name": "pack-16/clapping-emoji",
+      "fallback": "👏"
+    },
+    {
+      "id": 61004,
+      "name": "pack-16/coffee-emoji",
+      "fallback": "☕"
+    },
+    {
+      "id": 61005,
+      "name": "pack-16/confounded-emoji",
+      "fallback": "😖"
+    },
+    {
+      "id": 61006,
+      "name": "pack-16/crying-emoji",
+      "fallback": "😭"
+    },
+    {
+      "id": 61007,
+      "name": "pack-16/dance-emoji",
+      "fallback": "💃"
+    },
+    {
+      "id": 61008,
+      "name": "pack-16/disappointed-emoji",
+      "fallback": "😞"
+    },
+    {
+      "id": 61009,
+      "name": "pack-16/emoji-with-raised-eyebrow",
+      "fallback": "🤨"
+    },
+    {
+      "id": 61010,
+      "name": "pack-16/emoji-with-tongue-emoji",
+      "fallback": "😛"
+    },
+    {
+      "id": 61011,
+      "name": "pack-16/expressionless-emoji",
+      "fallback": "😑"
+    },
+    {
+      "id": 61012,
+      "name": "pack-16/frowning-emoji",
+      "fallback": "😦"
+    },
+    {
+      "id": 61013,
+      "name": "pack-16/frowning-face-emoji",
+      "fallback": "☹️"
+    },
+    {
+      "id": 61014,
+      "name": "pack-16/idea-emoji",
+      "fallback": "💡"
+    },
+    {
+      "id": 61015,
+      "name": "pack-16/innocent-emoji",
+      "fallback": "😇"
+    },
+    {
+      "id": 61016,
+      "name": "pack-16/joy-emoji",
+      "fallback": "😂"
+    },
+    {
+      "id": 61017,
+      "name": "pack-16/kissing-eyes-emoji",
+      "fallback": "😙"
+    },
+    {
+      "id": 61018,
+      "name": "pack-16/kissing-heart-emoji",
+      "fallback": "😘"
+    },
+    {
+      "id": 61019,
+      "name": "pack-16/laughing-emoji",
+      "fallback": "😆"
+    },
+    {
+      "id": 61020,
+      "name": "pack-16/looking-emoji",
+      "fallback": "👀"
+    },
+    {
+      "id": 61021,
+      "name": "pack-16/meeting-emoji",
+      "fallback": "🤝"
+    },
+    {
+      "id": 61022,
+      "name": "pack-16/mirror-emoji",
+      "fallback": "🪞"
+    },
+    {
+      "id": 61023,
+      "name": "pack-16/nerd-face-emoji",
+      "fallback": "🤓"
+    },
+    {
+      "id": 61024,
+      "name": "pack-16/neutral-face-emoji",
+      "fallback": "😐"
+    },
+    {
+      "id": 61025,
+      "name": "pack-16/open-mouth-emoji",
+      "fallback": "😮"
+    },
+    {
+      "id": 61026,
+      "name": "pack-16/pensive-emoji",
+      "fallback": "😔"
+    },
+    {
+      "id": 61027,
+      "name": "pack-16/pinched-fingers-emoji",
+      "fallback": "🤌"
+    },
+    {
+      "id": 61028,
+      "name": "pack-16/point-right-emoji",
+      "fallback": "👉"
+    },
+    {
+      "id": 61029,
+      "name": "pack-16/point-up-emoji",
+      "fallback": "☝️"
+    },
+    {
+      "id": 61030,
+      "name": "pack-16/pray-emoji",
+      "fallback": "🙏"
+    },
+    {
+      "id": 61031,
+      "name": "pack-16/relaxed-emoji",
+      "fallback": "☺️"
+    },
+    {
+      "id": 61032,
+      "name": "pack-16/sad-emoji",
+      "fallback": "😢"
+    },
+    {
+      "id": 61033,
+      "name": "pack-16/sad-hands-emoji",
+      "fallback": "🥺"
+    },
+    {
+      "id": 61034,
+      "name": "pack-16/salute-emoji",
+      "fallback": "🫡"
+    },
+    {
+      "id": 61035,
+      "name": "pack-16/slightly-smiling-face-emoji",
+      "fallback": "🙂"
+    },
+    {
+      "id": 61036,
+      "name": "pack-16/smile-emoji",
+      "fallback": "😊"
+    },
+    {
+      "id": 61037,
+      "name": "pack-16/smiling-face-with-butterfly",
+      "fallback": "🦋"
+    },
+    {
+      "id": 61038,
+      "name": "pack-16/smirk-emoji",
+      "fallback": "😏"
+    },
+    {
+      "id": 61039,
+      "name": "pack-16/smirk-face-emoji",
+      "fallback": "😏"
+    },
+    {
+      "id": 61040,
+      "name": "pack-16/star-struck-emoji",
+      "fallback": "🤩"
+    },
+    {
+      "id": 61041,
+      "name": "pack-16/sunglasses-emoji",
+      "fallback": "😎"
+    },
+    {
+      "id": 61042,
+      "name": "pack-16/sweat-emoji",
+      "fallback": "😓"
+    },
+    {
+      "id": 61043,
+      "name": "pack-16/terminator-emoji",
+      "fallback": "🤖"
+    },
+    {
+      "id": 61044,
+      "name": "pack-16/thumb-up-emoji",
+      "fallback": "👍"
+    },
+    {
+      "id": 61045,
+      "name": "pack-16/unamused-face-emoji",
+      "fallback": "😒"
+    },
+    {
+      "id": 61046,
+      "name": "pack-16/wait-emoji",
+      "fallback": "✋"
+    },
+    {
+      "id": 61047,
+      "name": "pack-16/whatever-emoji",
+      "fallback": "🤷"
+    },
+    {
+      "id": 61048,
+      "name": "pack-16/wink-emoji",
+      "fallback": "😉"
+    },
+    {
+      "id": 61049,
+      "name": "pack-16/worried-emoji",
+      "fallback": "😟"
+    }
+  ]
+}

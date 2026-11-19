@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Axoo Content Desk</title>
+  <script src="/theme.js"></script>
+  <link rel="stylesheet" href="/desk.css">
+  <link rel="stylesheet" href="/analytics.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="top">
+      <div class="brand"><span>Axoo</span><span class="brand-divider">/</span>Content Desk</div>
+      <nav class="desk-tabs" aria-label="Sezioni Content Desk">
+        <button type="button" id="content-tab" aria-pressed="true">Contenuti</button>
+        <button type="button" id="analytics-tab" aria-pressed="false">Statistiche</button>
+      </nav>
+      <div class="theme-control"><label for="desk-theme">Tema</label><select id="desk-theme"><option value="system">Sistema</option><option value="light">Chiaro</option><option value="dark">Scuro</option></select></div>
+    </header>
+
+    <section id="analytics-panel" hidden aria-labelledby="analytics-title">
+      <div class="workspace-heading">
+        <div><h1 id="analytics-title">Statistiche</h1><p class="hint">Utenti e attività di Axoo.</p></div>
+      </div>
+      <div class="analytics-toolbar">
+        <div class="analytics-filters">
+          <div class="field"><label for="analytics-days">Periodo</label><select id="analytics-days"><option value="1">Oggi</option><option value="7" selected>Ultimi 7 giorni</option><option value="30">Ultimi 30 giorni</option></select></div>
+          <div class="field"><label for="analytics-campus">Campus</label><select id="analytics-campus"><option value="">Tutti i campus</option></select></div>
+          <button type="button" class="secondary" id="analytics-refresh">Aggiorna</button>
+        </div>
+        <p id="analytics-status" class="hint" role="status" aria-live="polite"></p>
+      </div>
+      <div id="analytics-data"></div>
+      <details class="analytics-help">
+        <summary>Come leggere i dati</summary>
+        <p class="hint">Gli attivi sono utenti unici che hanno aperto l’app o svolto un’attività. I partecipanti hanno pubblicato un post, un commento o modificato un voto. Amministratori, alpha tester e profili del Content Desk sono esclusi. I giorni seguono il fuso orario di Roma.</p>
+        <p class="hint">Gli attivi di oggi, degli ultimi 7 e degli ultimi 30 giorni mantengono queste finestre anche quando cambi il periodo. Le azioni comprendono post, commenti e modifiche ai voti, incluse le rimozioni.</p>
+        <p class="hint">I già registrati tornati nel periodo si erano iscritti prima dell’inizio del periodo. Il conteggio dei tornati oggi esclude sempre gli iscritti di oggi. Il tasso di ritorno misura quanti dei già registrati sono attivi nel periodo; non è una misura di retention a un numero fisso di giorni dall’iscrizione. I nuovi attivi hanno sia un’iscrizione sia un’attività registrata nel periodo.</p>
+        <p class="hint">Inviti ed emoji mostra i totali e il dettaglio del periodo. Gli inviti sono contati alla conferma del codice, gli sblocchi alla data di assegnazione del premio con almeno 1 invito reale ancora presente. Sono esclusi inviti di test, amministratori, alpha e profili gestiti. Il filtro campus segue l’invitante per gli utenti con inviti e gli sblocchi, l’invitato per gli iscritti tramite invito. Le cancellazioni possono ridurre i conteggi, anche se il premio resta utilizzabile. Lo sblocco non misura l’utilizzo delle emoji o il ritorno degli invitati.</p>
+      </details>
+    </section>
+
+    <section id="content-panel" aria-labelledby="content-title">
+      <div class="workspace-heading">
+        <div><h1 id="content-title">Prima i contenuti locali.</h1><p class="hint">Altrimenti Axoo è un social come gli altri.</p></div>
+        <div class="actor">
+          <div class="field actor-search-field"><label for="actor-search">Cerca utente</label><input id="actor-search" type="search" placeholder="Nickname o campus…" autocomplete="off" aria-controls="actor"></div>
+          <div class="field"><label for="actor">Profilo attivo</label><select id="actor"></select></div>
+          <button class="secondary refresh" id="refresh" type="button">Aggiorna</button>
+        </div>
+      </div>
+      <div class="grid">
+        <aside class="card side">
+          <h2 class="section-title">Nuovo post</h2>
+          <form id="post-form">
+            <div class="field">
+              <div class="field-heading"><label for="post-body">Testo</label><button type="button" class="text-button small" data-emoji-picker>Emoji Axoo</button></div>
+              <textarea id="post-body" required placeholder="Cosa sta succedendo nel campus?"></textarea>
+            </div>
+            <div class="field"><label for="post-flair">Flair</label><select id="post-flair"><option value="">Nessuna</option><option>Esami</option><option>Meme</option><option>Spotted</option><option>Confessioni</option><option>Party</option><option>Dell'Andro</option><option>Fraccacreta</option></select></div>
+            <div class="field"><label for="poll-count">Sondaggio</label><select id="poll-count"><option value="">Nessuno</option><option value="2">2 opzioni</option><option value="3">3 opzioni</option><option value="4">4 opzioni</option></select></div>
+            <div class="field" data-poll-option hidden><div class="field-heading"><label for="poll-option-1">Opzione 1</label><button type="button" class="text-button small" data-emoji-picker>Emoji Axoo</button></div><input id="poll-option-1" placeholder="Testo dell’opzione"></div>
+            <div class="field" data-poll-option hidden><div class="field-heading"><label for="poll-option-2">Opzione 2</label><button type="button" class="text-button small" data-emoji-picker>Emoji Axoo</button></div><input id="poll-option-2" placeholder="Testo dell’opzione"></div>
+            <div class="field" data-poll-option hidden><div class="field-heading"><label for="poll-option-3">Opzione 3</label><button type="button" class="text-button small" data-emoji-picker>Emoji Axoo</button></div><input id="poll-option-3" placeholder="Testo dell’opzione"></div>
+            <div class="field" data-poll-option hidden><div class="field-heading"><label for="poll-option-4">Opzione 4</label><button type="button" class="text-button small" data-emoji-picker>Emoji Axoo</button></div><input id="poll-option-4" placeholder="Testo dell’opzione"></div>
+            <p id="poll-note" class="hint" hidden>Massimo 100 caratteri per opzione. I sondaggi pubblicati non sono modificabili.</p>
+            <details class="post-options">
+              <summary>Aggiungi un’immagine</summary>
+              <div class="field"><label for="media-url">URL immagine</label><input id="media-url" type="url" placeholder="https://…"></div>
+            </details>
+            <button class="primary publish-button" type="submit">Pubblica post</button>
+          </form>
+          <details class="profile-box">
+            <summary>Crea un profilo</summary>
+            <form id="profile-form">
+              <div class="field"><label for="nickname">Nickname</label><input id="nickname" minlength="3" maxlength="24" pattern="[a-z0-9]+" required placeholder="fuorisedebari" title="Da 3 a 24 caratteri: solo lettere minuscole e numeri"></div>
+              <div class="field"><label for="profile-gender">Gruppo</label><select id="profile-gender"><option value="male">Uomini</option><option value="female">Donne</option><option value="">Altri profili</option></select></div>
+              <div class="field"><label for="university">Campus</label><select id="university" required></select></div>
+              <button class="secondary" type="submit">Crea profilo</button>
+            </form>
+            <p class="hint">Disponibile solo nel Desk. I contenuti appaiono normalmente nell’app.</p>
+          </details>
+          <details class="profile-box">
+            <summary>Genera profili di prova</summary>
+            <form id="bulk-profile-form">
+              <div class="field"><label for="profile-count">Numero di profili</label><input id="profile-count" type="number" min="1" max="300" value="15" required></div>
+              <div class="field"><label for="bulk-profile-gender">Gruppo</label><select id="bulk-profile-gender"><option value="male">Uomini</option><option value="female">Donne</option><option value="">Altri profili</option></select></div>
+              <div class="field"><label for="bulk-university">Campus</label><select id="bulk-university" required></select></div>
+              <button class="secondary" type="submit">Genera profili</button>
+            </form>
+            <p class="hint">Nickname e avatar automatici. I profili sono esclusi dalle statistiche degli utenti reali. Creare profili non pubblica contenuti; eventuali post e commenti saranno visibili nell’app.</p>
+          </details>
+        </aside>
+        <section class="feed-section" aria-labelledby="feed-title">
+          <div class="feed-heading"><h2 id="feed-title" class="section-title">Feed</h2><span id="feed-count" class="hint"></span></div>
+          <div id="feed" class="feed"><div class="card empty">Caricamento…</div></div>
+          <button id="more-posts" class="secondary more-posts" type="button" hidden>Altri post</button>
+        </section>
+      </div>
+    </section>
+  </main>
+  <div id="status" class="status" role="status"></div>
+  <dialog id="emoji-picker" class="emoji-picker" aria-labelledby="emoji-title">
+    <header><strong id="emoji-title">Emoji Axoo</strong><button type="button" id="emoji-close" class="secondary small" aria-label="Chiudi selettore emoji">Chiudi</button></header>
+    <div class="field"><label for="emoji-pack">Pack</label><select id="emoji-pack"></select></div>
+    <div class="field"><label for="emoji-search">Cerca emoji</label><input id="emoji-search" type="search" placeholder="Nome emoji o pack…"></div>
+    <div id="emoji-grid" class="emoji-grid"></div>
+    <p class="hint">Seleziona un’emoji per inserirla nel testo. Nell’app sarà animata.</p>
+  </dialog>
+  <script src="/emojis.js" defer></script>
+  <script src="/app.js" defer></script>
+  <script src="/analytics.js" defer></script>
+</body>
+</html>

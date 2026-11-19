@@ -1,0 +1,173 @@
+name: Axoo
+options:
+  minimumXcodeGenVersion: 2.44.0
+  deploymentTarget:
+    iOS: "16.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0.79"
+    CURRENT_PROJECT_VERSION: "25"
+
+packages:
+  Firebase:
+    url: https://github.com/firebase/firebase-ios-sdk
+    exactVersion: 13.0.0
+
+targets:
+  Axoo:
+    type: application
+    platform: iOS
+    sources:
+      - path: app
+        excludes:
+          - resources
+          - Info.plist
+          - Axoo.entitlements
+          - "**/*.md"
+          - "**/.gitkeep"
+      - path: app/resources/Assets.xcassets
+      - path: app/resources/fonts
+        type: folder
+        buildPhase: resources
+      - path: app/resources/animations
+        buildPhase: resources
+      - path: app/resources/axooji
+        type: folder
+        buildPhase: resources
+      - path: app/resources/sounds
+        type: folder
+        buildPhase: resources
+      - path: app/resources/licenses
+        type: folder
+        buildPhase: resources
+    configFiles:
+      Debug: configuration/Build.xcconfig
+      Release: configuration/Build.xcconfig
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: "$(AXOO_BUNDLE_ID)"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: "$(AXOO_DEVELOPMENT_TEAM)"
+        INFOPLIST_FILE: app/Info.plist
+        SWIFT_OBJC_BRIDGING_HEADER: app/Axoo-Bridging-Header.h
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SUPPORTS_MACCATALYST: NO
+        CODE_SIGN_ENTITLEMENTS: app/Axoo.entitlements
+        ENABLE_USER_SCRIPT_SANDBOXING: NO
+      configs:
+        Debug:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) DEBUG"
+          APS_ENVIRONMENT: development
+        Release:
+          APS_ENVIRONMENT: production
+    preBuildScripts:
+      - name: Validate Firebase configuration
+        script: |
+          set -eu
+          config="$SRCROOT/app/GoogleService-Info.plist"
+          if [ ! -f "$config" ]; then
+            if [ "$CONFIGURATION" = "Release" ] && [ "$AXOO_REQUIRE_FIREBASE_CONFIG" = "YES" ]; then
+              echo "error: manca app/GoogleService-Info.plist per la build Release." >&2
+              exit 1
+            fi
+            exit 0
+          fi
+          [ "$(/usr/libexec/PlistBuddy -c 'Print :BUNDLE_ID' "$config")" = "$PRODUCT_BUNDLE_IDENTIFIER" ] || exit 1
+          [ "$(/usr/libexec/PlistBuddy -c 'Print :PROJECT_ID' "$config")" = "$AXOO_FIREBASE_PROJECT_ID" ] || exit 1
+          for key in API_KEY GCM_SENDER_ID GOOGLE_APP_ID; do
+            value="$(/usr/libexec/PlistBuddy -c "Print :$key" "$config")"
+            [ -n "$value" ] || exit 1
+          done
+        basedOnDependencyAnalysis: false
+    dependencies:
+      - target: TelegramLottie
+      - package: Firebase
+        product: FirebaseCore
+      - package: Firebase
+        product: FirebaseMessaging
+      - package: Firebase
+        product: FirebaseInstallations
+      - sdk: libz.tbd
+      - sdk: libc++.tbd
+  TelegramLottie:
+    type: library.static
+    platform: iOS
+    sources:
+      - path: native/TelegramLottie/AxooLottie.cpp
+      - path: vendor/TelegramRLottie/src/lottie/lottieanimation.cpp
+      - path: vendor/TelegramRLottie/src/lottie/lottieitem.cpp
+      - path: vendor/TelegramRLottie/src/lottie/lottiekeypath.cpp
+      - path: vendor/TelegramRLottie/src/lottie/lottieloader.cpp
+      - path: vendor/TelegramRLottie/src/lottie/lottiemodel.cpp
+      - path: vendor/TelegramRLottie/src/lottie/lottieparser.cpp
+      - path: vendor/TelegramRLottie/src/lottie/lottieproxymodel.cpp
+      - path: vendor/TelegramRLottie/src/vector/freetype/v_ft_math.cpp
+      - path: vendor/TelegramRLottie/src/vector/freetype/v_ft_raster.cpp
+      - path: vendor/TelegramRLottie/src/vector/freetype/v_ft_stroker.cpp
+      - path: vendor/TelegramRLottie/src/vector/pixman/vregion.cpp
+      - path: vendor/TelegramRLottie/src/vector/stb/stb_image.cpp
+      - path: vendor/TelegramRLottie/src/vector/vbezier.cpp
+      - path: vendor/TelegramRLottie/src/vector/vbitmap.cpp
+      - path: vendor/TelegramRLottie/src/vector/vbrush.cpp
+      - path: vendor/TelegramRLottie/src/vector/vcompositionfunctions.cpp
+      - path: vendor/TelegramRLottie/src/vector/vdasher.cpp
+      - path: vendor/TelegramRLottie/src/vector/vdebug.cpp
+      - path: vendor/TelegramRLottie/src/vector/vdrawable.cpp
+      - path: vendor/TelegramRLottie/src/vector/vdrawhelper.cpp
+      - path: vendor/TelegramRLottie/src/vector/vdrawhelper_neon.cpp
+      - path: vendor/TelegramRLottie/src/vector/velapsedtimer.cpp
+      - path: vendor/TelegramRLottie/src/vector/vimageloader.cpp
+      - path: vendor/TelegramRLottie/src/vector/vinterpolator.cpp
+      - path: vendor/TelegramRLottie/src/vector/vmatrix.cpp
+      - path: vendor/TelegramRLottie/src/vector/vpainter.cpp
+      - path: vendor/TelegramRLottie/src/vector/vpath.cpp
+      - path: vendor/TelegramRLottie/src/vector/vpathmesure.cpp
+      - path: vendor/TelegramRLottie/src/vector/vraster.cpp
+      - path: vendor/TelegramRLottie/src/vector/vrect.cpp
+      - path: vendor/TelegramRLottie/src/vector/vrle.cpp
+    settings:
+      base:
+        CLANG_CXX_LANGUAGE_STANDARD: c++14
+        GCC_ENABLE_CPP_RTTI: NO
+        GCC_PREPROCESSOR_DEFINITIONS: ["$(inherited)", HAVE_PTHREAD, NDEBUG]
+        OTHER_CPLUSPLUSFLAGS: ["$(inherited)", "-U__ARM_NEON__", "-U__ARM64_NEON__"]
+        HEADER_SEARCH_PATHS:
+          - "$(SRCROOT)/native/TelegramLottie/include"
+          - "$(SRCROOT)/vendor/TelegramRLottie"
+          - "$(SRCROOT)/vendor/TelegramRLottie/inc"
+          - "$(SRCROOT)/vendor/TelegramRLottie/src/vector"
+          - "$(SRCROOT)/vendor/TelegramRLottie/src/vector/pixman"
+          - "$(SRCROOT)/vendor/TelegramRLottie/src/vector/freetype"
+          - "$(SRCROOT)/vendor/TelegramRLottie/src/vector/stb"
+  AxooTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: tests
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.axoo.ios.preview.tests
+    dependencies:
+      - target: Axoo
+  AxooUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: uitests
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.axoo.ios.preview.uitests
+    dependencies:
+      - target: Axoo
+schemes:
+  Axoo:
+    build:
+      targets:
+        Axoo: all
+    test:
+      targets:
+        - AxooTests
+        - AxooUITests
+      gatherCoverageData: true

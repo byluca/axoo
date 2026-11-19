@@ -1,0 +1,2 @@
+scenario,runs,durationMs,uiFrameMsP95,uiFrameMsP99,framesOverBudget,framesOverBudgetPer1000,nativeRenderMsP95,nativeRenderMsP99,queueDepthMax,activePlayersMax,pickerOpenLatencyMsP95,javaHeapPeakMb,javaHeapPeakDeltaMb,nativeHeapPeakMb,nativeHeapPeakDeltaMb,processCpuPercent,renderBusy,renderErrors,renderOnMainViolations
+inline_many_emoji,4,9373.500,16.793,17.156,0.000,0.000,16.729,21.373,4.500,7.000,0.000,43.373,10.774,67.565,1.496,99.352,0.000,0.000,0.000
