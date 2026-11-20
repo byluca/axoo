@@ -1,42 +1,33 @@
 # Axoo iOS
 
-Client nativo in Swift con UIKit programmatico e motore C++ Telegram rlottie.
+The Axoo iOS app uses Swift, UIKit, and the Telegram rlottie renderer. It supports iOS 16 and later.
 
-## Build
+## Build and test
 
-macOS, Xcode 26.2 o successivo e XcodeGen 2.44 o successivo. Minimo iOS 16.
+Use macOS with Xcode 26.2 or newer and XcodeGen 2.44 or newer. From `axoo-ios/`:
 
 ```sh
 brew install xcodegen
 cp configuration/Local.xcconfig.example configuration/Local.xcconfig
-# Impostare le proprie chiavi client nel file locale.
 xcodegen generate
 open Axoo.xcodeproj
 ```
 
-Selezionare lo schema Axoo e un simulatore. Run compila l'app; Cmd+U esegue i test.
-`project.yml` è la fonte del progetto Xcode generato.
-Debug compila anche senza chiavi. Supabase serve per il login; KLIPY per GIF e
-meme. Per le push aggiungere `app/GoogleService-Info.plist` e configurare APNs.
-Per un ambiente HTTPS di sviluppo imposta `AXOO_API_URL` e `AXOO_SUPABASE_URL`
-in `Local.xcconfig`. Lo stesso file consente di cambiare team Apple, bundle ID
-e progetto Firebase. Per compilare una Release senza push, usa
-`AXOO_REQUIRE_FIREBASE_CONFIG = NO`.
+Select the **Axoo** scheme and a simulator. Press **Run** to build or **Cmd+U**
+to run the tests. Edit `project.yml` to change the generated project.
 
-## Codice
+Debug builds work without credentials. For login, set `AXOO_SUPABASE_PUBLISHABLE_KEY`
+in `configuration/Local.xcconfig`. Set `AXOO_API_URL` and `AXOO_SUPABASE_URL`
+for an HTTPS development instance and `AXOO_KLIPY_API_KEY` for GIFs and memes.
+The [example config](configuration/Local.xcconfig.example) also lists the signing settings.
 
-Dentro `app/`:
+For push notifications, add `app/GoogleService-Info.plist` and configure APNs.
+Set `AXOO_REQUIRE_FIREBASE_CONFIG = NO` to build a Release without push.
 
-- `application/`: avvio, dipendenze e navigazione.
-- `core/`: rete, sessione e servizi di piattaforma.
-- `ui/`: componenti grafici e tema condivisi.
-- `engine/`: emoji e rendering Lottie.
-- `features/`: codice diviso per funzionalità.
-- `resources/`: immagini, animazioni, font, suoni e licenze.
+App code is in `app/`, tests are in `tests/` and `uitests/`, and the C++ bridge
+is in `native/`.
 
-Test in `tests` e `uitests`; bridge C++ in `native`, codice di terze parti in
-`vendor`. Le funzionalità raggruppano dati, dominio e presentazione dove servono.
-Il [workflow iOS Simulator](../.github/workflows/ios-simulator.yml) compila ed esegue i test su GitHub.
+## License
 
-Il codice originale del client Axoo è disponibile sotto la [GNU Affero General Public License v3.0](LICENSE).
-Per il codice e le risorse di terze parti, consulta [licenze e attribuzioni](THIRD_PARTY_NOTICES.md).
+Axoo’s original code is licensed under [AGPL-3.0-only](LICENSE).
+See the [third-party notices](THIRD_PARTY_NOTICES.md).
