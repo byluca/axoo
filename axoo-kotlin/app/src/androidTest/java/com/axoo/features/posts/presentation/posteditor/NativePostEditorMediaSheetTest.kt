@@ -20,7 +20,6 @@ import com.axoo.features.posts.domain.RemoteMedia
 import com.axoo.features.posts.domain.RemoteMediaType
 import com.axoo.features.posts.presentation.composer.ComposerController
 import com.axoo.features.posts.presentation.media.RemoteMediaState
-import com.axoo.features.posts.presentation.media.components.MediaPickerMode
 import com.axoo.features.posts.presentation.media.components.RemoteMediaPickerPanelView
 import com.axoo.features.posts.presentation.posteditor.components.NativePostEditorView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -56,8 +55,8 @@ class NativePostEditorMediaSheetTest {
                     mediaUrl = "file:///missing-test-original.gif", width = 120, height = 120,
                     title = "Cached GIF", type = RemoteMediaType.Gif,
                 )))
-                editor.showRemotePicker(MediaPickerMode.Gif, cached)
-                editor.showRemotePicker(MediaPickerMode.Gif, cached)
+                editor.showRemotePicker(cached)
+                editor.showRemotePicker(cached)
             }
             val instrumentation = InstrumentationRegistry.getInstrumentation()
             instrumentation.waitForIdleSync()
@@ -85,8 +84,7 @@ class NativePostEditorMediaSheetTest {
             assertTrue("Native dismissal did not reach the editor", closed.await(3, TimeUnit.SECONDS))
             assertEquals(1, dismissals.get())
             scenario.onActivity {
-                editor.showRemotePicker(MediaPickerMode.MemeSticker,
-                    RemoteMediaState(type = RemoteMediaType.Sticker, isLoading = true))
+                editor.showRemotePicker(RemoteMediaState(type = RemoteMediaType.Meme, isLoading = true))
                 assertEquals(1, mediaSheets().size)
                 editor.hideRemotePicker()
                 editor.release()
@@ -101,15 +99,15 @@ class NativePostEditorMediaSheetTest {
     fun expandedGifAndStickerSheetsDrawUnderTransparentSystemNavigation() {
         val instrumentation = InstrumentationRegistry.getInstrumentation()
         ActivityScenario.launch(MainActivity::class.java).use { scenario ->
-            for (mode in listOf(MediaPickerMode.Gif, MediaPickerMode.GiphySticker)) {
+            for (mode in listOf(RemoteMediaType.Gif, RemoteMediaType.Sticker)) {
                 lateinit var sheet: RemoteMediaPickerSheet
                 lateinit var surface: FrameLayout
                 val expanded = CountDownLatch(1)
                 scenario.onActivity { activity ->
-                    sheet = RemoteMediaPickerSheet(activity, mode,
-                        onMediaSelected = {}, onSearchQueryChanged = {}, onCategorySelected = {},
+                    sheet = RemoteMediaPickerSheet(activity,
+                        onMediaSelected = {}, onSearchQueryChanged = {},
                         onLoadMore = {}, onRetry = {}, onDismissed = {})
-                    sheet.bind(RemoteMediaState(type = if (mode == MediaPickerMode.Gif) RemoteMediaType.Gif else RemoteMediaType.GiphySticker, isLoading = true))
+                    sheet.bind(RemoteMediaState(type = mode, isLoading = true))
                     sheet.show()
                     surface = sheet.dialog.findViewById(com.google.android.material.R.id.design_bottom_sheet)!!
                     sheet.dialog.behavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {

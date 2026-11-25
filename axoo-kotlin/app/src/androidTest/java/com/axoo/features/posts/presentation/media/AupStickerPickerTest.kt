@@ -11,7 +11,6 @@ import com.axoo.application.bootstrap.MainActivity
 import com.axoo.features.posts.domain.AupStickers
 import com.axoo.features.posts.domain.RemoteMedia
 import com.axoo.features.posts.domain.RemoteMediaType
-import com.axoo.features.posts.presentation.media.components.MediaPickerMode
 import com.axoo.features.posts.presentation.media.components.RemoteMediaCellView
 import com.axoo.features.posts.presentation.media.components.RemoteMediaPickerPanelView
 import com.axoo.ui.components.MediaPreviewOverlay
@@ -27,15 +26,15 @@ class AupStickerPickerTest {
         ActivityScenario.launch(MainActivity::class.java).use { scenario ->
             scenario.onActivity { activity ->
                 activity.window.addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-                picker = RemoteMediaPickerPanelView(activity, { selected = it }, {}, {}, {}, {})
-                picker.bind(MediaPickerMode.GiphySticker, RemoteMediaState(type = RemoteMediaType.GiphySticker, isLoading = true))
+                picker = RemoteMediaPickerPanelView(activity, { selected = it }, {}, {}, {})
+                picker.bind(RemoteMediaState(type = RemoteMediaType.Sticker, isLoading = true))
                 activity.setContentView(picker)
             }
             SystemClock.sleep(400)
             scenario.onActivity {
                 val labels = descendants(picker).filterIsInstance<TextView>().map { it.text.toString() }
                 assertTrue("AUP header missing: $labels, picker ${picker.width}x${picker.height}, attached=${picker.isAttachedToWindow}", labels.contains("AUP"))
-                picker.bind(MediaPickerMode.GiphySticker, RemoteMediaState(type = RemoteMediaType.GiphySticker, error = RemoteMediaError.LoadingFailed))
+                picker.bind(RemoteMediaState(type = RemoteMediaType.Sticker, error = RemoteMediaError.LoadingFailed))
                 assertTrue(descendants(picker).filterIsInstance<TextView>().any { it.text.toString().contains("Crea sticker") })
                 val cell = descendants(picker).filterIsInstance<RemoteMediaCellView>().first { it.contentDescription != "Crea sticker" }
                 cell.performLongClick()

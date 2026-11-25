@@ -6,7 +6,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.axoo.application.navigation.route.BottomTab
+import com.axoo.application.navigation.route.Tab
 import com.axoo.application.navigation.route.NativeScreen
 import com.axoo.application.navigation.route.Route
 import com.axoo.features.profile.domain.User
@@ -27,7 +27,7 @@ internal class ProfileHost(
     override val route: Route = Route.Profile
     private val rootView = NativeProfileRootView(context)
 
-    private var onTab: (BottomTab) -> Unit = {}
+    private var onTab: (Tab) -> Unit = {}
     private var onMenuTapped: () -> Unit = {}
     private var onNicknameTapped: () -> Unit = {}
     private var onMyPostsTapped: () -> Unit = {}
@@ -54,7 +54,7 @@ internal class ProfileHost(
     }
 
     fun setCallbacks(
-        onTab: (BottomTab) -> Unit,
+        onTab: (Tab) -> Unit,
         onMenuTapped: () -> Unit,
         onNicknameTapped: () -> Unit,
         onMyPostsTapped: () -> Unit = {},

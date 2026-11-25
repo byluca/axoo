@@ -48,7 +48,6 @@ internal class RemoteMediaPickerPanelView(
     context: Context,
     onRemoteMediaTap: (RemoteMedia) -> Unit,
     private val onSearchQueryChanged: (String) -> Unit,
-    onCategorySelected: (String?) -> Unit,
     private val onLoadMore: () -> Unit,
     private val onRetry: () -> Unit,
 ) : FrameLayout(context) {
@@ -67,7 +66,7 @@ internal class RemoteMediaPickerPanelView(
             val id = result.data?.getStringExtra("id")
             val url = result.data?.getStringExtra("url")
             if (result.resultCode == android.app.Activity.RESULT_OK && id != null && url != null) {
-                selectMedia(RemoteMedia(id, url, url, 512, 512, "Sticker personale", RemoteMediaType.GiphySticker,
+                selectMedia(RemoteMedia(id, url, url, 512, 512, "Sticker personale", RemoteMediaType.Sticker,
                     provider = "axoo", mimeType = "image/png"))
             }
         }
@@ -257,9 +256,9 @@ internal class RemoteMediaPickerPanelView(
         )
     }
 
-    fun bind(mode: MediaPickerMode, state: RemoteMediaState) {
+    fun bind(state: RemoteMediaState) {
         personalAdapter.submit(listOf(CreateStickerTile) + state.personalStickers)
-        val showAup = mode == MediaPickerMode.GiphySticker && state.query.isBlank()
+        val showAup = state.type == RemoteMediaType.Sticker && state.query.isBlank()
         if (showAup != showingAup) {
             showingAup = showAup
             recyclerView.adapter = if (showAup) stickerSections else remoteAdapter

@@ -16,7 +16,6 @@ import com.axoo.features.posts.data.KlipyRepository
 import com.axoo.features.posts.domain.RemoteMedia
 import com.axoo.features.posts.domain.RemoteMediaType
 import com.axoo.features.posts.presentation.components.MediaImageView
-import com.axoo.features.posts.presentation.media.components.MediaPickerMode
 import com.axoo.features.posts.presentation.media.components.RemoteMediaCellView
 import com.axoo.features.posts.presentation.media.components.RemoteMediaPickerPanelView
 import com.axoo.ui.components.MediaPreviewOverlay
@@ -35,26 +34,26 @@ class KlipyPickerTest {
         assumeTrue(BuildConfig.KLIPY_API_KEY.isNotBlank())
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val repository = KlipyRepository(KlipyApi.create(Moshi.Builder().build()), context)
-        val first = repository.load("ciao", 0, 8)
+        val first = repository.load(RemoteMediaType.Gif, "ciao", 0, 8)
         assertTrue(first.items.isNotEmpty())
         assertTrue(first.items.all { it.provider == "klipy" })
         first.nextOffset?.let { next ->
             assertEquals(2, next)
-            assertTrue(repository.load("ciao", next, 8).items.isNotEmpty())
+            assertTrue(repository.load(RemoteMediaType.Gif, "ciao", next, 8).items.isNotEmpty())
         }
-        val stickers = repository.loadStickers("ciao", 0, 8)
+        val stickers = repository.load(RemoteMediaType.Sticker, "ciao", 0, 8)
         assertTrue(stickers.items.isNotEmpty())
-        assertTrue(stickers.items.all { it.type == RemoteMediaType.GiphySticker })
-        val memes = repository.loadMemes("", 0)
+        assertTrue(stickers.items.all { it.type == RemoteMediaType.Sticker })
+        val memes = repository.load(RemoteMediaType.Meme, "", 0)
         assertTrue(memes.items.isNotEmpty())
-        assertTrue(memes.items.all { it.type == RemoteMediaType.Sticker && it.provider == "klipy" })
+        assertTrue(memes.items.all { it.type == RemoteMediaType.Meme && it.provider == "klipy" })
         var selected: RemoteMedia? = null
         ActivityScenario.launch(MainActivity::class.java).use { scenario ->
             lateinit var panel: RemoteMediaPickerPanelView
             scenario.onActivity { activity ->
                 activity.window.addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-                panel = RemoteMediaPickerPanelView(activity, { selected = it }, {}, {}, {}, {})
-                panel.bind(MediaPickerMode.GiphySticker, RemoteMediaState(type = RemoteMediaType.GiphySticker,
+                panel = RemoteMediaPickerPanelView(activity, { selected = it }, {}, {}, {})
+                panel.bind(RemoteMediaState(type = RemoteMediaType.Sticker,
                     query = "ciao", items = stickers.items, nextOffset = stickers.nextOffset))
                 activity.setContentView(panel)
             }

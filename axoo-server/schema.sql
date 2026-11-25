@@ -285,24 +285,6 @@ CREATE TABLE user_emoji_packs (
     PRIMARY KEY (user_id, pack_id)
 );
 
-CREATE TABLE campus_events (
-    id uuid PRIMARY KEY,
-    city_id uuid NOT NULL REFERENCES cities(id),
-    organizer_id uuid REFERENCES users(id) ON DELETE SET NULL,
-    title text NOT NULL CHECK (char_length(btrim(title)) BETWEEN 1 AND 120),
-    location text NOT NULL CHECK (char_length(btrim(location)) BETWEEN 1 AND 200),
-    description text NOT NULL DEFAULT '' CHECK (char_length(description) <= 10000),
-    starts_at timestamptz NOT NULL,
-    ends_at timestamptz,
-    address text NOT NULL DEFAULT '',
-    entry_info text NOT NULL DEFAULT '',
-    poster jsonb,
-    created_at timestamptz NOT NULL DEFAULT now()
-);
-CREATE INDEX campus_events_city_starts_idx ON campus_events (city_id, starts_at, id);
-CREATE INDEX campus_events_poster_url_idx ON campus_events ((poster->>'url')) WHERE poster IS NOT NULL;
-CREATE INDEX campus_events_organizer_idx ON campus_events (organizer_id);
-
 CREATE TABLE poll_votes (
     post_id uuid NOT NULL REFERENCES posts(id) ON DELETE CASCADE,
     user_id uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -348,7 +330,6 @@ ALTER TABLE push_installations ENABLE ROW LEVEL SECURITY;
 ALTER TABLE alpha_login_settings ENABLE ROW LEVEL SECURITY;
 ALTER TABLE referrals ENABLE ROW LEVEL SECURITY;
 ALTER TABLE user_emoji_packs ENABLE ROW LEVEL SECURITY;
-ALTER TABLE campus_events ENABLE ROW LEVEL SECURITY;
 ALTER TABLE poll_votes ENABLE ROW LEVEL SECURITY;
 
 COMMIT;

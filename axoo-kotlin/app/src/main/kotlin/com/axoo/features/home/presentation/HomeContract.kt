@@ -1,6 +1,6 @@
 package com.axoo.features.home.presentation
 
-import com.axoo.application.navigation.route.BottomTab
+import com.axoo.application.navigation.route.Tab
 import com.axoo.features.home.domain.HomeFeedTab
 import com.axoo.features.posts.domain.Post
 
@@ -38,7 +38,7 @@ sealed interface HomeEvent {
     data object LoadMoreNew : HomeEvent
     data object ScrollToNewRequested : HomeEvent
     data class FeedTabSelected(val tab: HomeFeedTab) : HomeEvent
-    data class BottomTabSelected(val tab: BottomTab) : HomeEvent
+    data class BottomTabSelected(val tab: Tab) : HomeEvent
     data class PostOpened(val post: Post) : HomeEvent
     data class AuthorTapped(val userId: String) : HomeEvent
     data class PostCommentTapped(val post: Post) : HomeEvent

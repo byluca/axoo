@@ -25,7 +25,6 @@ import com.axoo.features.moderation.presentation.ModerationViewModel
 import com.axoo.features.posts.domain.ImageMeta
 import com.axoo.features.posts.domain.RemoteMediaType
 import com.axoo.features.posts.presentation.media.RemoteMediaViewModel
-import com.axoo.features.posts.presentation.media.components.MediaPickerMode
 import com.axoo.features.posts.presentation.media.components.RemoteMediaPickerSheet
 import com.axoo.features.posts.domain.Comment
 import com.axoo.features.posts.domain.Post
@@ -419,9 +418,9 @@ internal class PostDetailHost(
     private fun openMediaPicker(sticker: Boolean) {
         if (viewModel.state.value.editingComment != null || mediaSheet != null) return
         composerController?.dismissAll()
-        remoteMediaViewModel.open(if (sticker) RemoteMediaType.GiphySticker else RemoteMediaType.Gif)
+        val type = if (sticker) RemoteMediaType.Sticker else RemoteMediaType.Gif
+        remoteMediaViewModel.open(type)
         val sheet = RemoteMediaPickerSheet(context,
-            mode = if (sticker) MediaPickerMode.GiphySticker else MediaPickerMode.Gif,
             onMediaSelected = { media ->
                 remoteMediaViewModel.rememberSelection(media)
                 Haptics.commentSent(this)
@@ -433,7 +432,6 @@ internal class PostDetailHost(
                 if (rootComment) rootView?.scrollToBottom()
             },
             onSearchQueryChanged = remoteMediaViewModel::search,
-            onCategorySelected = remoteMediaViewModel::selectCategory,
             onLoadMore = remoteMediaViewModel::loadMore,
             onRetry = remoteMediaViewModel::retry,
             onDismissed = { mediaObserver?.cancel(); mediaObserver = null; mediaSheet = null },
@@ -441,9 +439,11 @@ internal class PostDetailHost(
         mediaSheet = sheet
         sheet.bind(remoteMediaViewModel.state.value)
         mediaObserver = lifecycleOwner.lifecycleScope.launch {
-            remoteMediaViewModel.state.collect(sheet::bind)
+            remoteMediaViewModel.state.collect { state ->
+                if (state.type == type) sheet.bind(state)
+            }
         }
-        sheet.show()
+        sheet.presentOn(this)
     }
 
     private fun heavyChunkRenderAndGate() {

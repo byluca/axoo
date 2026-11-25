@@ -25,7 +25,7 @@ import com.axoo.ui.theme.baloo2Typeface
 
 // A local action occupies the first grid cell; it is never returned as an attachment.
 internal val CreateStickerTile = RemoteMedia("create-sticker", "", "", 512, 512,
-    "Crea sticker", RemoteMediaType.GiphySticker, provider = "local-action")
+    "Crea sticker", RemoteMediaType.Sticker, provider = "local-action")
 
 internal class RemoteMediaGridAdapter(
     context: Context,
@@ -278,8 +278,8 @@ internal class RemoteMediaCellView(
 }
 
 private fun RemoteMedia.gridUrl(): String = when (type) {
-    RemoteMediaType.Sticker -> previewUrl
-    RemoteMediaType.Gif, RemoteMediaType.GiphySticker -> if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+    RemoteMediaType.Meme -> previewUrl
+    RemoteMediaType.Gif, RemoteMediaType.Sticker -> if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
         previewUrl
     } else {
         previewFallbackUrl ?: previewUrl

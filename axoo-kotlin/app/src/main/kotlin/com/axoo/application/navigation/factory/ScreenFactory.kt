@@ -26,7 +26,6 @@ import kotlinx.coroutines.launch
 // --- 3. Mappe e Destinazioni ---
 import com.axoo.application.navigation.route.Route
 import com.axoo.application.navigation.route.Tab
-import com.axoo.application.navigation.route.toTab
 
 // --- 4. Le Schermate e i ViewModel (ordinati per feature) ---
 import com.axoo.features.auth.data.dto.SessionBootstrapResponse
@@ -116,11 +115,8 @@ class DefaultScreenFactory(
                         viewModels[ModerationViewModel::class.java],
                         onEdit = { openPostEditor(it, navigator) },
                     )
-                    host.setOnFirstFeedContentDrawn {
-                        viewModels[RemoteMediaViewModel::class.java].prewarmGif()
-                    }
                     host.setCallbacks(
-                        onNavigate = { navigator.navigateTab(it.toTab()) },
+                        onNavigate = { navigator.navigateTab(it) },
                         onPostOpen = { navigator.navigate(Route.PostDetail(it.id)) },
                         onPostMenu = menu::show,
                         onAuthor = { openProfile(it, navigator) },
@@ -134,26 +130,16 @@ class DefaultScreenFactory(
                 notifications = viewModels[NotificationsViewModel::class.java],
             ).also { host ->
                 host.setCallbacks(
-                    onTab = { navigator.navigateTab(it.toTab()) },
+                    onTab = { navigator.navigateTab(it) },
                     onMenuTapped = { navigator.navigate(Route.ProfileSettings) },
                     onNicknameTapped = { navigator.navigate(Route.NicknameEditor) },
                     onMyPostsTapped = { navigator.navigate(Route.MyPosts) },
                     onBioTapped = { navigator.navigate(Route.BioEditor) },
                 )
             }
-            Route.Events -> com.axoo.features.events.presentation.EventsHost(
-                context, viewModels[com.axoo.features.events.presentation.EventsViewModel::class.java],
-                viewModels[NotificationsViewModel::class.java], activity,
-                onTab = { navigator.navigateTab(it.toTab()) },
-                onOpen = { navigator.navigate(Route.EventDetail(it.id)) },
-            )
-            is Route.EventDetail -> com.axoo.features.events.presentation.EventDetailHost(
-                context, route.eventId, viewModels[com.axoo.features.events.presentation.EventsViewModel::class.java],
-                activity, onBack = { navigator.pop() },
-            )
             Route.Notifications -> NotificationsHost(
                 context, viewModels[NotificationsViewModel::class.java], activity,
-                onTab = { navigator.navigateTab(it.toTab()) },
+                onTab = { navigator.navigateTab(it) },
                 onOpen = { navigator.navigate(Route.PostDetail(it.postId, commentId = it.commentId.takeIf(String::isNotBlank))) },
             )
             Route.MyPosts -> MyPostsHost(

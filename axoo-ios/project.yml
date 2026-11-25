@@ -30,8 +30,6 @@ targets:
       - path: app/resources/fonts
         type: folder
         buildPhase: resources
-      - path: app/resources/animations
-        buildPhase: resources
       - path: app/resources/axooji
         type: folder
         buildPhase: resources

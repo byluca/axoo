@@ -17,7 +17,7 @@ import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.view.ViewCompat
 import coil.target.Target
 import com.axoo.R
-import com.axoo.application.navigation.route.BottomTab
+import com.axoo.application.navigation.route.Tab
 import com.axoo.ui.components.SlidingCategoryIndicatorLayout
 import com.axoo.ui.components.applyNativePillSurface
 import com.axoo.ui.theme.NativeColors
@@ -27,7 +27,7 @@ import com.google.android.material.navigation.NavigationBarView
 
 /** Material owns the tabs; the shared indicator draws selection inside the capsule. */
 internal class NativeBottomNavigationBar(context: Context) : FrameLayout(context) {
-    private var onTabSelected: (BottomTab) -> Unit = {}
+    private var onTabSelected: (Tab) -> Unit = {}
     private var destinationId = HOME
     private var unreadCount = 0
     private val badge = UnreadCountBadgeRenderer(context)
@@ -54,10 +54,9 @@ internal class NativeBottomNavigationBar(context: Context) : FrameLayout(context
         // The host already supplies the navigation-bar inset.
         ViewCompat.setOnApplyWindowInsetsListener(this) { _, insets -> insets }
         menu.add(0, HOME, 0, "Home")
-        menu.add(0, EVENTS, 1, "Eventi")
-        menu.add(0, CREATE, 2, "Crea").isCheckable = false
-        menu.add(0, NOTIFICATIONS, 3, "Notifiche")
-        menu.add(0, PROFILE, 4, "Profilo")
+        menu.add(0, CREATE, 1, "Crea").isCheckable = false
+        menu.add(0, NOTIFICATIONS, 2, "Notifiche")
+        menu.add(0, PROFILE, 3, "Profilo")
         menu.setGroupCheckable(0, true, true)
         menu.findItem(CREATE).isCheckable = false
         // Keep Create as an action: it never replaces the selected destination.
@@ -100,7 +99,6 @@ internal class NativeBottomNavigationBar(context: Context) : FrameLayout(context
         addView(indicator, LayoutParams(dp(BAR_WIDTH_DP), dp(BAR_HEIGHT_DP), Gravity.TOP or Gravity.CENTER_HORIZONTAL))
         indicator.setSelectedIndex(0, animate = false)
         loadIcon(HOME, "home.svg", "home-fill.svg")
-        loadIcon(EVENTS, "party.svg", "party-filled.svg")
         loadIcon(CREATE, "plus.svg")
         loadIcon(NOTIFICATIONS, "bell.svg", "bell-fill.svg")
         loadIcon(PROFILE, "user.svg", "user-filled.svg")
@@ -129,15 +127,14 @@ internal class NativeBottomNavigationBar(context: Context) : FrameLayout(context
         }
     }
 
-    fun setOnTabSelected(callback: (BottomTab) -> Unit) { onTabSelected = callback }
+    fun setOnTabSelected(callback: (Tab) -> Unit) { onTabSelected = callback }
 
-    fun bind(currentTab: BottomTab) {
-        if (currentTab == BottomTab.CREATE) return
+    fun bind(currentTab: Tab) {
         destinationId = when (currentTab) {
-            BottomTab.HOME -> HOME
-            BottomTab.EVENTS -> EVENTS
-            BottomTab.NOTIFICATIONS -> NOTIFICATIONS
-            else -> PROFILE
+            Tab.Home -> HOME
+            Tab.Notifications -> NOTIFICATIONS
+            Tab.Profile -> PROFILE
+            Tab.Auth, Tab.Create -> return
         }
         navigation.menu.findItem(destinationId).isChecked = true
         indicator.setSelectedIndex(selectionIndex(destinationId), animate = false)
@@ -176,22 +173,15 @@ internal class NativeBottomNavigationBar(context: Context) : FrameLayout(context
             rect.exactCenterY() - badge.heightPx)
     }
 
-    private fun selectionIndex(id: Int): Int = when (id) {
-        HOME -> 0
-        EVENTS -> 1
-        CREATE -> 2
-        NOTIFICATIONS -> 3
-        else -> 4
-    }
+    private fun selectionIndex(id: Int): Int = navigation.menu.findItem(id).order
 
     private fun colors() = ColorStateList.valueOf(NativeColors.textPrimary)
 
     private fun tab(id: Int) = when (id) {
-        HOME -> BottomTab.HOME
-        EVENTS -> BottomTab.EVENTS
-        CREATE -> BottomTab.CREATE
-        NOTIFICATIONS -> BottomTab.NOTIFICATIONS
-        else -> BottomTab.PROFILE
+        HOME -> Tab.Home
+        CREATE -> Tab.Create
+        NOTIFICATIONS -> Tab.Notifications
+        else -> Tab.Profile
     }
 
     private companion object {
@@ -205,6 +195,5 @@ internal class NativeBottomNavigationBar(context: Context) : FrameLayout(context
         const val CREATE = 2
         const val PROFILE = 3
         const val NOTIFICATIONS = 4
-        const val EVENTS = 5
     }
 }

@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.axoo.application.navigation.components.NativeBottomNavigationBar
 import com.axoo.application.navigation.components.NativeBottomNavigationOverlay
-import com.axoo.application.navigation.route.BottomTab
+import com.axoo.application.navigation.route.Tab
 import com.axoo.application.navigation.route.NativeScreen
 import com.axoo.application.navigation.route.Route
 import com.axoo.features.notifications.data.AppNotification
@@ -46,7 +46,7 @@ internal class NotificationsHost(
     context: Context,
     private val viewModel: NotificationsViewModel,
     private val owner: LifecycleOwner,
-    onTab: (BottomTab) -> Unit,
+    onTab: (Tab) -> Unit,
     onOpen: (AppNotification) -> Unit,
 ) : LinearLayout(context), NativeScreen {
     override val route: Route = Route.Notifications
@@ -107,7 +107,7 @@ internal class NotificationsHost(
             bottomInset = inset
             updateBottomPadding()
         }, LayoutParams(LayoutParams.MATCH_PARENT, 0, 1f))
-        bottom.bind(BottomTab.NOTIFICATIONS)
+        bottom.bind(Tab.Notifications)
         bottom.setOnTabSelected(onTab)
         list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {

@@ -14,7 +14,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import com.axoo.R
-import com.axoo.ui.sheets.DismissibleOverlay
 import com.axoo.ui.theme.NativeColors
 import com.axoo.ui.theme.dp
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -26,7 +25,7 @@ import com.google.android.material.bottomsheet.BottomSheetDragHandleView
 open class BottomSheetContainer(
     context: Context,
     private val config: BottomSheetConfig = BottomSheetConfig(),
-) : FrameLayout(context), DismissibleOverlay {
+) : FrameLayout(context) {
     internal val dialog = BottomSheetDialog(context,
         if (config.fillsHeight) R.style.Theme_Axoo_MediaBottomSheet else R.style.Theme_Axoo_BottomSheet)
     private val dismissListeners = mutableListOf<() -> Unit>()
@@ -116,7 +115,7 @@ open class BottomSheetContainer(
         show()
     }
 
-    override fun show() {
+    internal fun show() {
         if (dialog.isShowing || dismissed) return
         layoutParams = LayoutParams(LayoutParams.MATCH_PARENT,
             if (config.fillsHeight) LayoutParams.MATCH_PARENT else LayoutParams.WRAP_CONTENT)
@@ -128,7 +127,7 @@ open class BottomSheetContainer(
         dialog.behavior.state = initialState
     }
 
-    override fun dismiss() {
+    fun dismiss() {
         if (closing || dismissed) return
         closing = true
         if (dialog.isShowing) {
@@ -151,7 +150,7 @@ open class BottomSheetContainer(
         dismiss()
     }
 
-    override fun addOnDismissedListener(listener: () -> Unit) {
+    fun addOnDismissedListener(listener: () -> Unit) {
         if (dismissed) listener() else dismissListeners += listener
     }
 

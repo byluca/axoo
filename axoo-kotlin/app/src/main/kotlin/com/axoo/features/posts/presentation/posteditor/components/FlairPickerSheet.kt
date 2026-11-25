@@ -15,7 +15,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.graphics.ColorUtils
 import coil.load
-import com.axoo.application.navigation.host.OverlayHost
 import com.axoo.features.posts.presentation.components.flairAppearance
 import com.axoo.features.posts.presentation.components.flairDisplayLabel
 import com.axoo.ui.sheets.BottomSheetConfig
@@ -63,7 +62,7 @@ object FlairPickerSheet {
             onDismissed = onDismissed,
         )
         sheet.bind(selected = selected, includeTutti = includeTutti)
-        OverlayHost.presentSheetOn(anchor, sheet)
+        sheet.presentOn(anchor)
         return Handle(sheet)
     }
 }

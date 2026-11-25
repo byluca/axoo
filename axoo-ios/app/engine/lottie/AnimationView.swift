@@ -1,6 +1,6 @@
 import UIKit
 
-/// Decorative JSON/TGS surface using the same player, clock and render pool as emoji.
+/// Plays bundled TGS illustrations with the same renderer as emoji.
 @MainActor
 final class AnimationView: UIImageView {
     var playbackEnabled = true { didSet { updateAnimationVisibility() } }
@@ -33,8 +33,7 @@ final class AnimationView: UIImageView {
         NotificationCenter.default.removeObserver(self)
     }
     func configure(name: String, bundle: Bundle = .main) {
-        let url = bundle.url(forResource: name, withExtension: "json")
-            ?? bundle.url(forResource: name, withExtension: "tgs")
+        let url = bundle.url(forResource: name, withExtension: "tgs", subdirectory: "axooji/ui")
         guard url != assetURL else { return }
         loadTask?.cancel()
         loadTask = nil

@@ -37,7 +37,7 @@ import com.axoo.core.push.PushRegistration
 import com.axoo.core.push.PushTarget
 import com.axoo.ui.theme.dp
 import com.axoo.application.navigation.factory.DefaultScreenFactory
-import com.axoo.application.navigation.host.AppRootView
+import com.axoo.application.navigation.host.NavigationHost
 import com.axoo.application.navigation.route.NavigationSnapshot /* ricorda dove eravamo se l'app viene chiusa dal telefono */
 import com.axoo.application.navigation.route.Route /* la pagina dove vogliamo andare */
 import com.axoo.application.navigation.route.Tab /* i menu principali dell'app */
@@ -71,7 +71,7 @@ class MainActivity : ComponentActivity() {
     @Inject lateinit var authOperations: AuthOperations
     @Inject lateinit var pushRegistration: PushRegistration
     private lateinit var authController: AuthController
-    private var rootView: AppRootView? = null
+    private var navigationHost: NavigationHost? = null
     private var pendingNavigationSnapshot: NavigationSnapshot? = null
     private var lastAppliedDestination: Route? = null
     private var hasMountedAccount = false
@@ -134,7 +134,7 @@ class MainActivity : ComponentActivity() {
         // nella home (tipo se e' nella sezione commenti e clicca indietro NON DEVE FARLO USCIRE dall app)
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                val handled = rootView?.onBackPressed() == true ||
+                val handled = navigationHost?.onBackPressed() == true ||
                     (container.getChildAt(container.childCount - 1) as? com.axoo.application.navigation.host.BackHandler)?.onBackPressed() == true
                 if (!handled) {
                     isEnabled = false
@@ -270,7 +270,7 @@ class MainActivity : ComponentActivity() {
         mountedRestrictionKey = key
         pendingNavigationSnapshot = null
 
-        rootView = null
+        navigationHost = null
         lastAppliedDestination = null
         container.removeAllViews()
         container.addView(
@@ -329,7 +329,7 @@ class MainActivity : ComponentActivity() {
 
     private fun showModerationNotice(notice: ModerationNoticeResponse) {
         if (shownModerationNoticeId == notice.id) return
-        val anchor = rootView ?: return
+        val anchor = navigationHost ?: return
         shownModerationNoticeId = notice.id
         val contentType = if (notice.targetType == "comment") "commento" else "post"
         OverlayCard.present(
@@ -354,7 +354,7 @@ class MainActivity : ComponentActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putBoolean(KEY_MOUNTED_ACCOUNT, hasMountedAccount)
-        rootView?.saveNavigationState()?.let {
+        navigationHost?.saveState()?.encode()?.let {
             outState.putString(KEY_NAVIGATION_SNAPSHOT, it)
         }
     }
@@ -366,12 +366,12 @@ class MainActivity : ComponentActivity() {
             return
         }
         val (tab, target) = destinationToTabAndRoute(route)
-        val host = rootView
+        val host = navigationHost
         if (host == null) {
             mountRoot(initialTab = tab, postMountTarget = target)
         } else {
             if (lastAppliedDestination == route) return
-            host.navigationHost.navigateTab(tab, target)
+            host.navigateTab(tab, target)
         }
         lastAppliedDestination = route
     }
@@ -391,8 +391,8 @@ class MainActivity : ComponentActivity() {
 
     /* Rimuove tutto e svuota lo schermo. */
     private fun mountBlank() {
-        if (rootView == null && container.childCount == 0) return
-        rootView = null
+        if (navigationHost == null && container.childCount == 0) return
+        navigationHost = null
         lastAppliedDestination = null
         container.removeAllViews()
     }
@@ -425,13 +425,13 @@ class MainActivity : ComponentActivity() {
 
     private fun openPendingPush() {
         val target = pendingPush ?: return
-        if (!pushAccessAllowed || rootView == null) return
+        if (!pushAccessAllowed || navigationHost == null) return
         lifecycleScope.launch {
             val matches = pushRegistration.isCurrentRecipient(target.recipientId)
             if (pendingPush != target) return@launch
             clearPendingPush()
             if (matches && pushAccessAllowed) {
-                rootView?.navigationHost?.navigateTab(Tab.Home, Route.PostDetail(target.postId, commentId = target.commentId))
+                navigationHost?.navigateTab(Tab.Home, Route.PostDetail(target.postId, commentId = target.commentId))
             }
         }
     }
@@ -446,14 +446,16 @@ class MainActivity : ComponentActivity() {
         container.removeAllViews()
         val snapshot = pendingNavigationSnapshot
         pendingNavigationSnapshot = null
-        val view = AppRootView(
-            this, snapshot, initialTab,
+        val view = NavigationHost(
+            context = this,
+            initialSnapshot = snapshot,
+            initialTab = initialTab,
             screenFactory = DefaultScreenFactory(
                 onAuthenticated = authController::onAuthenticated,
                 onLogout = authController::logout,
             ),
         )
-        rootView = view
+        navigationHost = view
         container.addView(
             view,
             FrameLayout.LayoutParams(
@@ -464,7 +466,7 @@ class MainActivity : ComponentActivity() {
         // Se nessuno snapshot ci ha portato qui e abbiamo bisogno di una destinazione diversa da quella di base
         // nel tab iniziale (es. ripartire direttamente dal Login ignorando l'Intro), apriamola ora.
         if (snapshot == null && postMountTarget != null && postMountTarget != initialTab.rootRoute) {
-            view.navigationHost.navigate(postMountTarget)
+            view.navigate(postMountTarget)
         }
     }
 

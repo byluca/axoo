@@ -118,7 +118,7 @@ data class PostEditorUiState(
 sealed interface PostEditorEvent {
     data object BackTapped : PostEditorEvent
     data object PublishTapped : PostEditorEvent
-    data object GiphyStickerTapped : PostEditorEvent
+    data object StickerTapped : PostEditorEvent
     data object GifTapped : PostEditorEvent
     data object MemeTapped : PostEditorEvent
     data object PhotoTapped : PostEditorEvent
@@ -131,7 +131,6 @@ sealed interface PostEditorEvent {
     data object EmojiToggleTapped : PostEditorEvent
     data class RemoteMediaTapped(val media: RemoteMedia) : PostEditorEvent
     data class RemoteMediaSearchChanged(val query: String) : PostEditorEvent
-    data class RemoteMediaCategorySelected(val categoryId: String?) : PostEditorEvent
     data object RemoteMediaLoadMore : PostEditorEvent
     data object RemoteMediaRetry : PostEditorEvent
     data object RemoteMediaPickerDismissed : PostEditorEvent

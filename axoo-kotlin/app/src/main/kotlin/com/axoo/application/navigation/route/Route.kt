@@ -19,8 +19,6 @@ sealed interface Route {
     data class UserProfile(val userId: String) : Route
     data object BlockedUsers : Route
     data object Moderation : Route
-    data object Events : Route
-    data class EventDetail(val eventId: String) : Route
     data object Notifications : Route
     data object Home : Route
     data object PostEditor : Route

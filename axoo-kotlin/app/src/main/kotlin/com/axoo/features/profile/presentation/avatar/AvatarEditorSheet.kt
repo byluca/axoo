@@ -17,7 +17,6 @@ import android.widget.TextView
 import androidx.core.view.children
 import androidx.core.widget.NestedScrollView
 import coil.load
-import com.axoo.application.navigation.host.OverlayHost
 import com.axoo.features.profile.domain.User
 import com.axoo.ui.avatar.NativeAnonAvatarView
 import com.axoo.ui.avatar.adventurerAvatarOptions
@@ -56,7 +55,7 @@ internal object AvatarEditorSheet {
             onSave = onSave,
             onDismissed = onDismissed,
         )
-        OverlayHost.presentSheetOn(anchor, sheet)
+        sheet.presentOn(anchor)
         return Handle(sheet)
     }
 }

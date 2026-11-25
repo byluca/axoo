@@ -17,7 +17,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.TextViewCompat
 import coil.load
-import com.axoo.features.posts.presentation.media.components.MediaPickerMode
+import com.axoo.features.posts.domain.RemoteMediaType
 import com.axoo.ui.theme.NativeColors
 import com.axoo.ui.theme.baloo2Typeface
 import com.axoo.ui.theme.dp
@@ -39,7 +39,7 @@ internal class NativePostEditorToolbarView(
 
     private var navigationBottomInset = 0
     private var showNavBarPadding = true
-    private var activePicker: MediaPickerMode? = null
+    private var activePicker: RemoteMediaType? = null
     private var hasGif = false
     private var hasSticker = false
     private var hasMeme = false
@@ -137,7 +137,7 @@ internal class NativePostEditorToolbarView(
         applyInsets()
     }
 
-    fun setActivePicker(mode: MediaPickerMode?) {
+    fun setActivePicker(mode: RemoteMediaType?) {
         if (activePicker == mode) return
         activePicker = mode
         bindButtons()
@@ -147,7 +147,7 @@ internal class NativePostEditorToolbarView(
         pollButton.bind(tint = if (hasPoll) NativeColors.accent else NativeColors.textSecondary, selected = hasPoll)
         photoButton.bind(tint = if (hasPhoto) NativeColors.accent else NativeColors.textSecondary, selected = hasPhoto)
         gifButton.bind(
-            tint = if (hasGif || activePicker == MediaPickerMode.Gif) {
+            tint = if (hasGif || activePicker == RemoteMediaType.Gif) {
                 NativeColors.accent
             } else {
                 NativeColors.textSecondary
@@ -155,11 +155,11 @@ internal class NativePostEditorToolbarView(
             selected = hasGif,
         )
         stickerButton.bind(
-            tint = if (hasSticker || activePicker == MediaPickerMode.GiphySticker) NativeColors.accent else NativeColors.textSecondary,
+            tint = if (hasSticker || activePicker == RemoteMediaType.Sticker) NativeColors.accent else NativeColors.textSecondary,
             selected = hasSticker,
         )
         memeButton.bind(
-            tint = if (hasMeme || activePicker == MediaPickerMode.MemeSticker) {
+            tint = if (hasMeme || activePicker == RemoteMediaType.Meme) {
                 NativeColors.accent
             } else {
                 NativeColors.textSecondary

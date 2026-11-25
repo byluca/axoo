@@ -197,20 +197,15 @@ func (h *Handler) createPost(c *fiber.Ctx) error {
 	return c.Status(status).JSON(fiber.Map{"post": post, "created": created})
 }
 
-type voteRequest struct {
-	Value *int   `json:"value"`
-	Type  string `json:"type"` // legacy client compatibility
-}
-
 func (h *Handler) votePost(c *fiber.Ctx) error {
 	userID := c.Locals("user_id").(string)
 
-	var req voteRequest
+	var req models.VoteRequest
 	if err := c.BodyParser(&req); err != nil {
 		return c.Status(400).JSON(fiber.Map{"error": "dati non validi"})
 	}
 
-	value, ok := desiredVote(req.Value, req.Type)
+	value, ok := req.DesiredValue()
 	if !ok {
 		return c.Status(400).JSON(fiber.Map{"error": "value deve essere -1, 0 o 1"})
 	}
@@ -222,17 +217,4 @@ func (h *Handler) votePost(c *fiber.Ctx) error {
 		analytics.RecordActionBestEffort(h.recorder, userID, analytics.ActionVote)
 	}
 	return c.JSON(fiber.Map{"vote": result})
-}
-
-func desiredVote(value *int, legacyType string) (int, bool) {
-	if value != nil {
-		return *value, *value >= -1 && *value <= 1
-	}
-	if legacyType == "upvote" {
-		return 1, true
-	}
-	if legacyType == "downvote" {
-		return -1, true
-	}
-	return 0, false
 }

@@ -172,7 +172,7 @@ final class RemoteMediaViewModelTests: XCTestCase {
     }
 
     private func makeModel(_ api: MediaAPI, kind: PostEditorMedia.Kind) -> RemoteMediaViewModel {
-        RemoteMediaViewModel(repository: RemoteMediaRepository(api: api, klipy: api), kind: kind)
+        RemoteMediaViewModel(repository: RemoteMediaRepository(klipy: api), kind: kind)
     }
     private func request(_ api: MediaAPI, at index: Int) async throws -> MediaAPI.Request {
         for _ in 0..<1000 {

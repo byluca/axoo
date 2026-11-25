@@ -7,7 +7,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.axoo.application.navigation.host.BackHandler
-import com.axoo.application.navigation.route.BottomTab
+import com.axoo.application.navigation.route.Tab
 import com.axoo.application.navigation.route.NativeScreen
 import com.axoo.application.navigation.route.Route
 import com.axoo.engine.emoji.list.EmojiPlaybackGate
@@ -27,16 +27,13 @@ internal class HomeHost(
     override val route: Route = Route.Home
     private val rootView = NativeHomeRootView(context)
 
-    private var onNavigate: (BottomTab) -> Unit = {}
+    private var onNavigate: (Tab) -> Unit = {}
     private var onPostOpen: (Post) -> Unit = {}
     private var onAuthor: (String) -> Unit = {}
     private var onPostMenu: (Post, Boolean) -> Unit = { _, _ -> }
-    private var onFirstFeedContentDrawn: () -> Unit = {}
-    private var firstFeedContentScheduled = false
 
     private var observersStarted: Boolean = false
     private var observersJob: Job? = null
-    private var screenFullyVisible: Boolean = false
 
     init {
         addView(rootView, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT))
@@ -48,7 +45,7 @@ internal class HomeHost(
                 HomeEvent.ScrollToNewRequested -> viewModel.selectFeedTab(HomeFeedTab.New)
                 is HomeEvent.FeedTabSelected -> viewModel.selectFeedTab(event.tab)
                 is HomeEvent.BottomTabSelected -> {
-                    if (event.tab != BottomTab.HOME) {
+                    if (event.tab != Tab.Home) {
                         onNavigate(event.tab)
                     }
                 }
@@ -70,7 +67,7 @@ internal class HomeHost(
     }
 
     fun setCallbacks(
-        onNavigate: (BottomTab) -> Unit,
+        onNavigate: (Tab) -> Unit,
         onPostOpen: (Post) -> Unit,
         onPostMenu: (Post, Boolean) -> Unit,
         onAuthor: (String) -> Unit = {},
@@ -79,10 +76,6 @@ internal class HomeHost(
         this.onPostOpen = onPostOpen
         this.onPostMenu = onPostMenu
         this.onAuthor = onAuthor
-    }
-
-    fun setOnFirstFeedContentDrawn(callback: () -> Unit) {
-        onFirstFeedContentDrawn = callback
     }
 
     override fun onBackPressed(): Boolean = false
@@ -94,10 +87,7 @@ internal class HomeHost(
         observersJob = lifecycleOwner.lifecycleScope.launch {
             lifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 notifications?.let { vm -> launch { vm.unread.collect(rootView::bindNotificationsCount) } }
-                viewModel.state.collect { state ->
-                    rootView.render(state)
-                    schedulePrewarmAfterFirstFeedDraw(state)
-                }
+                viewModel.state.collect(rootView::render)
             }
         }
     }
@@ -106,19 +96,6 @@ internal class HomeHost(
         observersJob?.cancel()
         observersJob = null
         observersStarted = false
-    }
-
-    private fun schedulePrewarmAfterFirstFeedDraw(uiState: HomeUiState) {
-        if (firstFeedContentScheduled || uiState.selectedFeed.posts.isEmpty()) return
-        firstFeedContentScheduled = true
-        rootView.runAfterSelectedFeedContentDrawn {
-            if (!screenFullyVisible) {
-                firstFeedContentScheduled = false
-                return@runAfterSelectedFeedContentDrawn
-            }
-            onFirstFeedContentDrawn()
-            onFirstFeedContentDrawn = {}
-        }
     }
 
     override fun onScreenTransitionStart(isOpening: Boolean, isBackward: Boolean) {
@@ -132,20 +109,17 @@ internal class HomeHost(
     }
 
     override fun onScreenFullyVisible() {
-        screenFullyVisible = true
         startObservers()
         notifications?.refreshUnread()
         rootView.setScreenPlaybackGate(EmojiPlaybackGate.FullyVisible)
     }
 
     override fun onScreenHidden() {
-        screenFullyVisible = false
         stopObservers()
         rootView.setScreenPlaybackGate(EmojiPlaybackGate.Inactive)
     }
 
     override fun onScreenDestroyed() {
-        screenFullyVisible = false
         stopObservers()
         rootView.release()
     }

@@ -15,8 +15,6 @@ import com.axoo.engine.emoji.list.EmojiRecyclerView
 import com.axoo.features.home.presentation.components.NativeHomeRootView
 import com.axoo.features.posts.domain.Post
 import com.axoo.ui.theme.dp
-import java.util.concurrent.CountDownLatch
-import java.util.concurrent.TimeUnit
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -30,7 +28,6 @@ class BottomNavigationScrollTest {
             lateinit var root: NativeHomeRootView
             lateinit var feed: EmojiRecyclerView
             lateinit var bar: NativeBottomNavigationBar
-            val drawn = CountDownLatch(1)
             scenario.onActivity { activity ->
                 root = NativeHomeRootView(activity)
                 activity.addContentView(root, ViewGroup.LayoutParams(-1, -1))
@@ -43,15 +40,12 @@ class BottomNavigationScrollTest {
                         createdAt = "2026-10-03T12:00:00Z",
                     )
                 })))
-                root.runAfterSelectedFeedContentDrawn { drawn.countDown() }
             }
             try {
-                assertTrue("Feed did not draw", drawn.await(5, TimeUnit.SECONDS))
+                feed = awaitVisibleFeed(root)
                 var originalPadding = 0
                 var originalHeight = 0
                 onMain {
-                    feed = descendants(root).filterIsInstance<EmojiRecyclerView>()
-                        .single { (it.adapter?.itemCount ?: 0) > 0 && it.getGlobalVisibleRect(Rect()) }
                     bar = descendants(root).filterIsInstance<NativeBottomNavigationBar>().single()
                     originalPadding = feed.paddingBottom
                     originalHeight = feed.height
@@ -73,6 +67,20 @@ class BottomNavigationScrollTest {
                 onMain { root.release() }
             }
         }
+    }
+
+    private fun awaitVisibleFeed(root: View): EmojiRecyclerView {
+        val deadline = SystemClock.uptimeMillis() + 5_000L
+        while (SystemClock.uptimeMillis() < deadline) {
+            var feed: EmojiRecyclerView? = null
+            onMain {
+                feed = descendants(root).filterIsInstance<EmojiRecyclerView>()
+                    .singleOrNull { it.childCount > 0 && (it.adapter?.itemCount ?: 0) > 0 && it.getGlobalVisibleRect(Rect()) }
+            }
+            feed?.let { return it }
+            SystemClock.sleep(16)
+        }
+        error("Feed did not draw")
     }
 
     private fun drag(feed: View, distance: Int) {

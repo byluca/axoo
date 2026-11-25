@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.axoo.features.auth.data.AuthRepository
 import com.axoo.features.auth.data.ProfileBootstrapException
+import com.axoo.features.auth.domain.isValidLoginEmailFormat
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.io.IOException
 import javax.inject.Inject
@@ -26,7 +27,6 @@ import retrofit2.HttpException
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val authRepository: AuthRepository,
-    private val checkEmailEligibility: CheckLoginEmailEligibilityUseCase,
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(LoginUiState())
     val uiState: StateFlow<LoginUiState> = _uiState.asStateFlow()
@@ -188,7 +188,8 @@ class LoginViewModel @Inject constructor(
         _uiState.value = state.copy(isSending = true, error = null, info = null)
         viewModelScope.launch {
             runOtpRequest {
-                val eligibility = checkEmailEligibility(email)
+                if (!isValidLoginEmailFormat(email)) throw EmailNotEligibleException
+                val eligibility = authRepository.emailEligibility(email)
                 if (!eligibility.eligible) throw EmailNotEligibleException
                 val password = eligibility.loginMethod in setOf("password", "account_password")
                 if (!password) authRepository.sendOtp(email)

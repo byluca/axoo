@@ -41,9 +41,9 @@ class KlipyRepositoryTest {
     @Test fun stickerAndResultsKeepTheirOriginalOrderIncludingRepeatedIDs() {
         val first = response("sticker")
         val page = first.copy(data = first.data.copy(data = first.data.data + first.data.data))
-            .toRemoteMediaPage(RemoteMediaType.GiphySticker)
+            .toRemoteMediaPage(RemoteMediaType.Sticker)
         assertEquals(2, page.items.size)
-        assertTrue(page.items.all { it.type == RemoteMediaType.GiphySticker })
+        assertTrue(page.items.all { it.type == RemoteMediaType.Sticker })
     }
 
     @Test fun memesKeepKlipyPNGOriginalAndSearchAndUseUnfilteredCollection() = runTest {
@@ -53,7 +53,7 @@ class KlipyRepositoryTest {
         ))), currentPage = 1, hasNext = true))
         val api = mockk<KlipyApi>()
         coEvery { api.list(any(), any(), any(), any()) } returns response
-        val page = KlipyRepository(api, "anonymous", "test-key").loadMemes("ciao", 0)
+        val page = KlipyRepository(api, "anonymous", "test-key").load(RemoteMediaType.Meme, "ciao", 0)
         assertEquals(file("original.png").url, page.items.single().mediaUrl)
         assertEquals("klipy", page.items.single().provider)
         assertEquals("ciao", page.items.single().searchQuery)
@@ -90,8 +90,8 @@ class KlipyRepositoryTest {
             response(if (secondArg<String>() == "stickers") "sticker" else "gif")
         }
         val repository = KlipyRepository(api, "anonymous-id", "test-key")
-        repository.load("  ciao!  ", 0)
-        repository.loadStickers("", 3)
+        repository.load(RemoteMediaType.Gif, "  ciao!  ", 0)
+        repository.load(RemoteMediaType.Sticker, "", 3)
         coVerify { api.list("test-key", "gifs", "search", match {
             it["page"] == "1" && it["per_page"] == "30" && it["q"] == "  ciao!  " &&
                 it["customer_id"] == "anonymous-id" && it["content_filter"] == "high" &&

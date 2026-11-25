@@ -14,7 +14,6 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.axoo.core.push.PushApi
 import com.axoo.features.auth.data.AuthApi
-import com.axoo.features.events.data.EventsApi
 import com.axoo.features.moderation.data.ModerationApi
 import com.axoo.features.moderation.data.ReportsApi
 import com.axoo.features.notifications.data.NotificationsApi
@@ -107,10 +106,6 @@ object InternetNetworkModule {
     @Provides
     @Singleton
     fun provideAuthApi(retrofit: Retrofit): AuthApi = retrofit.create(AuthApi::class.java)
-
-    @Provides
-    @Singleton
-    fun provideEventsApi(retrofit: Retrofit): EventsApi = retrofit.create(EventsApi::class.java)
 
     @Provides
     @Singleton

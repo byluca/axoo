@@ -13,7 +13,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ProgressBar
-import androidx.core.view.doOnPreDraw
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,8 +39,6 @@ internal class PostFeedView(context: Context, header: View? = null) : FrameLayou
     private var lastScrollToTopSignal = 0
     private var pendingScrollToTopSignal: Int? = null
     private var released = false
-    private var afterContentDrawn: (() -> Unit)? = null
-    private var contentDrawCallbackScheduled = false
 
     private val adapter = NativePostAdapter(
         onOpen = { onPostOpen(it) },
@@ -161,27 +158,6 @@ internal class PostFeedView(context: Context, header: View? = null) : FrameLayou
         }
         adapter.submitList(posts) {
             applyPendingScrollToTopIfReady()
-            scheduleContentDrawCallbackIfReady()
-        }
-    }
-
-    fun runAfterContentDrawn(callback: () -> Unit) {
-        if (released) return
-        afterContentDrawn = callback
-        scheduleContentDrawCallbackIfReady()
-    }
-
-    private fun scheduleContentDrawCallbackIfReady() {
-        if (released || contentDrawCallbackScheduled || adapter.itemCount == 0) return
-        if (afterContentDrawn == null) return
-        contentDrawCallbackScheduled = true
-        recyclerView.doOnPreDraw {
-            val callback = afterContentDrawn
-            afterContentDrawn = null
-            contentDrawCallbackScheduled = false
-            recyclerView.postOnAnimation {
-                if (!released) callback?.invoke()
-            }
         }
     }
 
@@ -227,8 +203,6 @@ internal class PostFeedView(context: Context, header: View? = null) : FrameLayou
         adapter.submitList(emptyList())
         recyclerView.adapter = null
         pendingScrollToTopSignal = null
-        afterContentDrawn = null
-        contentDrawCallbackScheduled = false
         onLoadMore = {}
         onPostOpen = {}
         onPostUpvote = {}

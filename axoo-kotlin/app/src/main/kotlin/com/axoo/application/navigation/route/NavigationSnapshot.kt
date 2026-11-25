@@ -58,8 +58,6 @@ data class NavigationSnapshot(
 fun Route.toPersistedRoute(): PersistedRoute = when (this) {
     Route.Intro -> PersistedRoute("intro")
     Route.Login -> PersistedRoute("login")
-    Route.Events -> PersistedRoute("events")
-    is Route.EventDetail -> PersistedRoute("event_detail", mapOf("eventId" to eventId))
     Route.Notifications -> PersistedRoute("notifications")
     Route.Home -> PersistedRoute("home")
     Route.PostEditor -> PersistedRoute("create_post")
@@ -78,8 +76,6 @@ fun Route.toPersistedRoute(): PersistedRoute = when (this) {
 fun PersistedRoute.toRoute(): Route? = when (type) {
     "intro" -> Route.Intro
     "login" -> Route.Login
-    "events" -> Route.Events
-    "event_detail" -> args["eventId"]?.let(Route::EventDetail)
     "notifications" -> Route.Notifications
     "home" -> Route.Home
     "create_post" -> Route.PostEditor

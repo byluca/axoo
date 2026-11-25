@@ -20,7 +20,7 @@ func TestGifAndStickerRoutesUseSeparateGiphyCollections(t *testing.T) {
 		return &http.Response{StatusCode: 200, Body: io.NopCloser(strings.NewReader(`{"data":[],"pagination":{"count":0}}`)), Header: make(http.Header)}, nil
 	})
 	app := fiber.New()
-	NewHandler(NewService(client)).RegisterRoutes(app.Group("/api"))
+	RegisterRoutes(app.Group("/api"), client)
 	for _, path := range []string{"gifs/trending", "gifs/search", "stickers/trending", "stickers/search"} {
 		t.Run(path, func(t *testing.T) {
 			response, err := app.Test(httptest.NewRequest("GET", "/api/"+path+"?q=ciao%20%26%20hello&limit=30&offset=30", nil))

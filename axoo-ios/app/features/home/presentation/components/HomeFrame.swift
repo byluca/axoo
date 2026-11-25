@@ -64,25 +64,3 @@ final class HomeHeader: UIView {
                              y: tabs.frame.midY - size.height, width: size.width, height: size.height)
     }
 }
-
-enum HomeNavigationItem: String, CaseIterable {
-    case home, events, create, notifications, profile
-    var title: String {
-        switch self {
-        case .home: return "Home"
-        case .events: return "Eventi"
-        case .create: return "Crea post"
-        case .notifications: return "Notifiche"
-        case .profile: return "Profilo"
-        }
-    }
-    func icon(selected: Bool) -> AxooIcon {
-        switch self {
-        case .home: return selected ? .homeSelected : .home
-        case .events: return selected ? .party : .partyOutline
-        case .create: return selected ? .createSelected : .create
-        case .notifications: return selected ? .notificationsSelected : .notifications
-        case .profile: return selected ? .profileSelected : .avatar
-        }
-    }
-}

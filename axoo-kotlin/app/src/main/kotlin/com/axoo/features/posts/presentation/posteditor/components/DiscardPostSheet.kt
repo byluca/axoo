@@ -5,7 +5,6 @@ import android.content.Context
 import android.graphics.Color
 import android.view.View
 import android.widget.LinearLayout
-import com.axoo.application.navigation.host.OverlayHost
 import com.axoo.ui.sheets.BottomSheetConfig
 import com.axoo.ui.sheets.BottomSheetContainer
 import com.axoo.ui.sheets.OverlayCopy
@@ -13,8 +12,8 @@ import com.axoo.ui.theme.NativeColors
 import com.axoo.ui.theme.dp
 
 /**
- * Native-only Discard Post bottom sheet. Presented through [OverlayHost] with the shared Material dialog adapter. The returned [Handle] lets callers programmatically dismiss the sheet
- * (e.g. on configuration change) — dismissing twice is a no-op.
+ * Material bottom sheet that confirms discarding an unsaved post.
+ * The handle lets the editor dismiss the dialog during cleanup.
  */
 object DiscardPostSheet {
 
@@ -38,7 +37,7 @@ object DiscardPostSheet {
             onContinueWriting = onContinueWriting,
             onDismissed = onDismissed,
         )
-        OverlayHost.presentSheetOn(anchor, sheet)
+        sheet.presentOn(anchor)
         return Handle(sheet)
     }
 }

@@ -32,10 +32,10 @@ func main() {
 		log.Fatal("EMAIL_SALT non impostato")
 	}
 
-	database.Connect()
+	db := database.Connect()
 
 	var university models.University
-	if err := database.DB.Where("LOWER(domain) = ?", strings.ToLower(*universityFlag)).First(&university).Error; err != nil {
+	if err := db.Where("LOWER(domain) = ?", strings.ToLower(*universityFlag)).First(&university).Error; err != nil {
 		log.Fatalf("ateneo non trovato: %v", err)
 	}
 
@@ -46,7 +46,7 @@ func main() {
 	}
 	hash := sha256.Sum256([]byte(email + salt))
 	emailHash := fmt.Sprintf("%x", hash)
-	if err := database.DB.Exec(`
+	if err := db.Exec(`
 		INSERT INTO alpha_testers (email_hash, university_id, active, expires_at)
 		VALUES (?, ?, ?, ?)
 		ON CONFLICT (email_hash) DO UPDATE SET

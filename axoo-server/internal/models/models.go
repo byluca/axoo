@@ -247,6 +247,26 @@ type CommentVote struct {
 	CreatedAt time.Time
 }
 
+// VoteRequest is shared by the post and comment vote endpoints.
+type VoteRequest struct {
+	Value *int   `json:"value"`
+	Type  string `json:"type"` // Older clients use upvote or downvote.
+}
+
+func (r VoteRequest) DesiredValue() (int, bool) {
+	if r.Value != nil {
+		return *r.Value, *r.Value >= -1 && *r.Value <= 1
+	}
+	switch r.Type {
+	case "upvote":
+		return 1, true
+	case "downvote":
+		return -1, true
+	default:
+		return 0, false
+	}
+}
+
 // VoteResult is the authoritative vote state returned after a write.
 type VoteResult struct {
 	Upvotes   int    `json:"upvotes"`

@@ -28,7 +28,6 @@ enum AxooIcon: String, CaseIterable {
     case spotted = "icon-heart-filled"
     case exams = "icon-book-filled"
     case confessions = "icon-messages"
-    case partyOutline = "icon-party"
     case party = "icon-party-filled"
     case residence = "icon-home2-filled"
     case home = "icon-home"
@@ -55,7 +54,6 @@ enum AxooIcon: String, CaseIterable {
     case cup = "icon-cup"
     case document = "icon-document"
     case star = "icon-star"
-    case calendar = "icon-calendar"
 }
 
 extension AxooIcon {

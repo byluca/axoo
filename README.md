@@ -13,7 +13,6 @@
 </p>
 
 <p align="center">
-  <a href="docs/screenshots/campus-feed.jpg"><img src="docs/screenshots/campus-feed.jpg" width="192" alt="Campus feed with posts and a poll"></a>
   <a href="docs/screenshots/write-a-post.jpg"><img src="docs/screenshots/write-a-post.jpg" width="192" alt="Write an anonymous post"></a>
   <a href="docs/screenshots/comments-and-emoji.jpg"><img src="docs/screenshots/comments-and-emoji.jpg" width="192" alt="Comments with the Axooji emoji picker"></a>
 </p>

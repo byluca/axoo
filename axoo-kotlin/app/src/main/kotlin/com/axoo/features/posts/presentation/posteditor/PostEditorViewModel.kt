@@ -149,8 +149,8 @@ class PostEditorViewModel @Inject constructor(
         if (!canChangeDraft()) return
         val kind = when (media.type) {
             RemoteMediaType.Gif -> PostMediaKind.Gif
-            RemoteMediaType.GiphySticker -> PostMediaKind.Sticker
-            RemoteMediaType.Sticker -> PostMediaKind.Meme
+            RemoteMediaType.Sticker -> PostMediaKind.Sticker
+            RemoteMediaType.Meme -> PostMediaKind.Meme
         }
         setMedia(SelectedPostMedia(
             kind = kind,
