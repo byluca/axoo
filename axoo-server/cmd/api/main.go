@@ -9,7 +9,6 @@ import (
 	"axoo-server/internal/analytics"
 	"axoo-server/internal/auth"
 	"axoo-server/internal/comments"
-	"axoo-server/internal/events"
 	"axoo-server/internal/gifs"
 	"axoo-server/internal/media"
 	"axoo-server/internal/moderation"
@@ -34,8 +33,7 @@ func main() {
 		log.Println("No .env file found, using environment variables")
 	}
 
-	database.Connect()
-	db := database.DB
+	db := database.Connect()
 
 	supabaseURL := os.Getenv("SUPABASE_URL")
 	supabaseServiceRoleKey := os.Getenv("SUPABASE_SERVICE_ROLE_KEY")
@@ -80,7 +78,6 @@ func main() {
 	protected.Use(middleware.RequireActiveUser(db))
 	authHandler.RegisterRoutes(protected)
 	referrals.RegisterRoutes(protected)
-	events.NewHandler(events.NewService(events.NewRepository(db))).RegisterRoutes(protected)
 
 	var pushSender push.Sender
 	projectID, credentialsJSON := os.Getenv("FCM_PROJECT_ID"), os.Getenv("FCM_SERVICE_ACCOUNT_JSON")
@@ -129,8 +126,7 @@ func main() {
 	media.NewHandler(supabaseStorage).RegisterRoutes(protected)
 	media.NewPhotoHandler(supabaseStorage).RegisterRoutes(protected)
 	media.NewStickerHandler(db, supabaseStorage).RegisterRoutes(protected)
-	gifsService := gifs.NewService(gifs.NewHTTPGiphyClient(os.Getenv("GIPHY_API_KEY")))
-	gifs.NewHandler(gifsService).RegisterRoutes(protected)
+	gifs.RegisterRoutes(protected, gifs.NewHTTPGiphyClient(os.Getenv("GIPHY_API_KEY")))
 
 	// Provision the dedicated bucket and collect unreferenced photos.
 	go func() {

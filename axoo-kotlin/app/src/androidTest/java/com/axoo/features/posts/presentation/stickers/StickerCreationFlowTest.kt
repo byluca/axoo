@@ -22,7 +22,6 @@ import com.axoo.features.posts.data.PersonalStickerRepository
 import com.axoo.features.posts.domain.RemoteMedia
 import com.axoo.features.posts.domain.RemoteMediaType
 import com.axoo.features.posts.presentation.media.RemoteMediaState
-import com.axoo.features.posts.presentation.media.components.MediaPickerMode
 import com.axoo.features.posts.presentation.media.components.RemoteMediaCellView
 import com.axoo.features.posts.presentation.media.components.RemoteMediaPickerPanelView
 import com.axoo.ui.components.NativeLoadingButton
@@ -79,8 +78,8 @@ class StickerCreationFlowTest {
                 lateinit var picker: RemoteMediaPickerPanelView
                 scenario.onActivity { activity ->
                     activity.window.addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-                    picker = RemoteMediaPickerPanelView(activity, { selected.set(it) }, {}, {}, {}, {})
-                    picker.bind(MediaPickerMode.GiphySticker, RemoteMediaState(type = RemoteMediaType.GiphySticker))
+                    picker = RemoteMediaPickerPanelView(activity, { selected.set(it) }, {}, {}, {})
+                    picker.bind(RemoteMediaState(type = RemoteMediaType.Sticker))
                     activity.setContentView(picker)
                 }
                 instrumentation.waitForIdleSync()
@@ -112,7 +111,7 @@ class StickerCreationFlowTest {
                 assertEquals(id, sticker.id)
                 assertEquals("axoo", sticker.provider)
                 assertEquals("image/png", sticker.mimeType)
-                assertEquals(RemoteMediaType.GiphySticker, sticker.type)
+                assertEquals(RemoteMediaType.Sticker, sticker.type)
                 val multipart = body.get()
                 val pngSignature = byteArrayOf(0x89.toByte(), 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a)
                 val start = (0..multipart.size-pngSignature.size).first { offset -> pngSignature.indices.all { multipart[offset+it] == pngSignature[it] } }
@@ -124,7 +123,7 @@ class StickerCreationFlowTest {
                 decoded.recycle()
                 instrumentation.waitForIdleSync()
                 scenario.onActivity {
-                    picker.bind(MediaPickerMode.GiphySticker, RemoteMediaState(type = RemoteMediaType.GiphySticker, personalStickers = listOf(sticker)))
+                    picker.bind(RemoteMediaState(type = RemoteMediaType.Sticker, personalStickers = listOf(sticker)))
                 }
                 instrumentation.waitForIdleSync()
                 scenario.onActivity {

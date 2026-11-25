@@ -16,7 +16,6 @@ final class ScreenFactory {
         return model
     }()
     private lazy var notifications = NotificationsViewModel(source: NotificationsRepository(api: posts.api))
-    private lazy var events = EventsViewModel(source: EventsRepository(api: posts.api))
     private var notificationObserver: NSObjectProtocol?
     private var notificationOpenTask: Task<Void, Never>?
     private weak var creationEditor: PostEditorHost?
@@ -91,7 +90,6 @@ final class ScreenFactory {
             openNotification(item, from: inbox)
         }
         let tabs = HomeTabBarController(home: homeNavigation,
-            events: AxooNavigationController(rootViewController: EventsHost(model: events)),
             notifications: AxooNavigationController(rootViewController: inbox),
             profile: AxooNavigationController(rootViewController: profileHost), onCreate: onCreate)
         notifications.onUnreadChange = { [weak tabs] in tabs?.bindNotificationsCount($0) }
@@ -116,7 +114,6 @@ final class ScreenFactory {
     func stop() {
         notificationOpenTask?.cancel()
         notifications.stop()
-        events.stop()
         myPosts.stop()
         profilePosts.values.forEach { $0.stop() }
         profile.stop()

@@ -18,7 +18,6 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.axoo.application.bootstrap.MainActivity
-import com.axoo.application.navigation.host.OverlayHost
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDragHandleView
 import java.util.concurrent.CountDownLatch
@@ -134,10 +133,8 @@ class BottomSheetContainerTest {
     fun modalUsesMaterialWindowAndBackIsBlockedOnlyWhileBusy() {
         ActivityScenario.launch(MainActivity::class.java).use { scenario ->
             scenario.onActivity { activity ->
-                val host = OverlayHost(activity)
                 val sheet = TestSheet(activity)
-                OverlayHost.presentSheetOn(host, sheet)
-                assertEquals(0, host.childCount)
+                sheet.presentOn(activity.findViewById<View>(android.R.id.content))
                 assertTrue(sheet.dialog.isShowing)
                 assertEquals(com.google.android.material.R.id.design_bottom_sheet, (sheet.parent as View).id)
                 assertTrue(sheet.dialog.edgeToEdgeEnabled)

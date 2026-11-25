@@ -1,6 +1,6 @@
 package com.axoo.features.profile.presentation
 
-import com.axoo.application.navigation.route.BottomTab
+import com.axoo.application.navigation.route.Tab
 import com.axoo.features.profile.domain.User
 
 data class ProfileUiState(
@@ -15,5 +15,5 @@ sealed interface ProfileEvent {
     data object NicknameTapped : ProfileEvent
     data object BioTapped : ProfileEvent
     data object MyPostsTapped : ProfileEvent
-    data class BottomTabSelected(val tab: BottomTab) : ProfileEvent
+    data class BottomTabSelected(val tab: Tab) : ProfileEvent
 }

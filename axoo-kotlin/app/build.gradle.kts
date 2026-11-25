@@ -185,7 +185,6 @@ dependencies {
     // Navigation
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.viewpager2)
-    implementation(libs.androidx.swiperefreshlayout)
     implementation(libs.material)
 
     // Hilt

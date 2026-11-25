@@ -10,7 +10,8 @@ import android.widget.LinearLayout
 import android.widget.ScrollView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.axoo.application.navigation.route.BottomTab
+import com.axoo.application.navigation.components.NativeBottomNavigationBar
+import com.axoo.application.navigation.route.Tab
 import com.axoo.features.profile.presentation.ProfileEvent
 import com.axoo.features.profile.presentation.ProfileUiState
 import com.axoo.ui.components.BottomFadeView
@@ -40,7 +41,7 @@ internal class NativeProfileRootView(context: Context) : FrameLayout(context) {
         gravity = Gravity.CENTER
         setBackgroundColor(NativeColors.surface)
     }
-    private val bottomBar = NativeProfileBottomBar(context)
+    private val bottomBar = NativeBottomNavigationBar(context)
     private val bottomFade = BottomFadeView(context)
 
     init {
@@ -89,7 +90,7 @@ internal class NativeProfileRootView(context: Context) : FrameLayout(context) {
     fun render(uiState: ProfileUiState) {
         setBackgroundColor(NativeColors.surface)
         topBar.render()
-        bottomBar.bind(BottomTab.PROFILE)
+        bottomBar.bind(Tab.Profile)
         if (shouldRenderProfileContent(lastRenderedState, uiState)) {
             renderProfileContent(
                 content = content,

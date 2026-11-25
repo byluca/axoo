@@ -141,9 +141,9 @@ class NavStoreTest {
         assertEquals(Route.Home, store.currentRoute)
     }
 
-    @Test fun `removed current tab falls back to Home and preserves other stacks`() {
-        val snapshot = com.axoo.application.navigation.route.NavigationSnapshot.decode(
-            "current=RetiredTab\nHome=home\nProfile=profile,bio_editor\nRetiredTab=retired_detail\n",
+    @Test fun `a saved events tab falls back to Home and preserves other stacks`() {
+        val snapshot = NavigationSnapshot.decode(
+            "current=Events\nHome=home\nProfile=profile,bio_editor\nEvents=events,event_detail?eventId:event-1\n",
         )
         val restored = NavStore(snapshot = snapshot)
         assertEquals(Tab.Home, restored.currentTab)

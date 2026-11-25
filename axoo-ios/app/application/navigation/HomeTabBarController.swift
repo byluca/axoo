@@ -4,19 +4,26 @@ import UIKit
 final class HomeTabBarController: UITabBarController, UITabBarControllerDelegate {
     private let creation = UIViewController()
     private let onCreate: () -> Void
+    private let notifications: UINavigationController
     private let notificationsBadge = UnreadCountBadge()
 
-    init(home: UINavigationController, events: UINavigationController, notifications: UINavigationController, profile: UINavigationController, onCreate: @escaping () -> Void) {
+    init(home: UINavigationController, notifications: UINavigationController, profile: UINavigationController, onCreate: @escaping () -> Void) {
         self.onCreate = onCreate
+        self.notifications = notifications
         super.init(nibName: nil, bundle: nil)
         delegate = self
-        for (controller, item) in zip([home, events, creation, notifications, profile], HomeNavigationItem.allCases) {
-            let icon = item.icon(selected: false).image(pointSize: 24)
-            controller.tabBarItem = UITabBarItem(title: item == .create ? "Crea" : item.title,
-                image: icon, selectedImage: item.icon(selected: true).image(pointSize: 24))
-            controller.tabBarItem.accessibilityIdentifier = "navigation-\(item.rawValue)"
+        let items: [(controller: UIViewController, title: String, id: String, icon: AxooIcon, selectedIcon: AxooIcon)] = [
+            (home, "Home", "home", .home, .homeSelected),
+            (creation, "Crea", "create", .create, .createSelected),
+            (notifications, "Notifiche", "notifications", .notifications, .notificationsSelected),
+            (profile, "Profilo", "profile", .avatar, .profileSelected),
+        ]
+        for item in items {
+            item.controller.tabBarItem = UITabBarItem(title: item.title,
+                image: item.icon.image(pointSize: 24), selectedImage: item.selectedIcon.image(pointSize: 24))
+            item.controller.tabBarItem.accessibilityIdentifier = "navigation-\(item.id)"
         }
-        viewControllers = [home, events, creation, notifications, profile]
+        viewControllers = items.map { $0.controller }
     }
 
     @available(*, unavailable)
@@ -45,15 +52,17 @@ final class HomeTabBarController: UITabBarController, UITabBarControllerDelegate
 
     func bindNotificationsCount(_ count: Int) {
         notificationsBadge.count = count
-        tabBar.items?[3].accessibilityValue = count > 0 ? "\(count) nuove" : nil
+        notifications.tabBarItem.accessibilityValue = count > 0 ? "\(count) nuove" : nil
         view.setNeedsLayout()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        guard let viewControllers, let notificationsIndex = viewControllers.firstIndex(where: { $0 === notifications }) else { return }
         let size = notificationsBadge.sizeThatFits(tabBar.bounds.size)
         let available = tabBar.bounds.width - tabBar.safeAreaInsets.left - tabBar.safeAreaInsets.right
-        let center = tabBar.safeAreaInsets.left + available * 3.5 / 5
+        let itemWidth = available / CGFloat(viewControllers.count)
+        let center = tabBar.safeAreaInsets.left + itemWidth * (CGFloat(notificationsIndex) + 0.5)
         notificationsBadge.frame = CGRect(x: min(tabBar.bounds.width - size.width - 8, center + 9), y: 2,
                                          width: size.width, height: size.height)
         tabBar.bringSubviewToFront(notificationsBadge)

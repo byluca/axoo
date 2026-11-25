@@ -20,7 +20,7 @@ func (s *cleanupPhotoStore) DeletePhoto(_ context.Context, path string) error {
 	return nil
 }
 
-func TestPostPhotosSurviveCleanupWithoutOtherFeatureTables(t *testing.T) {
+func TestCleanupPhotosPreservesActivePostPhotos(t *testing.T) {
 	raw := os.Getenv("AXOO_PHOTOS_TEST_DB_URL")
 	if raw == "" {
 		t.Skip("requires local PostgreSQL")
@@ -77,6 +77,11 @@ func TestPostPhotosSurviveCleanupWithoutOtherFeatureTables(t *testing.T) {
 		t.Fatalf("existing post photo expired: %v", err)
 	}
 	if err := db.Transaction(func(tx *gorm.DB) error {
+		return ValidatePostPhoto(tx, uuid.NewString(), &models.ImageMeta{URL: photoPrefix() + active, Type: "photo"})
+	}); err == nil {
+		t.Fatal("another user's post photo was accepted")
+	}
+	if err := db.Transaction(func(tx *gorm.DB) error {
 		return ValidatePostPhoto(tx, owner, &models.ImageMeta{URL: photoPrefix() + deleted, Type: "photo"})
 	}); err == nil {
 		t.Fatal("old photo from a deleted post remained reusable")
@@ -88,49 +93,4 @@ func TestPostPhotosSurviveCleanupWithoutOtherFeatureTables(t *testing.T) {
 	if len(store.deleted) != 2 || !((store.deleted[0] == orphan && store.deleted[1] == deleted) || (store.deleted[0] == deleted && store.deleted[1] == orphan)) {
 		t.Fatalf("cleanup must preserve active photos and remove orphaned/deleted photos: %v", store.deleted)
 	}
-	// Event posters share upload validation and cleanup locks with post photos.
-	poster := owner + "/" + uuid.NewString() + ".jpg"
-	if err := db.Exec("CREATE TABLE public.campus_events(id uuid PRIMARY KEY, poster jsonb)").Error; err != nil {
-		t.Fatal(err)
-	}
-	if err := db.Exec("INSERT INTO storage.objects VALUES (?, ?, NOW()-INTERVAL '48 hours')", PhotoBucket, poster).Error; err != nil {
-		t.Fatal(err)
-	}
-	if err := db.Exec("INSERT INTO public.campus_events VALUES (?, jsonb_build_object('url', ?::text))", uuid.NewString(), photoPrefix()+poster).Error; err != nil {
-		t.Fatal(err)
-	}
-
-	meta := &models.ImageMeta{URL: photoPrefix() + poster, Type: "photo"}
-	if err := db.Transaction(func(tx *gorm.DB) error { return ValidatePostPhoto(tx, owner, meta) }); err != nil {
-		t.Fatalf("active poster expired: %v", err)
-	}
-	if err := db.Transaction(func(tx *gorm.DB) error { return ValidatePostPhoto(tx, uuid.NewString(), meta) }); err == nil {
-		t.Fatal("another user's poster accepted")
-	}
-	store.deleted = nil
-	if err := CleanupPhotos(db, store); err != nil {
-		t.Fatal(err)
-	}
-	for _, path := range store.deleted {
-		if path == poster {
-			t.Fatal("active poster was removed")
-		}
-	}
-	if err := db.Exec("DELETE FROM public.campus_events").Error; err != nil {
-		t.Fatal(err)
-	}
-	store.deleted = nil
-	if err := CleanupPhotos(db, store); err != nil {
-		t.Fatal(err)
-	}
-	found := false
-	for _, path := range store.deleted {
-		if path == poster {
-			found = true
-		}
-	}
-	if !found {
-		t.Fatal("unreferenced poster was not cleaned")
-	}
-
 }

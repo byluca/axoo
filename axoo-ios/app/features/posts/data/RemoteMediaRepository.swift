@@ -8,13 +8,12 @@ struct RemoteMediaPage {
 /// Fetches media metadata; thumbnail downloads belong to the cells.
 @MainActor
 final class RemoteMediaRepository {
-    private let api: APIClient
     private let klipy: APIClient
-    init(api: APIClient, klipy: APIClient = KlipyClient.shared) { self.api = api; self.klipy = klipy }
+    init(klipy: APIClient = KlipyClient.shared) { self.klipy = klipy }
 
     func rememberSelection(_ media: PostEditorMedia) { (klipy as? KlipyClient)?.rememberSelection(media) }
 
-    func load(kind: PostEditorMedia.Kind, query: String, category: String, offset: Int) async throws -> RemoteMediaPage {
+    func load(kind: PostEditorMedia.Kind, query: String, offset: Int) async throws -> RemoteMediaPage {
         let collection = kind == .meme ? "static-memes" : (kind == .sticker ? "stickers" : "gifs")
         var parameters = [URLQueryItem(name: "page", value: String(max(1, offset))),
             URLQueryItem(name: "per_page", value: "30"),

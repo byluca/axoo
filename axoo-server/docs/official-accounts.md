@@ -15,7 +15,8 @@ AUP appartiene a PoliBa e usa l'identificativo `aup@account.example`: è un domi
 riservato, non una casella email. La password individuale resta in Supabase Auth;
 non usa la password condivisa alpha e non invia OTP.
 `auth/email-eligibility` restituisce `login_method: account_password` per AUP e
-per gli account admin dedicati descritti in [Eventi](events.md).
+per gli account dedicati su `account.example` con `is_admin = true` e
+`is_alpha_tester = false`.
 Il normale bootstrap e i controlli su termini, sospensioni e ban restano attivi.
 
 Per la rotazione della password individuale si usano gli strumenti di

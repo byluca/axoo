@@ -12,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.axoo.application.navigation.components.NativeBottomNavigationBar
-import com.axoo.application.navigation.route.BottomTab
+import com.axoo.application.navigation.route.Tab
 import com.axoo.engine.emoji.list.EmojiPlaybackGate
 import com.axoo.engine.emoji.list.withSurfaceFullyVisible
 import com.axoo.features.home.domain.HomeFeedTab
@@ -161,12 +161,6 @@ internal class NativeHomeRootView(context: Context) : FrameLayout(context) {
         eventSink = callback
     }
 
-    fun runAfterSelectedFeedContentDrawn(callback: () -> Unit) {
-        if (released) return
-        val selectedFeed = if (pager.currentItem == 0) hotFeed else newFeed
-        selectedFeed.runAfterContentDrawn(callback)
-    }
-
     fun bindNotificationsCount(count: Int) = bottomBar.bindUnreadCount(count)
 
     fun render(uiState: HomeUiState) {
@@ -180,7 +174,7 @@ internal class NativeHomeRootView(context: Context) : FrameLayout(context) {
         if (pager.currentItem != selectedIndex) {
             pager.setCurrentItem(selectedIndex, true)
         }
-        bottomBar.bind(BottomTab.HOME)
+        bottomBar.bind(Tab.Home)
 
         hotFeed.render(
             posts = uiState.hotFeed.posts,

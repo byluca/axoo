@@ -97,12 +97,9 @@ func main() {
 	if (*renameCount != 0 && *profileCount != 0) || (*repairCount != 0 && (*renameCount != 0 || *profileCount != 0)) {
 		log.Fatal("scegli creazione oppure rinomina profili")
 	}
-	emojis, err := loadEmojiCatalog(*emojiDir)
-	if err != nil {
-		log.Fatalf("Impossibile caricare Axooji: %v. Usa -emoji-assets per indicare la cartella dell'app Android.", err)
-	}
 	_ = godotenv.Load()
-	database.Connect()
+	db := database.Connect()
+	profiles := managedProfiles{db: db}
 	if *renameCount != 0 || *repairCount != 0 {
 		since, err := time.Parse(time.RFC3339, *renameSince)
 		if err != nil {
@@ -112,7 +109,7 @@ func main() {
 		if *repairCount != 0 {
 			count = *repairCount
 		}
-		changes, err := (managedProfiles{db: database.DB}).changeProfileNicknames(count, since, *repairCount != 0)
+		changes, err := profiles.changeProfileNicknames(count, since, *repairCount != 0)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -122,7 +119,7 @@ func main() {
 		return
 	}
 	if *profileCount != 0 {
-		created, err := (managedProfiles{db: database.DB}).addProfiles(*profileCount, *profileCampus, *profileGender)
+		created, err := profiles.addProfiles(*profileCount, *profileCampus, *profileGender)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -132,9 +129,13 @@ func main() {
 		return
 	}
 
-	userRepo := users.NewRepository(database.DB)
-	postRepo := posts.NewRepository(database.DB)
-	commentRepo := comments.NewRepository(database.DB)
+	emojis, err := loadEmojiCatalog(*emojiDir)
+	if err != nil {
+		log.Fatalf("Impossibile caricare Axooji: %v. Usa -emoji-assets per indicare la cartella dell'app Android.", err)
+	}
+	userRepo := users.NewRepository(db)
+	postRepo := posts.NewRepository(db)
+	commentRepo := comments.NewRepository(db)
 	credentials := os.Getenv("FCM_SERVICE_ACCOUNT_JSON")
 	if path := os.Getenv("FCM_SERVICE_ACCOUNT_PATH"); credentials == "" && path != "" {
 		data, err := os.ReadFile(path)
@@ -150,18 +151,18 @@ func main() {
 			log.Fatalf("Impossibile configurare le notifiche: %v", err)
 		}
 	}
-	pushService := push.NewService(push.NewRepository(database.DB), sender)
+	pushService := push.NewService(push.NewRepository(db), sender)
 
 	staticFS, err := fs.Sub(webFiles, "web")
 	if err != nil {
 		log.Fatal(err)
 	}
 	d := &desk{
-		db:               database.DB,
-		postService:      posts.NewService(postRepo, posts.NewDBAvatarConfigLoader(database.DB), userRepo),
+		db:               db,
+		postService:      posts.NewService(postRepo, posts.NewDBAvatarConfigLoader(db), userRepo),
 		commentService:   comments.NewService(commentRepo, pushService),
-		analyticsService: analytics.NewService(analytics.NewRepository(database.DB)),
-		profiles:         managedProfiles{db: database.DB},
+		analyticsService: analytics.NewService(analytics.NewRepository(db)),
+		profiles:         profiles,
 		sessionToken:     randomToken(),
 		static:           http.FileServer(http.FS(staticFS)),
 		emojis:           emojis,

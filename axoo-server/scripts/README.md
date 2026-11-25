@@ -28,6 +28,16 @@ Pass `--android-root` if the Android checkout is elsewhere.
 - `go run ./cmd/utility/alphatester` adds or revokes a tester.
 - `go run ./cmd/utility/alphapassword` sets the shared alpha password.
 
+## Remove campus events
+
+After replacing the old API on an existing installation, run as the database owner.
+This removes the event table, its records, and the legacy event permission.
+The new API's regular photo cleanup removes unreferenced event posters.
+
+```sh
+psql 'YOUR_POSTGRES_URL' -v ON_ERROR_STOP=1 -f scripts/remove-campus-events.sql
+```
+
 ## Test
 
 ```sh

@@ -51,5 +51,3 @@ Con `AXOO_PHOTOS_TEST_DB_URL` verso PostgreSQL locale dedicato,
 `go test -race ./internal/media` verifica anche che le foto dei post attivi
 restino riutilizzabili e che le foto orfane o di post eliminati siano pulite.
 Il test crea ed elimina un database temporaneo e non richiede altre tabelle di funzionalità.
-
-Le foto collegate a `campus_events.poster` sono conservate dalla stessa pulizia, con gli stessi lock transazionali. Vedere [Eventi](events.md).

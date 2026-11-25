@@ -14,10 +14,8 @@ import com.axoo.ui.theme.NativeColors
 @SuppressLint("ViewConstructor") // Programmatic content only, never inflated from XML.
 internal class RemoteMediaPickerSheet(
     context: Context,
-    val mode: MediaPickerMode,
     onMediaSelected: (RemoteMedia) -> Unit,
     onSearchQueryChanged: (String) -> Unit,
-    onCategorySelected: (String?) -> Unit,
     onLoadMore: () -> Unit,
     onRetry: () -> Unit,
     onDismissed: () -> Unit,
@@ -29,7 +27,6 @@ internal class RemoteMediaPickerSheet(
         context = context,
         onRemoteMediaTap = { media -> dismissThen { onMediaSelected(media) } },
         onSearchQueryChanged = onSearchQueryChanged,
-        onCategorySelected = onCategorySelected,
         onLoadMore = onLoadMore,
         onRetry = onRetry,
     )
@@ -44,5 +41,5 @@ internal class RemoteMediaPickerSheet(
             onDismissed()
         }
     }
-    fun bind(state: RemoteMediaState) = content.bind(mode, state)
+    fun bind(state: RemoteMediaState) = content.bind(state)
 }

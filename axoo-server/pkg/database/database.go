@@ -11,11 +11,7 @@ import (
 	"gorm.io/gorm/logger"
 )
 
-// DB mantiene la connessione globale al database.
-// Viene creata una sola volta all'avvio dell'app per risparmiare risorse.
-var DB *gorm.DB
-
-func Connect() {
+func Connect() *gorm.DB {
 	dsn := os.Getenv("SUPABASE_DB_URL")
 	if dsn == "" {
 		log.Fatal("SUPABASE_DB_URL non impostato nel file .env")
@@ -52,5 +48,5 @@ func Connect() {
 		log.Fatalf("Ping database fallito, i 5 secondi sono passati: %v", err)
 	}
 	log.Println("Database connesso con successo")
-	DB = db
+	return db
 }

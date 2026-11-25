@@ -43,7 +43,7 @@ class PersonalStickerRepositoryTest {
         assertEquals(original, sent)
         val library = repository.list().single()
         assertEquals("/media/stickers/mine", requests[1].url.encodedPath)
-        assertEquals(RemoteMediaType.GiphySticker, library.type)
+        assertEquals(RemoteMediaType.Sticker, library.type)
         assertEquals(id, library.id)
         assertEquals(saved.url, library.mediaUrl)
         assertEquals("image/png", library.mimeType)

@@ -33,26 +33,22 @@ class KlipyRepository internal constructor(
     private val shares = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private val selections = LinkedHashMap<String, String>()
 
-    suspend fun load(query: String, offset: Int, limit: Int = PAGE_SIZE): RemoteMediaPage =
-        loadCollection(query, offset, limit, RemoteMediaType.Gif)
-
-    suspend fun loadStickers(query: String, offset: Int, limit: Int = PAGE_SIZE): RemoteMediaPage =
-        loadCollection(query, offset, limit, RemoteMediaType.GiphySticker)
-
-    suspend fun loadMemes(query: String, offset: Int, limit: Int = PAGE_SIZE): RemoteMediaPage =
-        loadCollection(query, offset, limit, RemoteMediaType.Sticker)
-
-    private suspend fun loadCollection(query: String, offset: Int, limit: Int, type: RemoteMediaType): RemoteMediaPage {
+    suspend fun load(type: RemoteMediaType, query: String, offset: Int, limit: Int = PAGE_SIZE): RemoteMediaPage {
         if (apiKey.isBlank()) throw IOException("KLIPY non configurato")
+        val collection = when (type) {
+            RemoteMediaType.Gif -> "gifs"
+            RemoteMediaType.Sticker -> "stickers"
+            RemoteMediaType.Meme -> "static-memes"
+        }
         val response = api.list(apiKey,
-            when (type) { RemoteMediaType.Gif -> "gifs"; RemoteMediaType.Sticker -> "static-memes"; else -> "stickers" },
+            collection,
             if (query.isBlank()) "trending" else "search",
             buildMap {
                 put("page", offset.coerceAtLeast(1).toString())
                 put("per_page", limit.coerceIn(8, 50).toString())
                 put("customer_id", customerId)
                 put("locale", Locale.getDefault().country.lowercase(Locale.ROOT).ifBlank { "it" })
-                if (type != RemoteMediaType.Sticker) put("format_filter", if (type == RemoteMediaType.Gif) "gif,webp,jpg" else "gif,webp")
+                if (type != RemoteMediaType.Meme) put("format_filter", if (type == RemoteMediaType.Gif) "gif,webp,jpg" else "gif,webp")
                 put("content_filter", "high")
                 if (query.isNotBlank()) put("q", query)
             })
@@ -93,19 +89,24 @@ class KlipyRepository internal constructor(
 
 internal fun KlipyResponse.toRemoteMediaPage(type: RemoteMediaType, query: String = ""): RemoteMediaPage {
     if (!result || data.currentPage < 1) throw IOException("Risposta KLIPY non valida")
+    val itemType = when (type) {
+        RemoteMediaType.Gif -> "gif"
+        RemoteMediaType.Sticker -> "sticker"
+        RemoteMediaType.Meme -> "static_meme"
+    }
     // Reject an unsupported response instead of silently filtering or reordering its results.
     val items = data.data.map { item ->
-        if (item.type != when (type) { RemoteMediaType.Gif -> "gif"; RemoteMediaType.Sticker -> "static_meme"; else -> "sticker" }) {
+        if (item.type != itemType) {
             throw IOException("Contenuto KLIPY non supportato")
         }
         fun rendition(vararg sizes: String, formats: List<String>): KlipyFile? = sizes.firstNotNullOfOrNull { size ->
             formats.firstNotNullOfOrNull { format -> item.file[size]?.get(format)?.takeIf { it.valid() } }
         }
         val sizes = if (type == RemoteMediaType.Gif) arrayOf("sm", "xs", "md", "hd") else arrayOf("hd", "md", "sm")
-        val original = rendition(*sizes, formats = if (type == RemoteMediaType.Sticker) listOf("png", "jpg", "webp") else listOf("gif"))
+        val original = rendition(*sizes, formats = if (type == RemoteMediaType.Meme) listOf("png", "jpg", "webp") else listOf("gif"))
             ?: throw IOException("Formato KLIPY mancante")
-        val preview = rendition("sm", "xs", "md", "hd", formats = if (type == RemoteMediaType.Sticker) listOf("webp", "png", "jpg") else listOf("webp", "gif")) ?: original
-        val fallback = rendition("sm", "xs", "md", "hd", formats = if (type == RemoteMediaType.Sticker) listOf("png", "jpg", "webp") else listOf("gif")) ?: original
+        val preview = rendition("sm", "xs", "md", "hd", formats = if (type == RemoteMediaType.Meme) listOf("webp", "png", "jpg") else listOf("webp", "gif")) ?: original
+        val fallback = rendition("sm", "xs", "md", "hd", formats = if (type == RemoteMediaType.Meme) listOf("png", "jpg", "webp") else listOf("gif")) ?: original
         if (item.slug.isBlank()) throw IOException("Identificativo KLIPY mancante")
         RemoteMedia(id = item.slug, previewUrl = preview.url, mediaUrl = original.url,
             width = original.width, height = original.height, title = item.title, type = type,

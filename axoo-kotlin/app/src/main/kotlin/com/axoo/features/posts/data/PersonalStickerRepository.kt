@@ -23,6 +23,6 @@ class PersonalStickerRepository @Inject constructor(private val api: MediaApi) {
 
 internal fun ImageMeta.asPersonalSticker() = RemoteMedia(
     id = requireNotNull(providerId), previewUrl = url, mediaUrl = url,
-    width = width, height = height, title = "Sticker personale", type = RemoteMediaType.GiphySticker,
+    width = width, height = height, title = "Sticker personale", type = RemoteMediaType.Sticker,
     provider = "axoo", mimeType = "image/png",
 )

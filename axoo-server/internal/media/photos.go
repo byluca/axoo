@@ -100,7 +100,7 @@ func lockPhoto(tx *gorm.DB, path string) error {
 	return tx.Exec("SELECT pg_advisory_xact_lock(hashtextextended(?, 0))", "photo:"+path).Error
 }
 
-// Called inside the post/event transaction; shares a lock with garbage collection.
+// Called inside the post transaction; shares a lock with garbage collection.
 func ValidatePostPhoto(tx *gorm.DB, userID string, photo *models.ImageMeta) error {
 	if photo == nil || photo.Type != "photo" {
 		return nil
@@ -120,16 +120,9 @@ func ValidatePostPhoto(tx *gorm.DB, userID string, photo *models.ImageMeta) erro
 		return err
 	}
 	var exists bool
-	eventClause := ""
-	if tx.Migrator().HasColumn("campus_events", "poster") {
-		eventClause = " OR EXISTS(SELECT 1 FROM public.campus_events WHERE poster->>'url' = ?)"
-	}
-	args := []any{PhotoBucket, path, photo.URL}
-	if eventClause != "" {
-		args = append(args, photo.URL)
-	}
 	err := tx.Raw(`SELECT EXISTS(SELECT 1 FROM storage.objects WHERE bucket_id = ? AND name = ? AND
- (created_at > NOW() - INTERVAL '24 hours' OR EXISTS(SELECT 1 FROM public.posts WHERE media->>'url' = ? AND is_deleted = false) `+eventClause+`))`, args...).Scan(&exists).Error
+ (created_at > NOW() - INTERVAL '24 hours' OR EXISTS(SELECT 1 FROM public.posts WHERE media->>'url' = ? AND is_deleted = false)))`,
+		PhotoBucket, path, photo.URL).Scan(&exists).Error
 	if err != nil {
 		return err
 	}
@@ -139,19 +132,12 @@ func ValidatePostPhoto(tx *gorm.DB, userID string, photo *models.ImageMeta) erro
 	return nil
 }
 
-// Unattached uploads and photos from deleted posts/events are cleaned in batches.
+// Unattached uploads and photos from deleted posts are cleaned in batches.
 func CleanupPhotos(db *gorm.DB, storage PhotoStorage) error {
 	var paths []string
-	eventClause := ""
-	hasPosters := db.Migrator().HasColumn("campus_events", "poster")
-	args := []any{PhotoBucket, photoPrefix()}
-	if hasPosters {
-		eventClause = " AND NOT EXISTS(SELECT 1 FROM public.campus_events WHERE poster->>'url' = ? || o.name)"
-		args = append(args, photoPrefix())
-	}
 	if err := db.Raw(`SELECT name FROM storage.objects o WHERE bucket_id = ? AND created_at < NOW() - INTERVAL '24 hours'
  AND NOT EXISTS(SELECT 1 FROM public.posts WHERE media->>'url' = ? || o.name AND is_deleted = false)
- `+eventClause+` ORDER BY created_at LIMIT 20`, args...).Scan(&paths).Error; err != nil {
+ ORDER BY created_at LIMIT 20`, PhotoBucket, photoPrefix()).Scan(&paths).Error; err != nil {
 		return err
 	}
 	for _, path := range paths {
@@ -165,14 +151,6 @@ func CleanupPhotos(db *gorm.DB, storage PhotoStorage) error {
 			}
 			if count > 0 {
 				return nil
-			}
-			if hasPosters {
-				if err := tx.Table("campus_events").Where("poster->>'url' = ?", photoPrefix()+path).Count(&count).Error; err != nil {
-					return err
-				}
-				if count > 0 {
-					return nil
-				}
 			}
 			ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 			defer cancel()

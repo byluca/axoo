@@ -47,7 +47,7 @@ class LoginViewModelTest {
 
     @Test
     fun `back from otp returns to email and back from email stays there`() = runTest {
-        val model = LoginViewModel(mockk(relaxed = true), mockk(relaxed = true))
+        val model = LoginViewModel(mockk(relaxed = true))
         model.onEmailChanged(PLAY_REVIEW_EMAIL)
         model.onTermsAcceptedChanged(true)
         model.onContinueClicked()
@@ -65,27 +65,40 @@ class LoginViewModelTest {
     @Test
     fun `unchecked consent prevents sending email`() = runTest {
         val repository = mockk<AuthRepository>(relaxed = true)
-        val eligibility = mockk<CheckLoginEmailEligibilityUseCase>(relaxed = true)
-        val model = LoginViewModel(repository, eligibility)
+        val model = LoginViewModel(repository)
         model.onEmailChanged("student@example.it")
         model.onContinueClicked()
         advanceUntilIdle()
         assertFalse(model.uiState.value.canSubmit)
-        coVerify(exactly = 0) { eligibility(any()) }
+        coVerify(exactly = 0) { repository.emailEligibility(any()) }
         coVerify(exactly = 0) { repository.sendOtp(any()) }
         model.onTermsAcceptedChanged(true)
         assertTrue(model.uiState.value.canSubmit)
     }
 
     @Test
+    fun `malformed email is rejected before calling the server`() = runTest {
+        val repository = mockk<AuthRepository>()
+        val model = LoginViewModel(repository)
+        model.onEmailChanged("student@localhost")
+        model.onTermsAcceptedChanged(true)
+        model.onContinueClicked()
+        advanceUntilIdle()
+
+        assertEquals(LoginStep.EMAIL, model.uiState.value.step)
+        assertEquals("Usa l'email universitaria del tuo campus", model.uiState.value.error)
+        coVerify(exactly = 0) { repository.emailEligibility(any()) }
+        coVerify(exactly = 0) { repository.sendOtp(any()) }
+    }
+
+    @Test
     fun `email consent is saved after otp before login success`() = runTest {
         val repository = mockk<AuthRepository>(relaxed = true)
-        val eligibility = mockk<CheckLoginEmailEligibilityUseCase>()
         val initial = com.axoo.features.auth.data.dto.SessionBootstrapResponse(termsRequired = true)
-        coEvery { eligibility("student@example.it") } returns EmailEligibilityResponse(true)
+        coEvery { repository.emailEligibility("student@example.it") } returns EmailEligibilityResponse(true)
         coEvery { repository.verifyOtp("student@example.it", "123456") } returns initial
         coEvery { repository.acceptTerms(initial.termsVersion) } returns initial.copy(termsRequired = false)
-        val model = LoginViewModel(repository, eligibility)
+        val model = LoginViewModel(repository)
         val events = mutableListOf<LoginEvent>()
         backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) { model.events.collect { events.add(it) } }
         model.onEmailChanged("student@example.it")
@@ -104,7 +117,7 @@ class LoginViewModelTest {
         val repository = mockk<AuthRepository>(relaxed = true)
         val initial = com.axoo.features.auth.data.dto.SessionBootstrapResponse(termsRequired = true)
         coEvery { repository.acceptTerms(initial.termsVersion) } throws IOException("offline")
-        val model = LoginViewModel(repository, mockk(relaxed = true))
+        val model = LoginViewModel(repository)
         val events = mutableListOf<LoginEvent>()
         backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) { model.events.collect { events.add(it) } }
         model.requireTerms(initial)
@@ -129,12 +142,11 @@ class LoginViewModelTest {
     @Test
     fun `failed consent after otp retries without consuming code again`() = runTest {
         val repository = mockk<AuthRepository>(relaxed = true)
-        val eligibility = mockk<CheckLoginEmailEligibilityUseCase>()
         val initial = com.axoo.features.auth.data.dto.SessionBootstrapResponse(termsRequired = true)
-        coEvery { eligibility("student@example.it") } returns EmailEligibilityResponse(true)
+        coEvery { repository.emailEligibility("student@example.it") } returns EmailEligibilityResponse(true)
         coEvery { repository.verifyOtp("student@example.it", "123456") } returns initial
         coEvery { repository.acceptTerms(initial.termsVersion) } throws IOException("offline")
-        val model = LoginViewModel(repository, eligibility)
+        val model = LoginViewModel(repository)
         val events = mutableListOf<LoginEvent>()
         backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) { model.events.collect { events.add(it) } }
         model.onEmailChanged("student@example.it")
@@ -159,7 +171,7 @@ class LoginViewModelTest {
         val initial = com.axoo.features.auth.data.dto.SessionBootstrapResponse(termsRequired = true)
         val response = CompletableDeferred<com.axoo.features.auth.data.dto.SessionBootstrapResponse>()
         coEvery { repository.acceptTerms(any()) } coAnswers { response.await() }
-        val model = LoginViewModel(repository, mockk(relaxed = true))
+        val model = LoginViewModel(repository)
         backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) { model.events.collect {} }
         model.requireTerms(initial)
         model.onTermsAcceptedChanged(true)
@@ -174,13 +186,12 @@ class LoginViewModelTest {
     @Test
     fun `valid otp with failed profile bootstrap shows actionable error`() = runTest {
         val authRepository = mockk<AuthRepository>()
-        val eligibility = mockk<CheckLoginEmailEligibilityUseCase>()
-        coEvery { eligibility("studenti@example.it") } returns EmailEligibilityResponse(true)
+        coEvery { authRepository.emailEligibility("studenti@example.it") } returns EmailEligibilityResponse(true)
         coEvery { authRepository.sendOtp("studenti@example.it") } returns Unit
         coEvery {
             authRepository.verifyOtp("studenti@example.it", "123456")
         } throws ProfileBootstrapException(IOException("profile conflict"))
-        val viewModel = LoginViewModel(authRepository, eligibility)
+        val viewModel = LoginViewModel(authRepository)
 
         viewModel.onEmailChanged("studenti@example.it")
         viewModel.onTermsAcceptedChanged(true)
@@ -198,9 +209,8 @@ class LoginViewModelTest {
     @Test
     fun `otp request timeout always restores the send button`() = runTest {
         val authRepository = mockk<AuthRepository>()
-        val eligibility = mockk<CheckLoginEmailEligibilityUseCase>()
-        coEvery { eligibility("studenti@example.it") } coAnswers { awaitCancellation() }
-        val viewModel = LoginViewModel(authRepository, eligibility)
+        coEvery { authRepository.emailEligibility("studenti@example.it") } coAnswers { awaitCancellation() }
+        val viewModel = LoginViewModel(authRepository)
 
         viewModel.onEmailChanged("studenti@example.it")
         viewModel.onTermsAcceptedChanged(true)
@@ -222,10 +232,9 @@ class LoginViewModelTest {
     @Test
     fun `alpha email opens password without sending otp and preserves normal session bootstrap`() = runTest {
         val repository = mockk<AuthRepository>(relaxed = true)
-        val eligibility = mockk<CheckLoginEmailEligibilityUseCase>()
-        coEvery { eligibility("alpha@example.it") } returns EmailEligibilityResponse(true, "password")
+        coEvery { repository.emailEligibility("alpha@example.it") } returns EmailEligibilityResponse(true, "password")
         coEvery { repository.signInAlpha("alpha@example.it", "shared-test-password") } returns com.axoo.features.auth.data.dto.SessionBootstrapResponse()
-        val model = LoginViewModel(repository, eligibility)
+        val model = LoginViewModel(repository)
         val events = mutableListOf<LoginEvent>()
         backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) { model.events.collect { events.add(it) } }
         model.onEmailChanged("alpha@example.it")
@@ -246,10 +255,9 @@ class LoginViewModelTest {
     @Test
     fun `official account uses its own password without sending otp or using alpha login`() = runTest {
         val repository = mockk<AuthRepository>(relaxed = true)
-        val eligibility = mockk<CheckLoginEmailEligibilityUseCase>()
-        coEvery { eligibility("aup@account.example") } returns EmailEligibilityResponse(true, "account_password")
+        coEvery { repository.emailEligibility("aup@account.example") } returns EmailEligibilityResponse(true, "account_password")
         coEvery { repository.signInWithPassword("aup@account.example", "test-only-password") } returns com.axoo.features.auth.data.dto.SessionBootstrapResponse()
-        val model = LoginViewModel(repository, eligibility)
+        val model = LoginViewModel(repository)
         model.onEmailChanged("aup@account.example")
         model.onTermsAcceptedChanged(true)
         model.onContinueClicked()
@@ -268,9 +276,8 @@ class LoginViewModelTest {
     @Test
     fun `back from alpha clears password and returns to email`() = runTest {
         val repository = mockk<AuthRepository>(relaxed = true)
-        val eligibility = mockk<CheckLoginEmailEligibilityUseCase>()
-        coEvery { eligibility("alpha@example.it") } returns EmailEligibilityResponse(true, "password")
-        val model = LoginViewModel(repository, eligibility)
+        coEvery { repository.emailEligibility("alpha@example.it") } returns EmailEligibilityResponse(true, "password")
+        val model = LoginViewModel(repository)
         model.onEmailChanged("alpha@example.it")
         model.onTermsAcceptedChanged(true)
         model.onContinueClicked()

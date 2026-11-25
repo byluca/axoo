@@ -82,7 +82,7 @@ final class RemoteMediaPickerPanelView: UIView, UICollectionViewDataSource, UICo
     private var layoutWidth: CGFloat = 0
     
     init(api: APIClient?, kind: PostEditorMedia.Kind) {
-        viewModel = RemoteMediaViewModel(repository: api.map { RemoteMediaRepository(api: $0) }, kind: kind,
+        viewModel = RemoteMediaViewModel(repository: api.map { _ in RemoteMediaRepository() }, kind: kind,
             personalRepository: api.map { PersonalStickerRepository(api: $0) })
         super.init(frame: .zero)
         setupUI()

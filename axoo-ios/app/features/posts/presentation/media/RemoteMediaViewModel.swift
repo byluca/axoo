@@ -12,7 +12,6 @@ final class RemoteMediaViewModel {
     private var libraryTask: Task<Void, Never>?
     private(set) var items: [PostEditorMedia] = []
     private(set) var query = ""
-    private(set) var category = "italia"
     private(set) var isLoading = false
     private(set) var hasError = false
     private var nextOffset: Int? = 0
@@ -64,12 +63,6 @@ final class RemoteMediaViewModel {
         resetAndLoad()
     }
 
-    func selectCategory(_ value: String) {
-        guard active, kind == .meme, category != value else { return }
-        category = value
-        resetAndLoad()
-    }
-
     private func resetAndLoad() {
         loadTask?.cancel()
         generation = UUID()
@@ -88,11 +81,11 @@ final class RemoteMediaViewModel {
         hasError = false
         onChange(.status)
         let token = generation
-        let search = query, selectedCategory = category
+        let search = query
         loadTask = Task { [weak self] in
             guard let self else { return }
             do {
-                let page = try await repository.load(kind: kind, query: search, category: selectedCategory, offset: offset)
+                let page = try await repository.load(kind: kind, query: search, offset: offset)
                 guard active, !Task.isCancelled, generation == token else { return }
                 let first = items.count
                 items.append(contentsOf: page.items)

@@ -23,7 +23,6 @@ import com.axoo.features.posts.domain.RemoteMediaType
 import com.axoo.features.posts.presentation.composer.ComposerController
 import com.axoo.features.posts.presentation.media.RemoteMediaState
 import com.axoo.features.posts.presentation.media.RemoteMediaViewModel
-import com.axoo.features.posts.presentation.media.components.MediaPickerMode
 import com.axoo.features.posts.presentation.posteditor.components.DiscardPostSheet
 import com.axoo.features.posts.presentation.posteditor.components.FlairPickerSheet
 import com.axoo.features.posts.presentation.posteditor.components.MediaItem
@@ -50,7 +49,7 @@ internal class PostEditorHost(
 
     private var editLoadFailureHandled = false
     private var editorWasReady = false
-    private var mediaPickerMode: MediaPickerMode? = null
+    private var mediaPickerMode: RemoteMediaType? = null
     private val photoPicker = (lifecycleOwner as androidx.activity.ComponentActivity).activityResultRegistry.register(
         "post-photo-${java.util.UUID.randomUUID()}",
         androidx.activity.result.contract.ActivityResultContracts.PickVisualMedia(),
@@ -134,8 +133,6 @@ internal class PostEditorHost(
             }
         }
 
-        remoteMediaViewModel.prewarmGif()
-        remoteMediaViewModel.prewarmMeme()
         observerJobs += owner.lifecycleScope.launch {
             owner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 remoteMediaViewModel.state.collect(::onRemoteMediaStateChanged)
@@ -191,13 +188,13 @@ internal class PostEditorHost(
         when (event) {
             PostEditorEvent.BackTapped -> handleBack()
             PostEditorEvent.PublishTapped -> publishDraft()
-            PostEditorEvent.GiphyStickerTapped -> openRemoteMediaPicker(MediaPickerMode.GiphySticker)
-            PostEditorEvent.GifTapped -> openRemoteMediaPicker(MediaPickerMode.Gif)
-            PostEditorEvent.MemeTapped -> openRemoteMediaPicker(MediaPickerMode.MemeSticker)
+            PostEditorEvent.StickerTapped -> openRemoteMediaPicker(RemoteMediaType.Sticker)
+            PostEditorEvent.GifTapped -> openRemoteMediaPicker(RemoteMediaType.Gif)
+            PostEditorEvent.MemeTapped -> openRemoteMediaPicker(RemoteMediaType.Meme)
             PostEditorEvent.PhotoTapped -> {
                 if (!viewModel.state.value.isEditorReady) return
                 composerController.dismissAll()
-                setMediaPickerMode(null)
+                setMediaPicker(null)
                 photoPicker.launch(androidx.activity.result.PickVisualMediaRequest(
                     androidx.activity.result.contract.ActivityResultContracts.PickVisualMedia.ImageOnly,
                 ))
@@ -208,11 +205,9 @@ internal class PostEditorHost(
             is PostEditorEvent.PollOptionChanged -> viewModel.setPollOption(event.index, event.text, event.entities)
             PostEditorEvent.FlairTapped -> openFlairPicker()
             PostEditorEvent.EmojiToggleTapped -> {
-                if (mediaPickerMode == MediaPickerMode.GiphySticker || mediaPickerMode == MediaPickerMode.Gif ||
-                    mediaPickerMode == MediaPickerMode.MemeSticker
-                ) {
+                if (mediaPickerMode != null) {
                     composerController.openEmojiPanel()
-                    setMediaPickerMode(null)
+                    setMediaPicker(null)
                 } else {
                     composerController.toggleEmojiPanel()
                 }
@@ -220,14 +215,12 @@ internal class PostEditorHost(
             is PostEditorEvent.RemoteMediaTapped -> {
                 remoteMediaViewModel.rememberSelection(event.media)
                 viewModel.selectRemoteMedia(event.media)
-                setMediaPickerMode(null)
+                setMediaPicker(null)
             }
             is PostEditorEvent.RemoteMediaSearchChanged -> remoteMediaViewModel.search(event.query)
-            is PostEditorEvent.RemoteMediaCategorySelected ->
-                remoteMediaViewModel.selectCategory(event.categoryId)
             PostEditorEvent.RemoteMediaLoadMore -> remoteMediaViewModel.loadMore()
             PostEditorEvent.RemoteMediaRetry -> remoteMediaViewModel.retry()
-            PostEditorEvent.RemoteMediaPickerDismissed -> setMediaPickerMode(null)
+            PostEditorEvent.RemoteMediaPickerDismissed -> setMediaPicker(null)
             is PostEditorEvent.BodyChanged -> viewModel.setBody(event.text, event.entities)
             PostEditorEvent.MediaRemoved -> viewModel.removeMedia()
         }
@@ -235,16 +228,14 @@ internal class PostEditorHost(
 
     private fun openFlairPicker() {
         composerController.dismissAll()
-        setMediaPickerMode(null)
+        setMediaPicker(null)
         removeCallbacks(openFlairRunnable)
         postDelayed(openFlairRunnable, FLAIR_SHEET_OPEN_DELAY_MS)
     }
 
     private fun handleBack() {
-        if (mediaPickerMode == MediaPickerMode.GiphySticker || mediaPickerMode == MediaPickerMode.Gif ||
-            mediaPickerMode == MediaPickerMode.MemeSticker
-        ) {
-            setMediaPickerMode(null)
+        if (mediaPickerMode != null) {
+            setMediaPicker(null)
             return
         }
         if (composerController.pickerOpen) {
@@ -266,7 +257,7 @@ internal class PostEditorHost(
 
     private fun pauseComposerForBackground() {
         composerController.dismissAll()
-        setMediaPickerMode(null)
+        setMediaPicker(null)
         rootView.onHostStopped()
     }
 
@@ -326,20 +317,15 @@ internal class PostEditorHost(
         viewModel.submitDraft()
     }
 
-    private fun openRemoteMediaPicker(mode: MediaPickerMode) {
+    private fun openRemoteMediaPicker(mode: RemoteMediaType) {
         if (!viewModel.state.value.isEditorReady) return
-        val type = when (mode) {
-            MediaPickerMode.GiphySticker -> RemoteMediaType.GiphySticker
-            MediaPickerMode.Gif -> RemoteMediaType.Gif
-            MediaPickerMode.MemeSticker -> RemoteMediaType.Sticker
-        }
         if (mediaPickerMode == mode) {
-            setMediaPickerMode(null)
+            setMediaPicker(null)
             return
         }
-        remoteMediaViewModel.open(type)
+        remoteMediaViewModel.open(mode)
         composerController.dismissAll()
-        setMediaPickerMode(mode)
+        setMediaPicker(mode)
     }
 
     private fun showDiscardSheet() {
@@ -361,7 +347,7 @@ internal class PostEditorHost(
     private fun resetComposerSession() {
         composerController.dismissAll()
         removeCallbacks(openFlairRunnable)
-        setMediaPickerMode(null)
+        setMediaPicker(null)
         viewModel.clearDraft()
     }
 
@@ -379,7 +365,7 @@ internal class PostEditorHost(
         )
     }
 
-    private fun setMediaPickerMode(mode: MediaPickerMode?) {
+    private fun setMediaPicker(mode: RemoteMediaType?) {
         if (mediaPickerMode == mode) return
         mediaPickerMode = mode
         syncMediaPicker()
@@ -389,24 +375,15 @@ internal class PostEditorHost(
     private fun syncMediaPicker() {
         val mode = mediaPickerMode
         rootView.setActiveMediaPicker(mode)
-        when (mode) {
-            null -> {
-                rootView.hideRemotePicker()
-            }
-
-            MediaPickerMode.GiphySticker,
-            MediaPickerMode.Gif,
-            MediaPickerMode.MemeSticker,
-                -> {
-                    rootView.showRemotePicker(mode, remoteMediaViewModel.state.value)
-                }
+        if (mode == null) {
+            rootView.hideRemotePicker()
+        } else {
+            rootView.showRemotePicker(remoteMediaViewModel.state.value)
         }
     }
 
     private fun onRemoteMediaStateChanged(state: RemoteMediaState) {
-        if (mediaPickerMode == MediaPickerMode.GiphySticker || mediaPickerMode == MediaPickerMode.Gif ||
-            mediaPickerMode == MediaPickerMode.MemeSticker
-        ) {
+        if (mediaPickerMode == state.type) {
             rootView.bindRemotePicker(state)
         }
     }

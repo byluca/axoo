@@ -16,11 +16,11 @@ import androidx.core.view.isVisible
 import com.axoo.engine.emoji.list.EmojiPlaybackGate
 import com.axoo.engine.emoji.text.MessageEntity
 import com.axoo.features.posts.presentation.composer.BottomInputPanelController
+import com.axoo.features.posts.domain.RemoteMediaType
 import com.axoo.features.posts.presentation.composer.ComposerController
 import com.axoo.features.posts.presentation.composer.ComposerEmojiPanelHostView
 import com.axoo.features.posts.presentation.composer.ComposerPanelState
 import com.axoo.features.posts.presentation.media.RemoteMediaState
-import com.axoo.features.posts.presentation.media.components.MediaPickerMode
 import com.axoo.features.posts.presentation.media.components.PickerPanelContainer
 import com.axoo.features.posts.presentation.media.components.RemoteMediaPickerSheet
 import com.axoo.features.posts.presentation.posteditor.PostEditorEvent
@@ -57,7 +57,7 @@ internal class NativePostEditorView(
     private var eventSink: (PostEditorEvent) -> Unit = {}
     private var emojiRequested = false
     private var bottomSlot = BottomSlot.Closed
-    private var remotePickerMode: MediaPickerMode? = null
+    private var remotePickerMode: RemoteMediaType? = null
     private var remotePickerSheet: RemoteMediaPickerSheet? = null
     private var bottomOffsetPx = 0
     private var navigationBottomInsetPx = 0
@@ -99,10 +99,10 @@ internal class NativePostEditorView(
         body.setOnPollEvent { eventSink(it) }
                                                 body.setOnEmojiToggle { eventSink(PostEditorEvent.EmojiToggleTapped) }
         body.bindComposer(composerController)
-        pickerHost.onMediaRequested = { sticker -> eventSink(if (sticker) PostEditorEvent.GiphyStickerTapped else PostEditorEvent.GifTapped) }
+        pickerHost.onMediaRequested = { sticker -> eventSink(if (sticker) PostEditorEvent.StickerTapped else PostEditorEvent.GifTapped) }
         toolbar.setCallbacks(
             onGifTap = { eventSink(PostEditorEvent.GifTapped) },
-            onStickerTap = { eventSink(PostEditorEvent.GiphyStickerTapped) },
+            onStickerTap = { eventSink(PostEditorEvent.StickerTapped) },
             onMemeTap = { eventSink(PostEditorEvent.MemeTapped) },
             onPhotoTap = { eventSink(PostEditorEvent.PhotoTapped) },
             onPollTap = { eventSink(PostEditorEvent.PollTapped) },
@@ -172,11 +172,12 @@ internal class NativePostEditorView(
         eventSink = callback
     }
 
-    fun setActiveMediaPicker(mode: MediaPickerMode?) {
+    fun setActiveMediaPicker(mode: RemoteMediaType?) {
         toolbar.setActivePicker(mode)
     }
 
-    fun showRemotePicker(mode: MediaPickerMode, state: RemoteMediaState) {
+    fun showRemotePicker(state: RemoteMediaState) {
+        val mode = state.type
         if (remotePickerMode == mode && remotePickerSheet != null) {
             remotePickerSheet?.bind(state)
             return
@@ -185,10 +186,8 @@ internal class NativePostEditorView(
         lateinit var sheet: RemoteMediaPickerSheet
         sheet = RemoteMediaPickerSheet(
             context = context,
-            mode = mode,
             onMediaSelected = { eventSink(PostEditorEvent.RemoteMediaTapped(it)) },
             onSearchQueryChanged = { eventSink(PostEditorEvent.RemoteMediaSearchChanged(it)) },
-            onCategorySelected = { eventSink(PostEditorEvent.RemoteMediaCategorySelected(it)) },
             onLoadMore = { eventSink(PostEditorEvent.RemoteMediaLoadMore) },
             onRetry = { eventSink(PostEditorEvent.RemoteMediaRetry) },
             onDismissed = {

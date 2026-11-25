@@ -47,12 +47,12 @@ final class AuthenticatedNavigationTests: XCTestCase {
         await waitUntil { root.children.first is HomeTabBarController }
         let tabs = try XCTUnwrap(root.children.first as? HomeTabBarController)
         let controllers = try XCTUnwrap(tabs.viewControllers)
-        XCTAssertEqual(controllers.count, 5)
+        XCTAssertEqual(controllers.count, 4)
         XCTAssertEqual(controllers.map { $0.tabBarItem.accessibilityIdentifier },
-                       ["navigation-home", "navigation-events", "navigation-create", "navigation-notifications", "navigation-profile"])
+                       ["navigation-home", "navigation-create", "navigation-notifications", "navigation-profile"])
         let homeStack = try XCTUnwrap(controllers[0] as? UINavigationController)
-        let creationTab = controllers[2]
-        let profileStack = try XCTUnwrap(controllers[4] as? UINavigationController)
+        let creationTab = controllers[1]
+        let profileStack = try XCTUnwrap(controllers[3] as? UINavigationController)
         let home = try XCTUnwrap(homeStack.viewControllers.first as? HomeHost)
         select(profileStack, in: tabs)
         XCTAssertFalse(profileStack === homeStack)
@@ -65,15 +65,16 @@ final class AuthenticatedNavigationTests: XCTestCase {
         XCTAssertEqual(myPosts.bounds.width, profile.view.safeAreaLayoutGuide.layoutFrame.width - 40, accuracy: 1)
         XCTAssertTrue(homeStack.viewControllers.first === home)
 
-        let notificationsStack = try XCTUnwrap(controllers[3] as? UINavigationController)
+        let notificationsStack = try XCTUnwrap(controllers[2] as? UINavigationController)
+        tabs.bindNotificationsCount(2)
+        XCTAssertEqual(notificationsStack.tabBarItem.accessibilityValue, "2 nuove")
+        XCTAssertNil(profileStack.tabBarItem.accessibilityValue)
         XCTAssertTrue(notificationsStack.viewControllers.first is NotificationsHost)
         let inbox = try XCTUnwrap(notificationsStack.viewControllers.first as? NotificationsHost)
         inbox.loadViewIfNeeded()
         let notificationTable = try XCTUnwrap(inbox.view.subviews.compactMap { $0 as? UITableView }.first)
         XCTAssertNil(notificationTable.refreshControl)
-        let eventsStack = try XCTUnwrap(controllers[1] as? UINavigationController)
-        XCTAssertTrue(eventsStack.viewControllers.first is EventsHost)
-        for origin in [profileStack, notificationsStack, eventsStack, homeStack] {
+        for origin in [profileStack, notificationsStack, homeStack] {
             select(origin, in: tabs)
             select(creationTab, in: tabs)
             await waitUntil { root.presentedViewController is UINavigationController }
@@ -142,7 +143,6 @@ private final class NavigationAPI: APIClient {
                 throw URLError(.notConnectedToInternet)
             }
             return Data(#"{"id":"me","nickname":"student","university_id":"campus","university_name":"Campus"}"#.utf8)
-        case "events": return Data(#"{"events":[],"can_manage":false}"#.utf8)
         case "users/blocks": return Data(#"{"users":[]}"#.utf8)
         case "notifications": return Data(#"{"notifications":[],"next_cursor":"","seen_through":"","unread_count":0}"#.utf8)
         case "notifications/unread-count", "notifications/seen": return Data(#"{"unread_count":0}"#.utf8)

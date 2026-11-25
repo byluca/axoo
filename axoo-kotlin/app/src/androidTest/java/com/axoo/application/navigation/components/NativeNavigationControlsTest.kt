@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.viewpager2.widget.ViewPager2
-import com.axoo.application.navigation.route.BottomTab
+import com.axoo.application.navigation.route.Tab
 import com.axoo.ui.components.NativeSortTabStrip
 import com.axoo.ui.components.SlidingCategoryIndicatorLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -27,16 +27,16 @@ class NativeNavigationControlsTest {
         val bar = NativeBottomNavigationBar(context)
         val capsule = bar.getChildAt(0) as SlidingCategoryIndicatorLayout
         val navigation = capsule.getChildAt(0) as BottomNavigationView
-        val events = mutableListOf<BottomTab>()
+        val events = mutableListOf<Tab>()
         bar.setOnTabSelected(events::add)
-        assertEquals(listOf("Home", "Eventi", "Crea", "Notifiche", "Profilo"), (0 until navigation.menu.size()).map { navigation.menu.getItem(it).title.toString() })
-        val create = navigation.menu.getItem(2).itemId
-        for (origin in listOf(BottomTab.HOME, BottomTab.EVENTS, BottomTab.NOTIFICATIONS, BottomTab.PROFILE)) {
+        assertEquals(listOf("Home", "Crea", "Notifiche", "Profilo"), (0 until navigation.menu.size()).map { navigation.menu.getItem(it).title.toString() })
+        val create = navigation.menu.getItem(1).itemId
+        for (origin in listOf(Tab.Home, Tab.Notifications, Tab.Profile)) {
             bar.bind(origin)
-            assertEquals(emptyList<BottomTab>(), events)
+            assertEquals(emptyList<Tab>(), events)
             val selected = navigation.selectedItemId
             navigation.selectedItemId = create
-            assertEquals(listOf(BottomTab.CREATE), events)
+            assertEquals(listOf(Tab.Create), events)
             assertEquals(selected, navigation.selectedItemId)
             events.clear()
         }
@@ -48,8 +48,8 @@ class NativeNavigationControlsTest {
         val bar = NativeBottomNavigationBar(context)
         val capsule = bar.getChildAt(0) as SlidingCategoryIndicatorLayout
         val navigation = capsule.getChildAt(0) as BottomNavigationView
-        val notificationId = navigation.menu.getItem(3).itemId
-        for (origin in listOf(BottomTab.HOME, BottomTab.EVENTS, BottomTab.PROFILE, BottomTab.NOTIFICATIONS, BottomTab.HOME)) {
+        val notificationId = navigation.menu.getItem(2).itemId
+        for (origin in listOf(Tab.Home, Tab.Profile, Tab.Notifications, Tab.Home)) {
             bar.bind(origin)
             navigation.selectedItemId = notificationId
             bar.measure(View.MeasureSpec.makeMeasureSpec(context.dp(390), View.MeasureSpec.EXACTLY),
@@ -69,7 +69,7 @@ class NativeNavigationControlsTest {
         }
         // A screen binds its destination before attachment and before SVG loading finishes.
         val next = NativeBottomNavigationBar(context)
-        next.bind(BottomTab.NOTIFICATIONS)
+        next.bind(Tab.Notifications)
         val native = (next.getChildAt(0) as ViewGroup).getChildAt(0) as BottomNavigationView
         assertEquals(notificationId, native.selectedItemId)
         assertTrue(native.menu.findItem(notificationId).isChecked)
@@ -81,15 +81,15 @@ class NativeNavigationControlsTest {
             scenario.onActivity { activity ->
                 val root = android.widget.FrameLayout(activity)
                 activity.setContentView(root)
-                val bars = listOf(BottomTab.HOME, BottomTab.EVENTS, BottomTab.NOTIFICATIONS, BottomTab.PROFILE).associateWith { tab ->
+                val bars = listOf(Tab.Home, Tab.Notifications, Tab.Profile).associateWith { tab ->
                     NativeBottomNavigationBar(activity).apply { bind(tab) }
                 }
                 fun native(bar: NativeBottomNavigationBar) = (bar.getChildAt(0) as ViewGroup).getChildAt(0) as BottomNavigationView
-                fun show(tab: BottomTab) { root.removeAllViews(); root.addView(bars.getValue(tab)) }
-                bars.values.forEach { bar -> bar.setOnTabSelected { if (it != BottomTab.CREATE) show(it) } }
-                show(BottomTab.HOME)
-                for (tab in listOf(BottomTab.NOTIFICATIONS, BottomTab.HOME, BottomTab.EVENTS, BottomTab.NOTIFICATIONS, BottomTab.PROFILE, BottomTab.NOTIFICATIONS, BottomTab.HOME)) {
-                    val index = when (tab) { BottomTab.HOME -> 0; BottomTab.EVENTS -> 1; BottomTab.NOTIFICATIONS -> 3; else -> 4 }
+                fun show(tab: Tab) { root.removeAllViews(); root.addView(bars.getValue(tab)) }
+                bars.values.forEach { bar -> bar.setOnTabSelected { if (it != Tab.Create) show(it) } }
+                show(Tab.Home)
+                for (tab in listOf(Tab.Notifications, Tab.Home, Tab.Profile, Tab.Notifications, Tab.Home)) {
+                    val index = when (tab) { Tab.Home -> 0; Tab.Notifications -> 2; else -> 3 }
                     val current = native(root.getChildAt(0) as NativeBottomNavigationBar)
                     current.selectedItemId = current.menu.getItem(index).itemId
                     val visible = native(root.getChildAt(0) as NativeBottomNavigationBar)
